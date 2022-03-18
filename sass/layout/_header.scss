@@ -35,4 +35,10 @@ h1 {
         height: 50px;
         margin-left: 100px;
     }
+    @media #{$tablet} {
+        height: 5rem;
+    }
+    @media #{$tablet_rotate} {
+        height: 4rem;
+    }
 }
