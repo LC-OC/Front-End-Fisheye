@@ -81,17 +81,33 @@ header {
   justify-content: space-between;
   align-items: center;
   height: 90px;
+  margin: 4rem 3rem;
+}
+@media screen and (min-width: 1025px) {
+  header {
+    margin: 0rem;
+  }
 }
 
 h1 {
   color: #901C1C;
-  margin-right: 100px;
-  font-size: 36px;
+  font-size: 40px;
+}
+@media screen and (min-width: 1025px) {
+  h1 {
+    margin-right: 100px;
+    font-size: 36px;
+  }
 }
 
 .logo {
-  height: 50px;
-  margin-left: 100px;
+  height: 7rem;
+}
+@media screen and (min-width: 1025px) {
+  .logo {
+    height: 50px;
+    margin-left: 100px;
+  }
 }
 
 body {
@@ -99,29 +115,48 @@ body {
   margin: 0;
 }
 
-.photographer_section {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 70px;
-  margin-top: 100px;
+@media screen and (min-width: 1025px) {
+  .photographer_section {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 70px;
+    margin-top: 100px;
+  }
 }
 
 .photographer_section article {
-  justify-self: center;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  justify-self: center;
+  padding: 3rem;
+}
+@media screen and (min-width: 1025px) {
+  .photographer_section article {
+    padding: 0%;
+  }
 }
 
 .photographer_section article h2 {
   color: #D3573C;
-  font-size: 36px;
+  font-size: 5rem;
+}
+@media screen and (min-width: 1025px) {
+  .photographer_section article h2 {
+    font-size: 36px;
+  }
 }
 
 .photographer_section article img {
-  height: 200px;
-  width: 200px;
+  height: 500px;
+  width: 500px;
+}
+@media screen and (min-width: 1025px) {
+  .photographer_section article img {
+    height: 200px;
+    width: 200px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

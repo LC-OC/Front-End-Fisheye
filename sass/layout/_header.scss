@@ -14,15 +14,25 @@ header {
     justify-content: space-between;
     align-items: center;
     height: 90px;
+    margin: 4rem 3rem;
+    @media #{$desktop} {
+        margin: 0rem;
+    }
 }
 
 h1 {
     color: #901C1C;
-    margin-right: 100px;
-    font-size: 36px;
+    font-size: 40px;
+    @media #{$desktop} {
+        margin-right: 100px;
+        font-size: 36px;
+    }
 }
 
 .logo {
-    height: 50px;
-    margin-left: 100px;
+    height: 7rem;
+    @media #{$desktop} {
+        height: 50px;
+        margin-left: 100px;
+    }
 }
