@@ -4,22 +4,25 @@ body {
 }
 
 .photographer_section {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     @media #{$desktop} {
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 70px;
         margin-top: 100px;
     }
-    @media #{$tablet} {
+    /*@media #{$tablet} {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-    }
+    
     @media #{$tablet_rotate} {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-    }
+    }}*/
 }
 
 .photographer_section article {
@@ -41,12 +44,12 @@ body {
     @media #{$desktop} {
         font-size: 36px;
     }
-    @media #{$tablet} {
+    /*@media #{$tablet} {
         font-size: 3rem;
     }
     @media #{$tablet_rotate} {
         font-size: 3rem;
-    }
+    }*/
 }
 
 .photographer_section article img {
@@ -56,12 +59,12 @@ body {
         height: 200px;
         width: 200px;
     }
-    @media #{$tablet} {
+    /*@media #{$tablet} {
         height: 250px;
         width: 250px;
     }
     @media #{$tablet_rotate} {
         height: 250px;
         width: 250px;
-    }
+    }*/
 }
