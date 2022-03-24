@@ -41,6 +41,7 @@ body {
 .photographer_section article h2 {
     color: #D3573C;
     font-size: 5rem;
+    margin-bottom: 1rem;
     @media #{$desktop} {
         font-size: 36px;
     }
@@ -55,6 +56,10 @@ body {
 .photographer_section article img {
     height: 500px;
     width: 500px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 3rem;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
     @media #{$desktop} {
         height: 200px;
         width: 200px;
@@ -67,4 +72,21 @@ body {
         height: 250px;
         width: 250px;
     }*/
+}
+
+article {
+    .photographe_city {
+        color: $primary-red;
+        font-size: 2rem;
+        margin-bottom: 0.8rem;
+    }
+    .photographe_tagline {
+        color: black;
+        font-size: 1.4rem;
+        margin-bottom: 0.8rem;
+    }
+    .photographe_price {
+        color: $secondary-grey;
+        font-size: 1.2rem;
+    }
 }

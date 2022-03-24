@@ -1,5 +1,5 @@
 function photographerFactory(data) {
-    const { name, portrait, city, tagline, price } = data;
+    const { name, portrait, city, country, tagline, price } = data;
 
     const picture = `assets/photographers/${portrait}`;
 
@@ -11,9 +11,9 @@ function photographerFactory(data) {
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
         h2.classList.add("photographe_name");
-        const pCity = document.createElement('p');
-        pCity.textContent = city;
-        pCity.classList.add("photographe_city");
+        pCityCountry = document.createElement('p');
+        pCityCountry.textContent = city + ', ' + country; 
+        pCityCountry.classList.add("photographe_city");
         const pTagline = document.createElement('p');
         pTagline.textContent = tagline;
         pTagline.classList.add("photographe_tagline");
@@ -22,10 +22,10 @@ function photographerFactory(data) {
         pPrice.classList.add("photographe_price");
         article.appendChild(img);
         article.appendChild(h2);
-        article.appendChild(pCity);
+        article.appendChild(pCityCountry);
         article.appendChild(pTagline);
         article.appendChild(pPrice);
         return (article); 
     }
-    return { name, picture, city, tagline, price, getUserCardDOM }
+    return { name, picture, city, country, tagline, price, getUserCardDOM }
 }
