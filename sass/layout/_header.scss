@@ -16,7 +16,7 @@ header {
     height: 90px;
     margin: 4rem 3rem;
     @media #{$desktop} {
-        margin: 0rem;
+        margin-top: 1rem;
     }
 }
 
@@ -32,8 +32,8 @@ h1 {
 .logo {
     height: 7rem;
     @media #{$desktop} {
-        height: 50px;
-        margin-left: 100px;
+        height: 60px;
+        margin-left: 110px;
     }
     /*@media #{$tablet} {
         height: 5rem;

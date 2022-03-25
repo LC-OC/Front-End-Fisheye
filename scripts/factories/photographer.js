@@ -5,6 +5,7 @@ function photographerFactory(data) {
 
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
+        article.ariaLabel = "Informations Photographe";
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture)
         img.classList.add("photographe_picture");
