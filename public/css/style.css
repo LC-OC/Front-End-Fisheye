@@ -85,7 +85,7 @@ header {
 }
 @media screen and (min-width: 1025px) {
   header {
-    margin: 0rem;
+    margin-top: 1rem;
   }
 }
 
@@ -111,8 +111,8 @@ h1 {
 }
 @media screen and (min-width: 1025px) {
   .logo {
-    height: 50px;
-    margin-left: 100px;
+    height: 60px;
+    margin-left: 110px;
   }
 }
 
@@ -156,6 +156,7 @@ body {
 @media screen and (min-width: 1025px) {
   .photographer_section article {
     padding: 0%;
+    margin-bottom: 2rem;
   }
 }
 
@@ -172,7 +173,8 @@ body {
 }
 @media screen and (min-width: 1025px) {
   .photographer_section article h2 {
-    font-size: 36px;
+    font-size: 2.5rem;
+    margin-bottom: 0.8rem;
   }
 }
 
@@ -194,8 +196,9 @@ body {
 }
 @media screen and (min-width: 1025px) {
   .photographer_section article img {
-    height: 200px;
-    width: 200px;
+    height: 250px;
+    width: 250px;
+    margin-bottom: 2rem;
   }
 }
 
@@ -204,14 +207,32 @@ article .photographe_city {
   font-size: 2rem;
   margin-bottom: 0.8rem;
 }
+@media screen and (min-width: 1025px) {
+  article .photographe_city {
+    font-size: 1.3rem;
+    margin-bottom: 0.5rem;
+  }
+}
 article .photographe_tagline {
   color: black;
   font-size: 1.4rem;
   margin-bottom: 0.8rem;
+  width: 30rem;
+  text-align: center;
+}
+@media screen and (min-width: 1025px) {
+  article .photographe_tagline {
+    font-size: 1rem;
+  }
 }
 article .photographe_price {
   color: #525252;
   font-size: 1.2rem;
+}
+@media screen and (min-width: 1025px) {
+  article .photographe_price {
+    font-size: 0.9rem;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

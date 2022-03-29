@@ -74,7 +74,6 @@
                 const photographerModel = photographerFactory(photographer);
                 const userCardDOM = photographerModel.getUserCardDOM();
                 photographersSection.appendChild(userCardDOM);
-
             }
         })
         .catch(console.error);
