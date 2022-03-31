@@ -1,1 +1,3 @@
-//Mettre le code JavaScript lié à la page photographer.html
+// Afficher contenu page selon ID dans url 
+
+let photographerHeader = document.getElementsByClassName('photographer-header');
