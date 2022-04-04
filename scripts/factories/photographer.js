@@ -3,13 +3,6 @@ function photographerFactory(data) {
 
     const picture = `assets/photographers/${portrait}`;
 
-    // Ajout id Photographe dans URL page photographe
-    /*function idURL() {
-        let url = new URL('http://127.0.0.1:5500/photographer.html');
-        let params = new URLSearchParams(url.search);
-        params.append('id', id);
-    }*/
-
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
         article.ariaLabel = "Informations Photographe";
@@ -46,7 +39,15 @@ function photographerFactory(data) {
         return (article); 
     }
 
-    return { name, picture, city, country, tagline, price, getUserCardDOM /*id, idURL*/ }
+    function getPhotographInformation() {
+        let testSection = document.getElementsByClassName("photograph-header");
+        const img = document.createElement( 'img' );
+        img.setAttribute("src", picture);
+
+
+    }
+
+    return { name, picture, city, country, tagline, price, getUserCardDOM, id, getPhotographInformation}
 
     
 }
