@@ -40,10 +40,15 @@ function photographerFactory(data) {
     }
 
     function getPhotographInformation() {
-        let testSection = document.getElementsByClassName("photograph-header");
-        const img = document.createElement( 'img' );
-        img.setAttribute("src", picture);
-
+        const div = document.createElement('div');
+        const imgProfil = document.createElement( 'img' );
+        imgProfil.setAttribute("src", picture);
+        const h1Name = document.createElement('h1');
+        h1Name.textContent = name;
+        div.appendChild(imgProfil);
+        div.appendChild(h1Name);
+        return (div);
+        
 
     }
 

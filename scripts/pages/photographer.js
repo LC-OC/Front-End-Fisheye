@@ -4,8 +4,7 @@
     let idURL = params.get('id');
     console.log(idURL);
 
-    let testP = document.getElementById("test");
-    
+    const headerPhotographer = document.querySelector('.photograph-header');
     
     let photographerRequest = new Request("./data/photographers.json");
     fetch(photographerRequest)
@@ -15,7 +14,9 @@
             for (let i = 0; i < data.photographers.length; i++) {
                 //console.log(data.photographers[i].id);
                 if ( data.photographers[i].id == idURL) {
-                    //testP.textContent = data.photographers[i].name;
+                    const recupFactory = photographerFactory(data.photographers[i]);
+                    const recupDOM = recupFactory.getPhotographInformation();
+                    headerPhotographer.appendChild(recupDOM);
                 }
             }
         })
