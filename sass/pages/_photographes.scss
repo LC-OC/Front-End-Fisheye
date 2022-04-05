@@ -1,0 +1,34 @@
+.photograph_profile_picture {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 3rem;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+    @media #{$desktop} {
+        height: 250px;
+        width: 250px;
+    }
+}
+
+.photograph-header {
+    padding: 2rem;
+    .infos_header {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        h1 {
+            font-size: 4rem;
+            color: $primary-orange;
+        }
+        p {
+            font-size: 2rem;
+            color: $primary-red;
+        }
+        @media #{$desktop} {
+            padding: 2rem;
+        }
+    }
+}
+

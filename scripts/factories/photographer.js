@@ -14,6 +14,7 @@ function photographerFactory(data) {
             urlPhotographer.searchParams.set('id', id);
             window.location = urlPhotographer;
         };
+        img.style.cursor = "pointer";
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
         h2.classList.add("photographe_name");
@@ -21,6 +22,7 @@ function photographerFactory(data) {
             urlPhotographer.searchParams.set('id', id);
             window.location = urlPhotographer;
         };
+        h2.style.cursor = "pointer";
         img.setAttribute("alt", name);
         pCityCountry = document.createElement('p');
         pCityCountry.textContent = city + ', ' + country; 
@@ -41,12 +43,32 @@ function photographerFactory(data) {
 
     function getPhotographInformation() {
         const div = document.createElement('div');
+        div.classList.add("infos_header");
+        const divTest = document.createElement('div');
+        divTest.classList.add("text_infos_header");
         const imgProfil = document.createElement( 'img' );
         imgProfil.setAttribute("src", picture);
+        imgProfil.classList.add("photograph_profile_picture");
         const h1Name = document.createElement('h1');
         h1Name.textContent = name;
+        const pCityCountryPhotograph = document.createElement('p');
+        pCityCountryPhotograph.textContent = city + ', ' + country; 
+        const pTaglinePhotograph = document.createElement('p');
+        pTaglinePhotograph.textContent = tagline;
+        const buttonContact = document.createElement('button');
+        buttonContact.textContent = "Contactez-moi";
+        buttonContact.classList.add("contact_button");
+        buttonContact.onclick = function() {
+            const modal = document.getElementById("contact_modal");
+	        modal.style.display = "block";
+        };
+        divTest.appendChild(h1Name);
+        divTest.appendChild(pCityCountryPhotograph);
+        divTest.appendChild(pTaglinePhotograph);
+        div.appendChild(divTest);
+        div.appendChild(buttonContact)
         div.appendChild(imgProfil);
-        div.appendChild(h1Name);
+        
         return (div);
         
 

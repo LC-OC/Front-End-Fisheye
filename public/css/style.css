@@ -235,4 +235,42 @@ article .photographe_price {
   }
 }
 
+.photograph_profile_picture {
+  height: 200px;
+  width: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 3rem;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+}
+@media screen and (min-width: 1025px) {
+  .photograph_profile_picture {
+    height: 250px;
+    width: 250px;
+  }
+}
+
+.photograph-header {
+  padding: 2rem;
+}
+.photograph-header .infos_header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.photograph-header .infos_header h1 {
+  font-size: 4rem;
+  color: #D3573C;
+}
+.photograph-header .infos_header p {
+  font-size: 2rem;
+  color: #901C1C;
+}
+@media screen and (min-width: 1025px) {
+  .photograph-header .infos_header {
+    padding: 2rem;
+  }
+}
+
 /*# sourceMappingURL=style.css.map */

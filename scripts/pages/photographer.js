@@ -14,9 +14,9 @@
             for (let i = 0; i < data.photographers.length; i++) {
                 //console.log(data.photographers[i].id);
                 if ( data.photographers[i].id == idURL) {
-                    const recupFactory = photographerFactory(data.photographers[i]);
-                    const recupDOM = recupFactory.getPhotographInformation();
-                    headerPhotographer.appendChild(recupDOM);
+                    const photographerModelPage = photographerFactory(data.photographers[i]);
+                    const photographDOM = photographerModelPage.getPhotographInformation();
+                    headerPhotographer.appendChild(photographDOM);
                 }
             }
         })
