@@ -78,3 +78,29 @@ function photographerFactory(data) {
 
     
 }
+
+
+function mediaFactory(media) {
+    const { id, photographerId, title, image, likes, date, price } = media;
+
+    const pictureMedia = `assets/images/${image}`;
+
+    function getMedia() {
+        const figure = document.createElement('figure');
+        const imgMedia = document.createElement('img');
+        imgMedia.setAttribute("src", pictureMedia);
+        imgMedia.classList.add('imgFigure');
+        const figcaption = document.createElement('figcaption');
+        const titleFigcaption = document.createElement('p');
+        titleFigcaption.textContent = title;
+        const likesFigcaption = document.createElement('p');
+        likesFigcaption.textContent = likes;
+        figure.appendChild(imgMedia);
+        figure.appendChild(figcaption);
+        figcaption.appendChild(titleFigcaption);
+        figcaption.appendChild(likesFigcaption);
+        return(figure);
+    }
+
+    return {id, photographerId, title, pictureMedia, likes, date, price, getMedia}
+}
