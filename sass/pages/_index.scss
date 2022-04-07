@@ -58,10 +58,7 @@ body {
 .photographer_section article img {
     height: 500px;
     width: 500px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 3rem;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+    @include photographerProfilPicture;
     @media #{$desktop} {
         height: 250px;
         width: 250px;

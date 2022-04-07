@@ -1,10 +1,7 @@
 .photograph_profile_picture {
     height: 200px;
     width: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 3rem;
-    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+    @include photographerProfilPicture;
     @media #{$desktop} {
         height: 250px;
         width: 250px;
