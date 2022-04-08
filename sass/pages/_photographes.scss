@@ -29,6 +29,33 @@
     }
 }
 
-.imgFigure {
-    height: 200px;
+
+
+.mediaDiv {
+    margin:  0 100px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px 157px;
+    @media #{$desktop} {
+        
+    }
+    .figureMedia {
+        height: 450px;
+        width: 450px;
+    }
+    .imgFigure {
+    height: 400px;
+    width: 450px;
+    object-fit: cover;
+    border-radius: 1%;
+    }
+    .figcaption-media {
+        display: flex;
+        flex-direction: row;justify-content: space-between;
+        padding-top: 0.5rem;
+    }
+    #titleFigcaption, #likesFigcaption {
+        font-size: 1.4rem;
+        color: $primary-red;
+    }
 }

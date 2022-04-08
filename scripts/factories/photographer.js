@@ -42,6 +42,7 @@ function photographerFactory(data) {
     }
 
     function getPhotographInformation() {
+        const divPriceLike = document.querySelector('.likes_price_div');
         const div = document.createElement('div');
         div.classList.add("infos_header");
         const divTest = document.createElement('div');
@@ -62,6 +63,9 @@ function photographerFactory(data) {
             const modal = document.getElementById("contact_modal");
 	        modal.style.display = "block";
         };
+        const priceByDay = document.createElement('p');
+        priceByDay.textContent = price + '€/jour';
+        divPriceLike.appendChild(priceByDay);
         divTest.appendChild(h1Name);
         divTest.appendChild(pCityCountryPhotograph);
         divTest.appendChild(pTaglinePhotograph);
@@ -87,14 +91,19 @@ function mediaFactory(media) {
 
     function getMedia() {
         const figure = document.createElement('figure');
+        figure.classList.add('figureMedia');
         const imgMedia = document.createElement('img');
         imgMedia.setAttribute("src", pictureMedia);
         imgMedia.classList.add('imgFigure');
         const figcaption = document.createElement('figcaption');
+        figcaption.classList.add('figcaption-media');
         const titleFigcaption = document.createElement('p');
         titleFigcaption.textContent = title;
+        titleFigcaption.setAttribute('id', 'titleFigcaption');
         const likesFigcaption = document.createElement('p');
         likesFigcaption.textContent = likes;
+        likesFigcaption.setAttribute('id', 'likesFigcaption');
+        //divPriceLike.appendChild(priceByDay);
         figure.appendChild(imgMedia);
         figure.appendChild(figcaption);
         figcaption.appendChild(titleFigcaption);
