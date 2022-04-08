@@ -66,6 +66,7 @@ function photographerFactory(data) {
         const priceByDay = document.createElement('p');
         priceByDay.textContent = price + '€/jour';
         divPriceLike.appendChild(priceByDay);
+        priceByDay.classList.add('price-by-day');
         divTest.appendChild(h1Name);
         divTest.appendChild(pCityCountryPhotograph);
         divTest.appendChild(pTaglinePhotograph);
