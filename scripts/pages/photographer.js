@@ -7,6 +7,7 @@
     // Elements DOM
     const headerPhotographer = document.querySelector('.photograph-header');
     const divMedia = document.querySelector('.mediaDiv');
+    const lightboxContent = document.getElementById('lightboxContent');
     
 
     // Récupération data 
@@ -39,3 +40,19 @@
             }
         })
         .catch(console.error);
+
+        /*
+        //Récupération media pour lightbox
+        fetch(photographerRequest)
+        .then(response => response.json())
+        .then(media => {
+            console.log(media.media);
+            for (let i = 0; i < media.media.length; i++) {
+                if (media.media[i].photographerId == idURL) {
+                        const mediaLightboxModel = mediaFactory(media.media[i]);
+                        const mediaLightboxDOM = mediaLightboxModel.getMediaLightbox();
+                        lightboxContent.appendChild(mediaLightboxDOM);
+                }
+            }
+        })
+        .catch(console.error);*/

@@ -89,6 +89,7 @@ function mediaFactory(media) {
     const { id, photographerId, title, image, likes, date, price } = media;
 
     const pictureMedia = `assets/images/${image}`;
+    
 
     function getMedia() {
         const figure = document.createElement('figure');
@@ -96,6 +97,13 @@ function mediaFactory(media) {
         const imgMedia = document.createElement('img');
         imgMedia.setAttribute("src", pictureMedia);
         imgMedia.classList.add('imgFigure');
+        /*imgMedia.onclick = function() {
+            const lightbox = document.getElementById("lightboxDiv");
+	        lightbox.style.display = "block";
+        }*/
+        imgMedia.onclick = function() {
+            
+        }
         const figcaption = document.createElement('figcaption');
         figcaption.classList.add('figcaption-media');
         const titleFigcaption = document.createElement('p');
@@ -112,5 +120,23 @@ function mediaFactory(media) {
         return(figure);
     }
 
-    return {id, photographerId, title, pictureMedia, likes, date, price, getMedia}
+    
+    function getMediaLightbox() {
+        
+
+        /*const figureLightBox = document.createElement('figure');
+        figureLightBox.classList.add("slides-lightbox");
+        const imgLightbox = document.createElement('img');
+        imgLightbox.setAttribute("src", pictureMedia);
+        const figcaptionLightbox = document.createElement('figcaption');
+        const titleMediaLightbox = document.createElement('p');
+        titleMediaLightbox.textContent = title;
+        figureLightBox.appendChild(imgLightbox);
+        figureLightBox.appendChild(figcaptionLightbox);
+        figcaptionLightbox.appendChild(titleMediaLightbox);
+        return (figureLightBox);*/
+
+    }
+
+    return {id, photographerId, title, pictureMedia, likes, date, price, getMedia, getMediaLightbox}
 }

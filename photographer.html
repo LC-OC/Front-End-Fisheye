@@ -28,15 +28,18 @@
 				<form>
 					<div>
 						<label>Prénom</label>
-						<input type="text" id="firstName" />
+						<input type="text" id="firstName" name="firstname" minlength="2" maxlength="20" />
+            <p id="validationFirstName" class="validation"></p>
             <label>Nom</label>
-						<input type="text" id="lastName" />
+						<input type="text" id="lastName" name="lastname" minlength="2" maxlength="25" />
+            <p id="validationLastName" class="validation"></p>
             <label>Email</label>
-						<input type="email" id="email" />
+						<input type="email" id="email" name="email" />
+            <p id="validationEmail" class="validation"></p>
             <label>Votre message</label>
-            <textarea type="text" id="yourMessage"></textarea>
+            <textarea type="text" id="yourMessage" name="yourmessage"></textarea>
 					</div>
-          <button class="contact_button">Envoyer</button>
+          <button class="contact_button" type="button" onclick="getValueOnSubmit()" return false>Envoyer</button>
 				</form>
 			</div>
 		</div>
@@ -49,11 +52,16 @@
       </select>
     </div>
     <div class="mediaDiv"></div>
+    <!--- <div id="lightboxDiv" class="lightboxDiv">
+      <div id="lightboxContent">
+      </div>
+    </div>-->
     <div class="likes_price_div"></div>
 
     <script src="scripts/factories/Photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
+    <script src="/scripts/utils/lightbox.js"></script>
     
   </body>
 </html>
