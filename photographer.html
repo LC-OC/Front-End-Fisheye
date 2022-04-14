@@ -28,16 +28,19 @@
 				<form>
 					<div>
 						<label>Prénom</label>
-						<input type="text" id="firstName" name="firstname" minlength="2" maxlength="20" />
+						<input type="text" id="firstName" name="firstname" minlength="2" maxlength="20" 
+            placeholder="Veuillez renseigner votre prénom ici - entre 2 et 20 lettres" />
             <p id="validationFirstName" class="validation"></p>
             <label>Nom</label>
-						<input type="text" id="lastName" name="lastname" minlength="2" maxlength="25" />
+						<input type="text" id="lastName" name="lastname" minlength="2" maxlength="25"
+            placeholder="Veuillez renseisgner votre nom ici - entre 2 et 25 lettres" />
             <p id="validationLastName" class="validation"></p>
             <label>Email</label>
-						<input type="email" id="email" name="email" />
+						<input type="email" id="email" name="email" placeholder="Veuillez renseigner votre adresse mail ici - ex: adresse@mail.com"/>
             <p id="validationEmail" class="validation"></p>
             <label>Votre message</label>
-            <textarea type="text" id="yourMessage" name="yourmessage"></textarea>
+            <textarea type="text" id="yourMessage" name="yourmessage" placeholder="Veuillez renseigner votre message ici"></textarea>
+            <p id="validationMessage"></p>
 					</div>
           <button class="contact_button" type="button" onclick="getValueOnSubmit()" return false>Envoyer</button>
 				</form>

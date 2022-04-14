@@ -79,6 +79,10 @@ textarea {
   resize: none;
 }
 
+color {
+  color: #057a3a;
+}
+
 .photograph-header {
   background-color: #FAFAFA;
   height: 300px;

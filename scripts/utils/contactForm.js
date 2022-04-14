@@ -1,6 +1,15 @@
+// DOM Form
+
 const pValidation = document.querySelectorAll('.validation');
-let inputFirstName = document.getElementById("firstName");
-let pValidationFirstName = document.getElementById('validationFirstName');
+const inputFirstName = document.getElementById("firstName");
+const inputLastName = document.getElementById("lastName");
+const inputEmail = document.getElementById("email");
+const textArea = document.getElementById("yourMessage");
+const pValidationFirstName = document.getElementById('validationFirstName');
+const pValidationLastName = document.getElementById('validationLastName');
+const pValidationEmail = document.getElementById('validationEmail');
+const pValidationMessage = document.getElementById('validationMessage');
+
 
 function closeModal() {
     const modal = document.getElementById("contact_modal");
@@ -8,9 +17,10 @@ function closeModal() {
 }
 
 function getValueOnSubmit() {
-    let inputFirstNameValue = document.getElementById("firstName").value;
+    //Validation message et regex first name
+    const inputFirstNameValue = document.getElementById("firstName").value;
     console.log(inputFirstNameValue);
-    let firstNameRegex = inputFirstNameValue.match(/^[A-zÀ-ú- ]{2,15}$/);
+    const firstNameRegex = inputFirstNameValue.match(/^[A-zÀ-ú- ]{2,15}$/);
     if (inputFirstNameValue != firstNameRegex || inputFirstNameValue == "") {
         pValidationFirstName.textContent = "Veuillez renseigner un prénom valide."
         pValidationFirstName.style.color = '#dd1812';
@@ -21,12 +31,49 @@ function getValueOnSubmit() {
         pValidationFirstName.style.color = '#057a3a';
         inputFirstName.style.border = "thick solid #057a3a";
     }
-    let inputLastName = document.getElementById("lastName").value;
-    console.log(inputLastName);
-    let inputEmail = document.getElementById("email").value;
-    console.log(inputEmail);
-    let contactMessage = document.getElementById("yourMessage").value;
-    console.log(contactMessage);
+    // Validation message et Regex last name
+    const inputLastNameValue = document.getElementById("lastName").value;
+    console.log(inputLastNameValue);
+    const lastNameRegex = inputLastNameValue.match(/^[A-zÀ-ú- ]{2,30}$/);
+    if (inputLastNameValue != lastNameRegex || inputLastNameValue == "" ) {
+        pValidationLastName.textContent = "Veuillez renseigner un nom valide."
+        pValidationLastName.style.color = '#dd1812';
+        inputLastName.style.border = "thick solid #dd1812";
+    }
+    else {
+        pValidationLastName.textContent = "Format du nom valide.";
+        pValidationLastName.style.color = '#057a3a';
+        inputLastName.style.border = "thick solid #057a3a";
+    }
+
+    // Validation message et Regex Email
+    const inputEmailValue = document.getElementById("email").value;
+    console.log(inputEmailValue);
+    const emailRegex = inputEmailValue.match(/[A-z0-9._-]+[@]{1}[a-z0-9._-]+[.]{1}[a-z]{2,10}/);
+    if (inputEmailValue != emailRegex || inputEmailValue == "" ) {
+        pValidationEmail.textContent = "Veuillez renseigner une adresse mail valide."
+        pValidationEmail.style.color = '#dd1812';
+        inputEmail.style.border = "thick solid #dd1812";
+    }
+    else {
+        pValidationEmail.textContent = "Format de l'adresse mail valide.";
+        pValidationEmail.style.color = '#057a3a';
+        inputEmail.style.border = "thick solid #057a3a";
+    }
+
+    // Récupération contenu textArea et message erreur si vide
+    const contactMessageValue = document.getElementById("yourMessage").value;
+    console.log(contactMessageValue);
+    if (contactMessageValue == "") {
+        pValidationMessage.textContent = "Veuillez renseigner un message."
+        pValidationMessage.style.color = '#dd1812';
+        textArea.style.border = "thick solid #dd1812";
+    }
+    else {
+        pValidationMessage.style.display = "none";
+        textArea.style.border = "thick solid #057a3a";
+    }
+
 }
 
 
