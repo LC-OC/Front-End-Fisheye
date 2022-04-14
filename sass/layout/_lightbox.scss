@@ -10,18 +10,17 @@ z-index: 1;
   overflow: auto;
   background-color: white;
   #lightboxContent {
-    position: relative;
-    background-color: #fefefe;
-    margin: auto;
-    padding: 0;
-    width: 90%;
-    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
-  img {
-      height: 200px;
+  #imgBigger {
+    height: 500px;
+    width: 600px;
+    object-fit: cover;
   }
-  figure {
-      display: none;
+  .fa-xmark {
+    background-color: black;
   }
 }
 

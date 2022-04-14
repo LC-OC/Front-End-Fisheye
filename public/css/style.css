@@ -87,6 +87,11 @@ form input {
   font-size: 1.2rem;
   padding-left: 0.5rem;
 }
+form p {
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+}
 form textarea {
   width: 100%;
   height: 5rem;
@@ -159,18 +164,17 @@ h1 {
   background-color: white;
 }
 #lightboxDiv #lightboxContent {
-  position: relative;
-  background-color: #fefefe;
-  margin: auto;
-  padding: 0;
-  width: 90%;
-  max-width: 1200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-#lightboxDiv img {
-  height: 200px;
+#lightboxDiv #imgBigger {
+  height: 500px;
+  width: 600px;
+  object-fit: cover;
 }
-#lightboxDiv figure {
-  display: none;
+#lightboxDiv .fa-xmark {
+  background-color: black;
 }
 
 #select {
