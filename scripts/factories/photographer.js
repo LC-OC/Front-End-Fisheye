@@ -98,13 +98,6 @@ function mediaFactory(media) {
         imgMedia.setAttribute("src", pictureMedia);
         imgMedia.classList.add('imgFigure');
         videoMedia = document.createElement('video');
-        imgMedia.onclick = function() {
-            const lightbox = document.getElementById("lightboxDiv");
-            const imgLightbox = document.getElementById("imgBigger");
-	        lightbox.style.display = "block";
-            imgLightbox.src = this.src;
-
-        }
         const figcaption = document.createElement('figcaption');
         figcaption.classList.add('figcaption-media');
         const titleFigcaption = document.createElement('p');
@@ -113,6 +106,15 @@ function mediaFactory(media) {
         const likesFigcaption = document.createElement('p');
         likesFigcaption.textContent = likes;
         likesFigcaption.setAttribute('id', 'likesFigcaption');
+        imgMedia.onclick = function() {
+            const lightbox = document.getElementById("lightboxDiv");
+            const imgLightbox = document.getElementById("imgBigger");
+            const pImgName = document.getElementById("imgNameLightbox");
+	        lightbox.style.display = "block";
+            imgLightbox.src = this.src;
+            pImgName.textContent = title;
+            console.log(pImgName);
+        }
         //divPriceLike.appendChild(priceByDay);
         figure.appendChild(imgMedia);
         figure.appendChild(figcaption);
