@@ -115,7 +115,7 @@ function mediaFactory(media) {
             pImgName.textContent = title;
             console.log(pImgName);
         }
-        //divPriceLike.appendChild(priceByDay);
+        imgMedia.style.cursor = "pointer";
         figure.appendChild(imgMedia);
         figure.appendChild(figcaption);
         figcaption.appendChild(titleFigcaption);

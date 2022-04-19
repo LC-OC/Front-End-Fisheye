@@ -1,5 +1,9 @@
+const lightbox = document.getElementById("lightboxDiv");
+
 
 function closeLightbox() {
-    const lightbox = document.getElementById("lightboxDiv");
+    
     lightbox.style.display = "none";
 }
+
+

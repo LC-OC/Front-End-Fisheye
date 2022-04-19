@@ -28,6 +28,17 @@
   cursor: pointer;
 }
 
+.fa-times {
+  color: #901C1C;
+  font-size: 2rem;
+}
+
+.fa-angle-left, .fa-angle-right {
+  color: #901C1C;
+  font-size: 3rem;
+  margin: 2rem;
+}
+
 #contact_modal {
   display: none;
 }
