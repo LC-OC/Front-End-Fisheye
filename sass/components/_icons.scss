@@ -1,10 +1,17 @@
 .fa-times {
     color: $primary-red;
     font-size: 2rem;
+    cursor: pointer;
 }
 
 .fa-angle-left, .fa-angle-right {
     color: $primary-red;
     font-size: 3rem;
     margin: 2rem;
+}
+
+
+.fa-heart {
+    padding-left: 0.5rem;
+    
 }

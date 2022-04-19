@@ -104,7 +104,15 @@ function mediaFactory(media) {
         titleFigcaption.textContent = title;
         titleFigcaption.setAttribute('id', 'titleFigcaption');
         const likesFigcaption = document.createElement('p');
-        likesFigcaption.textContent = likes;
+        likesFigcaption.textContent = likes
+        const heartIcon = document.createElement('span');
+        heartIcon.innerHTML = '<i class="fas fa-heart"></i>';
+        heartIcon.style.cursor = 'pointer';
+        heartIcon.style.color = '#525252';
+        heartIcon.addEventListener("click", function() {
+            this.style.color = "#901C1C";
+        })
+        likesFigcaption.appendChild(heartIcon);
         likesFigcaption.setAttribute('id', 'likesFigcaption');
         imgMedia.onclick = function() {
             const lightbox = document.getElementById("lightboxDiv");
@@ -116,6 +124,10 @@ function mediaFactory(media) {
             console.log(pImgName);
         }
         imgMedia.style.cursor = "pointer";
+        const leftArrowIcon = document.querySelector('.fa-angle-left');
+        leftArrowIcon.addEventListener("click", function() {
+            this.style.color = "red";
+        });
         figure.appendChild(imgMedia);
         figure.appendChild(figcaption);
         figcaption.appendChild(titleFigcaption);

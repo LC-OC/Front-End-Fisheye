@@ -31,12 +31,17 @@
 .fa-times {
   color: #901C1C;
   font-size: 2rem;
+  cursor: pointer;
 }
 
 .fa-angle-left, .fa-angle-right {
   color: #901C1C;
   font-size: 3rem;
   margin: 2rem;
+}
+
+.fa-heart {
+  padding-left: 0.5rem;
 }
 
 #contact_modal {
@@ -166,7 +171,7 @@ h1 {
   display: none;
   position: fixed;
   z-index: 1;
-  padding-top: 100px;
+  padding-top: 1rem;
   left: 0;
   top: 0;
   width: 100%;
@@ -180,9 +185,10 @@ h1 {
   align-items: center;
 }
 #lightboxDiv #imgBigger {
-  height: 500px;
-  width: 600px;
+  height: 700px;
+  width: 800px;
   object-fit: cover;
+  border-radius: 5px;
 }
 #lightboxDiv .fa-xmark {
   background-color: black;
