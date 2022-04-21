@@ -65,6 +65,10 @@ function photographerFactory(data) {
         };
         const priceByDay = document.createElement('p');
         priceByDay.textContent = price + '€/jour';
+        const allLikes = document.createElement('p');
+        allLikes.innerHTML = '<i class="fas fa-heart"></i>';
+        console.log(allLikes);
+        divPriceLike.appendChild(allLikes);
         divPriceLike.appendChild(priceByDay);
         priceByDay.classList.add('price-by-day');
         divTest.appendChild(h1Name);
@@ -94,9 +98,9 @@ function mediaFactory(media) {
     function getMedia() {
         const figure = document.createElement('figure');
         figure.classList.add('figureMedia');
-        const imgMedia = document.createElement('img');
-        imgMedia.setAttribute("src", pictureMedia);
-        imgMedia.classList.add('imgFigure');
+        const imgMedias = document.createElement('img');
+        imgMedias.setAttribute("src", pictureMedia);
+        imgMedias.classList.add('imgFigure');
         videoMedia = document.createElement('video');
         const figcaption = document.createElement('figcaption');
         figcaption.classList.add('figcaption-media');
@@ -104,17 +108,21 @@ function mediaFactory(media) {
         titleFigcaption.textContent = title;
         titleFigcaption.setAttribute('id', 'titleFigcaption');
         const likesFigcaption = document.createElement('p');
-        likesFigcaption.textContent = likes
+        likesFigcaption.textContent = likes;
         const heartIcon = document.createElement('span');
         heartIcon.innerHTML = '<i class="fas fa-heart"></i>';
         heartIcon.style.cursor = 'pointer';
         heartIcon.style.color = '#525252';
         heartIcon.addEventListener("click", function() {
             this.style.color = "#901C1C";
+            let numberLikes = likes;
+            numberLikes += 1;
+            likesFigcaption.innerHTML = numberLikes + '<i class="fas fa-heart"></i>';
+
         })
         likesFigcaption.appendChild(heartIcon);
         likesFigcaption.setAttribute('id', 'likesFigcaption');
-        imgMedia.onclick = function() {
+        imgMedias.onclick = function() {
             const lightbox = document.getElementById("lightboxDiv");
             const imgLightbox = document.getElementById("imgBigger");
             const pImgName = document.getElementById("imgNameLightbox");
@@ -123,12 +131,15 @@ function mediaFactory(media) {
             pImgName.textContent = title;
             console.log(pImgName);
         }
-        imgMedia.style.cursor = "pointer";
+        imgMedias.style.cursor = "pointer";
         const leftArrowIcon = document.querySelector('.fa-angle-left');
+        leftArrowIcon.style.cursor = "pointer";
+        
         leftArrowIcon.addEventListener("click", function() {
-            this.style.color = "red";
+            //this.style.color = "red";
+           
         });
-        figure.appendChild(imgMedia);
+        figure.appendChild(imgMedias);
         figure.appendChild(figcaption);
         figcaption.appendChild(titleFigcaption);
         figcaption.appendChild(likesFigcaption);
