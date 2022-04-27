@@ -52,6 +52,9 @@
                 sum += found[i].likes;
             }
             console.log(sum)
+
+            let pAllLikes = document.querySelector('.number_likes');
+            pAllLikes.innerHTML = sum + '<i class="fas fa-heart"></i>';
             /* ----------------------------*/
 
 

@@ -65,10 +65,10 @@ function photographerFactory(data) {
         };
         const priceByDay = document.createElement('p');
         priceByDay.textContent = price + '€/jour';
-        const allLikes = document.createElement('p');
+        /*const allLikes = document.createElement('p');
         allLikes.innerHTML = '<i class="fas fa-heart"></i>';
         console.log(allLikes);
-        divPriceLike.appendChild(allLikes);
+        divPriceLike.appendChild(allLikes);*/
         divPriceLike.appendChild(priceByDay);
         priceByDay.classList.add('price-by-day');
         divTest.appendChild(h1Name);
