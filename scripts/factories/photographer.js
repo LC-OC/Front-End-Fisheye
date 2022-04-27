@@ -119,7 +119,16 @@ function mediaFactory(media) {
             numberLikes += 1;
             likesFigcaption.innerHTML = numberLikes + '<i class="fas fa-heart"></i>';
 
-        })
+        });
+       /* let object = [];
+        let myJson = likes;
+        object.push(myJson);
+        console.log(object);
+        let sum = 0;
+        for (let i = 0; i < object.length; i++) {
+            sum += object[i];
+        }
+        console.log(sum);*/
         likesFigcaption.appendChild(heartIcon);
         likesFigcaption.setAttribute('id', 'likesFigcaption');
         imgMedias.onclick = function() {
@@ -134,10 +143,15 @@ function mediaFactory(media) {
         imgMedias.style.cursor = "pointer";
         const leftArrowIcon = document.querySelector('.fa-angle-left');
         leftArrowIcon.style.cursor = "pointer";
-        
         leftArrowIcon.addEventListener("click", function() {
             //this.style.color = "red";
-           
+            
+        });
+        const rightArrowIcon = document.querySelector('.fa-angle-right');
+        rightArrowIcon.style.cursor = "pointer";
+        rightArrowIcon.addEventListener("click", function() {
+            //this.style.color = "red";
+            
         });
         figure.appendChild(imgMedias);
         figure.appendChild(figcaption);

@@ -3,6 +3,13 @@
 }
 
 .modal {
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    position: fixed;
+    padding-top: 1rem;
+    top: 0;
+    bottom: 0;
+    overflow: auto;
     border-radius: 5px;
     background-color: #DB8876;
     width: 50%;

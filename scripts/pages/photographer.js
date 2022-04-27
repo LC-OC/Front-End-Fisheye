@@ -30,16 +30,66 @@
     fetch(photographerRequest)
         .then(response => response.json())
         .then(media => {
-            console.log(media.media);
+            /*console.log(media.media);
+            console.log(media.media.likes);*/
+            let object = media.media;
+            console.log(object[2].likes);
+
+            // ----------- CALCUL DE TOUS LES LIKES -------- */
+            function getbyTest(photographerId) {
+                return object.filter(
+                    function(object) {
+                        return object.photographerId == photographerId
+                    }
+                );
+            }
+            
+            let found = getbyTest(idURL);
+            console.log(found)
+
+            let sum = 0;
+            for (let i = 0; i < found.length; i++) {
+                sum += found[i].likes;
+            }
+            console.log(sum)
+            /* ----------------------------*/
+
+
+            /*let arrayLikes = object.map(i => [i.likes, i.photographerId]);
+            console.log(arrayLikes);*/
+            
+            
+            /*
+            let result = media.media.reduce((a, c) => ({
+                likes: a.likes + c.likes
+            }))
+            console.log(result)
+            /*let arrayPhotographerId = object.map(i => i.photographerId);
+            console.log(arrayPhotographerId);
+            let arrayPictures = object.map(i => [i.title]);
+            console.log(arrayPictures);*/
+            
+
+           
+            //-----------------------
             for (let i = 0; i < media.media.length; i++) {
                 if (media.media[i].photographerId == idURL) {
-                        const mediaModel = mediaFactory(media.media[i]);
-                        const mediaDOM = mediaModel.getMedia();
-                        divMedia.appendChild(mediaDOM);
+                    const mediaModel = mediaFactory(media.media[i]);
+                    const mediaDOM = mediaModel.getMedia();
+                    divMedia.appendChild(mediaDOM);
+                    /*let result = media.media.reduce((a, c) => ({
+                        likes: a.likes + c.likes
+                    }))
+                    console.log(result)
+                    */
+
+                    
                 }
             }
         })
         .catch(console.error);
+
+
 
         /*
         //Récupération media pour lightbox
