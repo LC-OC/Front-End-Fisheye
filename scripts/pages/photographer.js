@@ -33,7 +33,6 @@
             /*console.log(media.media);
             console.log(media.media.likes);*/
             let object = media.media;
-            console.log(object[2].likes);
 
             // ----------- CALCUL DE TOUS LES LIKES -------- */
             function getbyTest(photographerId) {
@@ -54,7 +53,8 @@
             console.log(sum)
 
             let pAllLikes = document.querySelector('.number_likes');
-            pAllLikes.innerHTML = sum + '<i class="fas fa-heart"></i>';
+            pAllLikes.innerHTML = sum;
+            
             /* ----------------------------*/
 
 

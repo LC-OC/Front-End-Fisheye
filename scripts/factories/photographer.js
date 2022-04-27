@@ -118,17 +118,15 @@ function mediaFactory(media) {
             let numberLikes = likes;
             numberLikes += 1;
             likesFigcaption.innerHTML = numberLikes + '<i class="fas fa-heart"></i>';
+            let pAllLikes = document.querySelector('.number_likes');
+            let retest = pAllLikes.innerHTML
+            console.log(pAllLikes)
+            console.log(retest)
+            retest++;
+            pAllLikes.innerHTML = retest
+            
 
         });
-       /* let object = [];
-        let myJson = likes;
-        object.push(myJson);
-        console.log(object);
-        let sum = 0;
-        for (let i = 0; i < object.length; i++) {
-            sum += object[i];
-        }
-        console.log(sum);*/
         likesFigcaption.appendChild(heartIcon);
         likesFigcaption.setAttribute('id', 'likesFigcaption');
         imgMedias.onclick = function() {
