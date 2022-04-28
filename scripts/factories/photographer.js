@@ -65,10 +65,6 @@ function photographerFactory(data) {
         };
         const priceByDay = document.createElement('p');
         priceByDay.textContent = price + '€/jour';
-        /*const allLikes = document.createElement('p');
-        allLikes.innerHTML = '<i class="fas fa-heart"></i>';
-        console.log(allLikes);
-        divPriceLike.appendChild(allLikes);*/
         divPriceLike.appendChild(priceByDay);
         priceByDay.classList.add('price-by-day');
         divTest.appendChild(h1Name);
@@ -119,11 +115,11 @@ function mediaFactory(media) {
             numberLikes += 1;
             likesFigcaption.innerHTML = numberLikes + '<i class="fas fa-heart"></i>';
             let pAllLikes = document.querySelector('.number_likes');
-            let retest = pAllLikes.innerHTML
+            let contentAllLikes = pAllLikes.innerHTML
             console.log(pAllLikes)
-            console.log(retest)
-            retest++;
-            pAllLikes.innerHTML = retest
+            console.log(contentAllLikes)
+            contentAllLikes++;
+            pAllLikes.innerHTML = contentAllLikes;
             
 
         });

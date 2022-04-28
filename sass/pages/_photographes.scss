@@ -70,10 +70,12 @@
     justify-content: space-around;
     align-items: center;
     border-radius: 2%;
-    .price-by-day {
-        font-size: 1.5rem;
-        color: black;
-        font-weight: bold;
-
+    font-size: 1.5rem;
+    color: black;
+    font-weight: bold;
+    .all_likes {
+        display: flex;
+        flex-direction: row;
     }
+
 }

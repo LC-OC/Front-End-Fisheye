@@ -463,11 +463,13 @@ article .photographe_price {
   justify-content: space-around;
   align-items: center;
   border-radius: 2%;
-}
-.likes_price_div .price-by-day {
   font-size: 1.5rem;
   color: black;
   font-weight: bold;
+}
+.likes_price_div .all_likes {
+  display: flex;
+  flex-direction: row;
 }
 
 /*# sourceMappingURL=style.css.map */
