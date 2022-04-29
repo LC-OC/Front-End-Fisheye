@@ -46,10 +46,26 @@
             let found = getbyTest(idURL);
             console.log(found)
 
+
+            // Récupération de l'url des images dans un tableau
+            function selectImageOnly(images) {
+                const {image} = images;
+                return {image}
+            }
+
+            const imagesURL = found.map(selectImageOnly);
+            console.log(imagesURL)
+
+            // isoler un élement en particulier - montre bien que found est un array
+            let test = found.find(e => e.likes === 88);
+            console.log(test)
+
+
+
             let sum = 0;
             for (let i = 0; i < found.length; i++) {
-                sum += found[i].likes;
-            }
+                sum += found[i].likes;    
+        }
             console.log(sum)
 
             let pAllLikes = document.querySelector('.number_likes');
@@ -57,6 +73,21 @@
             
             /* ----------------------------*/
 
+            /*---- Lightbox ---- */
+
+            const lightboxImg = document.getElementById('imgBigger');
+            console.log(lightboxImg)
+
+
+            for (let i = 0; i < found.length; i++) {
+                let foundImage = found[i].image;
+                console.log(foundImage)
+                
+            }
+
+
+
+           
 
             /*let arrayLikes = object.map(i => [i.likes, i.photographerId]);
             console.log(arrayLikes);*/
@@ -67,10 +98,9 @@
                 likes: a.likes + c.likes
             }))
             console.log(result)
-            /*let arrayPhotographerId = object.map(i => i.photographerId);
-            console.log(arrayPhotographerId);
-            let arrayPictures = object.map(i => [i.title]);
-            console.log(arrayPictures);*/
+            let arrayPhotographerId = object.map(i => i.photographerId);
+            console.log(arrayPhotographerId);*/
+            
             
 
            
