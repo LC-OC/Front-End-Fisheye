@@ -147,6 +147,7 @@ function mediaFactory(media) {
             //this.style.color = "red";
             
         });
+        
         figure.appendChild(imgMedias);
         figure.appendChild(figcaption);
         figcaption.appendChild(titleFigcaption);

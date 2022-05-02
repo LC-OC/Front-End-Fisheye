@@ -46,7 +46,6 @@
             let found = getbyTest(idURL);
             console.log(found)
 
-
             // Récupération de l'url des images dans un tableau
             function selectImageOnly(images) {
                 const {image} = images;
@@ -55,18 +54,28 @@
 
             const imagesURL = found.map(selectImageOnly);
             console.log(imagesURL)
+            
+
 
             // isoler un élement en particulier - montre bien que found est un array
             let test = found.find(e => e.likes === 88);
             console.log(test)
 
-
+            let arrayImgURL = [];
 
             let sum = 0;
             for (let i = 0; i < found.length; i++) {
-                sum += found[i].likes;    
+                sum += found[i].likes; 
+                /*console.log(found[i].image)*/
+                // Récupération et ajout image url dans array 
+                let test666 = found[i].image;
+                const pictureMedia = `assets/images/${test666}`;
+                console.log(pictureMedia)
+                arrayImgURL.push(pictureMedia)
+                
         }
             console.log(sum)
+            console.log(arrayImgURL)
 
             let pAllLikes = document.querySelector('.number_likes');
             pAllLikes.innerHTML = sum;
@@ -77,14 +86,53 @@
 
             const lightboxImg = document.getElementById('imgBigger');
             console.log(lightboxImg)
+            // lightbox
+            let next = document.querySelector('.fa-angle-right');
+            let previous = document.querySelector('.fa-angle-left');
+            let imgContent = document.getElementById('imgBigger');
 
+            let currentPic = 0;
+            previous.addEventListener('click', function() {
+                if (currentPic <= 0) {
+                    currentPic = arrayImgURL.length -1;
+                } else {
+                    currentPic--;
+                }
+                imgContent.src = arrayImgURL[currentPic]
+            })
+            
+            next.addEventListener('click', function() {
+               if (currentPic < arrayImgURL.length-1) {
+                   currentPic = currentPic+1;
+               } else {
+                   currentPic = 0;
+               }
+               imgContent.src = arrayImgURL[currentPic]
+            })
 
-            for (let i = 0; i < found.length; i++) {
-                let foundImage = found[i].image;
-                console.log(foundImage)
-                
-            }
+            /*let currentPic = 0;
 
+            next.addEventListener('click', function() {
+                let lastPic = arrayImgURL.length-1;
+                if (currentPic == lastPic) {
+                    currentPic = 0;
+                    imgContent.src = arrayImgURL[currentPic];
+                } else {
+                    currentPic++;
+                    imgContent.src = arrayImgURL[currentPic];
+                }
+            })
+
+            previous.addEventListener('click', function() {
+                let lastPic = arrayImgURL.length+1;
+                if (currentPic == lastPic) {
+                    currentPic = 0;
+                    imgContent.src = arrayImgURL[currentPic];
+                } else {
+                    currentPic--;
+                    imgContent.src = arrayImgURL[currentPic];
+                }
+            })*/
 
 
            
