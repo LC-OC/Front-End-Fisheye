@@ -62,20 +62,24 @@
             console.log(test)
 
             let arrayImgURL = [];
+            let arrayTitleImg = [];
 
             let sum = 0;
             for (let i = 0; i < found.length; i++) {
                 sum += found[i].likes; 
                 /*console.log(found[i].image)*/
                 // Récupération et ajout image url dans array 
-                let test666 = found[i].image;
-                const pictureMedia = `assets/images/${test666}`;
+                let urlPicture = found[i].image;
+                const pictureMedia = `assets/images/${urlPicture}`;
                 console.log(pictureMedia)
                 arrayImgURL.push(pictureMedia)
+                const titleImg = found[i].title;
+                arrayTitleImg.push(titleImg);
                 
         }
             console.log(sum)
             console.log(arrayImgURL)
+            console.log(arrayTitleImg)
 
             let pAllLikes = document.querySelector('.number_likes');
             pAllLikes.innerHTML = sum;
@@ -90,6 +94,7 @@
             let next = document.querySelector('.fa-angle-right');
             let previous = document.querySelector('.fa-angle-left');
             let imgContent = document.getElementById('imgBigger');
+            let titleImgLightbox = document.getElementById('imgNameLightbox');
 
             let currentPic = 0;
             previous.addEventListener('click', function() {
@@ -99,6 +104,8 @@
                     currentPic--;
                 }
                 imgContent.src = arrayImgURL[currentPic]
+                titleImgLightbox.textContent = arrayTitleImg[currentPic]
+
             })
             
             next.addEventListener('click', function() {
@@ -108,6 +115,7 @@
                    currentPic = 0;
                }
                imgContent.src = arrayImgURL[currentPic]
+               titleImgLightbox.textContent = arrayTitleImg[currentPic]
             })
 
             /*let currentPic = 0;
