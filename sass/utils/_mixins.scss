@@ -17,3 +17,17 @@
     border-radius: 5px;
     cursor: pointer;
 }
+
+@mixin imgvideo {
+    height: 700px;
+    width: 800px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+@mixin figuresAllMedias {
+    height: 400px;
+    width: 450px;
+    object-fit: cover;
+    border-radius: 1%;
+}

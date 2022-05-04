@@ -135,9 +135,9 @@
             let result = arrayImgURL.map(e => e !== undefined ? e : filterArrayVideoURL);
             console.log(result)
 
-            for (let i = 0; i < result.length; i++) {
+            /*for (let i = 0; i < result.length; i++) {
                 let testURL = result[i];
-            }
+            }*/
 
             //console.log(filterArrayVideoURL)
             
@@ -210,7 +210,9 @@
             console.log(lightboxImg)
 
             let next = document.querySelector('.fa-angle-right');
+            next.style.cursor = "pointer";
             let previous = document.querySelector('.fa-angle-left');
+            previous.style.cursor = "pointer";
             let imgContent = document.getElementById('imgBigger');
             let titleImgLightbox = document.getElementById('imgNameLightbox');
             let videoContent = document.getElementById('videoBigger');

@@ -86,18 +86,42 @@ function photographerFactory(data) {
 
 
 function mediaFactory(media) {
-    const { id, photographerId, title, image, likes, date, price } = media;
+    const { id, photographerId, title, image, likes, date, price, video } = media;
 
     const pictureMedia = `assets/images/${image}`;
+    const videoMedia = `assets/images/${video}`
+    console.log(pictureMedia)
+    console.log(videoMedia)
+
+    let mediaPicture = pictureMedia;
+    let str = mediaPicture;
+    let doxIndex = str.lastIndexOf('.');
+    let ext = str.substring(doxIndex);
+    console.log(ext)
+
+    let mediaVideo = videoMedia;
+    let strVideo = mediaVideo;
+    let dotVideo = strVideo.lastIndexOf('.');
+    let extVideo = strVideo.substring(dotVideo);
+    console.log(extVideo)
     
 
     function getMedia() {
         const figure = document.createElement('figure');
         figure.classList.add('figureMedia');
         const imgMedias = document.createElement('img');
-        imgMedias.setAttribute("src", pictureMedia);
-        imgMedias.classList.add('imgFigure');
-        videoMedia = document.createElement('video');
+        const videoMedias = document.createElement('video');
+        if (ext == ".jpg") {
+            imgMedias.setAttribute("src", pictureMedia);
+            imgMedias.classList.add('imgFigure');
+            videoMedias.style.display = "none";
+        }
+        else if (extVideo == ".mp4") {
+            imgMedias.style.display = "none";
+            videoMedias.setAttribute("src", videoMedia);
+            videoMedias.classList.add('videoFigure');
+
+        }
         const figcaption = document.createElement('figcaption');
         figcaption.classList.add('figcaption-media');
         const titleFigcaption = document.createElement('p');
@@ -135,25 +159,27 @@ function mediaFactory(media) {
             console.log(pImgName);
         }
         imgMedias.style.cursor = "pointer";
-        const leftArrowIcon = document.querySelector('.fa-angle-left');
-        leftArrowIcon.style.cursor = "pointer";
-        leftArrowIcon.addEventListener("click", function() {
-            //this.style.color = "red";
-            
-        });
-        const rightArrowIcon = document.querySelector('.fa-angle-right');
-        rightArrowIcon.style.cursor = "pointer";
-        rightArrowIcon.addEventListener("click", function() {
-            //this.style.color = "red";
-            
-        });
+        videoMedias.onclick = function() {
+            const imgLightbox = document.getElementById("imgBigger");
+            imgLightbox.style.display = "none";
+            const lightbox = document.getElementById("lightboxDiv");
+            const videoLightbox = document.getElementById("videoBigger");
+            videoLightbox.style.display = "block";
+            const pImgName = document.getElementById("imgNameLightbox");
+	        lightbox.style.display = "block";
+            videoLightbox.src = this.src;
+            pImgName.textContent = title;
+            console.log(pImgName);
+        }
+        videoMedias.style.cursor = "pointer";
         
         figure.appendChild(imgMedias);
+        figure.appendChild(videoMedias)
         figure.appendChild(figcaption);
         figcaption.appendChild(titleFigcaption);
         figcaption.appendChild(likesFigcaption);
         return(figure);
     }
 
-    return {id, photographerId, title, pictureMedia, likes, date, price, getMedia}
+    return {id, photographerId, title, pictureMedia, videoMedia, likes, date, price, getMedia}
 }

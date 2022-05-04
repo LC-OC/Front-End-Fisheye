@@ -15,10 +15,7 @@ z-index: 1;
     align-items: center;
   }
   #imgBigger {
-    height: 700px;
-    width: 800px;
-    object-fit: cover;
-    border-radius: 5px;
+    @include imgvideo;
   }
   .fa-xmark {
     background-color: black;
@@ -30,11 +27,7 @@ z-index: 1;
     margin-top: 1rem;
   }
   video {
-    display: none;
-    height: 700px;
-    width: 800px;
-    object-fit: cover;
-    border-radius: 5px;
+    @include imgvideo;
   }
 
 }

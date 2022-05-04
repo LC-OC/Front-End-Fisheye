@@ -42,10 +42,10 @@
         width: 450px;
     }
     .imgFigure {
-    height: 400px;
-    width: 450px;
-    object-fit: cover;
-    border-radius: 1%;
+    @include figuresAllMedias;
+    }
+    .videoFigure {
+    @include figuresAllMedias;
     }
     .figcaption-media {
         display: flex;
