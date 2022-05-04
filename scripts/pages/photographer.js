@@ -55,7 +55,25 @@
             const imagesURL = found.map(selectImageOnly);
             console.log(imagesURL)
             
+            // Récupération url vidéo
 
+            function selectVideo(videos) {
+                const {video} = videos;
+                return {video}
+            }
+
+            let videoURL = found.map(selectVideo);
+            console.log(videoURL)
+
+            const arr = [];
+            videoURL.forEach(e => {
+                if (e !== undefined) {
+                    arr.push(e)
+                }
+            });
+
+            console.log(arr)
+        
 
             // isoler un élement en particulier - montre bien que found est un array
             let test = found.find(e => e.likes === 88);
@@ -63,24 +81,124 @@
 
             let arrayImgURL = [];
             let arrayTitleImg = [];
+            let arrayVideoURL = [];
 
             let sum = 0;
             for (let i = 0; i < found.length; i++) {
                 sum += found[i].likes; 
-                /*console.log(found[i].image)*/
+                //console.log(found[i].image)
+                //console.log(found[i].video)
                 // Récupération et ajout image url dans array 
                 let urlPicture = found[i].image;
-                const pictureMedia = `assets/images/${urlPicture}`;
-                console.log(pictureMedia)
-                arrayImgURL.push(pictureMedia)
+                //const pictureMedia = `assets/images/${urlPicture}`;
+                //console.log(pictureMedia)
+                arrayImgURL.push(urlPicture)
                 const titleImg = found[i].title;
                 arrayTitleImg.push(titleImg);
-                
+                let urlVideo = found[i].video;
+                //const videoMedia = `assets/images/${urlVideo}`;
+                //console.log(videoMedia)
+                arrayVideoURL.push(urlVideo)
         }
             console.log(sum)
             console.log(arrayImgURL)
             console.log(arrayTitleImg)
+            console.log(arrayVideoURL)
 
+            let arrayAllMedia = [];
+            let arrayTestAgain = [];
+
+            /*// Retirer élements indéfins, ajouter url à élement JPG (images)
+            const filterArrayImgURL = arrayImgURL.filter(e => {
+                return e !== undefined
+            })
+
+            console.log(filterArrayImgURL)
+
+            for (let i = 0; i < filterArrayImgURL.length; i++) {
+                let getImgURl = filterArrayImgURL[i];
+                console.log(getImgURl)
+                const defineImgURL = `assets/images/${getImgURl}`;
+                console.log(defineImgURL)
+                arrayAllMedia.push(defineImgURL)
+            }*/
+
+           
+
+            // Retirer élements indéfinis, ajouter url à élements MP4 (vidéos)
+            const filterArrayVideoURL = arrayVideoURL.filter(e => {
+                return e !== undefined
+            })
+
+
+
+            let result = arrayImgURL.map(e => e !== undefined ? e : filterArrayVideoURL);
+            console.log(result)
+
+            for (let i = 0; i < result.length; i++) {
+                let testURL = result[i];
+            }
+
+            //console.log(filterArrayVideoURL)
+            
+
+            
+            for (let i = 0; i < filterArrayVideoURL.length; i++) {
+                let getVideoURL = filterArrayVideoURL[i];
+                console.log(getVideoURL)
+                /*const defineVideoURl = `assets/images/${getVideoURL}`;
+                console.log(defineVideoURl)
+                arrayTestAgain.push(defineVideoURl)*/
+                let resuult = arrayImgURL.map(e => e !== undefined ? e : getVideoURL);
+                arrayTestAgain.push(resuult)
+                
+            }
+            console.log(arrayTestAgain)
+
+            for (let i = 0; i < arrayTestAgain.length; i++) {
+                let testuuurl = arrayTestAgain[i];
+                console.log(testuuurl)
+                for (let i = 0; i < testuuurl.length; i++) {
+                    let testURLAgain = testuuurl[i];
+                    console.log(testURLAgain)
+                    const defineURLMedia = `assets/images/${testURLAgain}`;
+                    arrayAllMedia.push(defineURLMedia)
+                } 
+            }
+            console.log(arrayAllMedia)
+
+            /*for (let i = 0; i < arrayImgURL.length; i++) {
+                let getImgURl = arrayImgURL[i];
+                console.log(getImgURl)
+                const defineImgURL = `assets/images/${getImgURl}`;
+                console.log(defineImgURL)
+                arrayAllMedia.push(defineImgURL)
+            }
+
+            console.log(arrayAllMedia)
+
+            let result = arr*/
+
+            /*for (let i = 0; i < arrayAllMedia.length; i++) {
+                let medias = arrayAllMedia[i];
+                console.log(medias)
+                let str = medias;
+                let dotIndex = str.lastIndexOf('.');
+                let ext = str.substring(dotIndex)
+                console.log(ext)
+                if (ext === ".mp4") {
+                    console.log("yolo")
+                }
+                
+            }*/
+
+            
+
+
+            //console.log(arrayAllMedia)
+
+
+            // Calcul numbre likes affiché
             let pAllLikes = document.querySelector('.number_likes');
             pAllLikes.innerHTML = sum;
             
@@ -90,35 +208,74 @@
 
             const lightboxImg = document.getElementById('imgBigger');
             console.log(lightboxImg)
-            // lightbox
+
             let next = document.querySelector('.fa-angle-right');
             let previous = document.querySelector('.fa-angle-left');
             let imgContent = document.getElementById('imgBigger');
             let titleImgLightbox = document.getElementById('imgNameLightbox');
+            let videoContent = document.getElementById('videoBigger');
 
             let currentPic = 0;
+
             previous.addEventListener('click', function() {
                 if (currentPic <= 0) {
-                    currentPic = arrayImgURL.length -1;
+                    currentPic = arrayAllMedia.length -1;
                 } else {
                     currentPic--;
                 }
-                imgContent.src = arrayImgURL[currentPic]
-                titleImgLightbox.textContent = arrayTitleImg[currentPic]
+
+                let medias = arrayAllMedia[currentPic];
+                let str = medias;
+                let doxIndex = str.lastIndexOf('.');
+                let ext = str.substring(doxIndex);
+                console.log(ext)
+
+                if (ext == ".mp4") {
+                    videoContent.style.display = "block";
+                    imgContent.style.display = "none";
+                    videoContent.src = medias;
+                }
+
+                else if (ext == ".jpg") {
+                    videoContent.style.display = "none";
+                    imgContent.style.display = "block";
+                    imgContent.src = arrayAllMedia[currentPic];
+                }
+                
+                titleImgLightbox.textContent = arrayTitleImg[currentPic];
+
 
             })
             
             next.addEventListener('click', function() {
-               if (currentPic < arrayImgURL.length-1) {
+               if (currentPic < arrayAllMedia.length-1) {
                    currentPic = currentPic+1;
                } else {
                    currentPic = 0;
                }
-               imgContent.src = arrayImgURL[currentPic]
+               
+               let medias = arrayAllMedia[currentPic];
+                let str = medias;
+                let doxIndex = str.lastIndexOf('.');
+                let ext = str.substring(doxIndex);
+                console.log(ext)
+
+                if (ext == ".mp4") {
+                    videoContent.style.display = "block";
+                    imgContent.style.display = "none";
+                    videoContent.src = medias;
+                }
+
+                else if (ext == ".jpg") {
+                    videoContent.style.display = "none";
+                    imgContent.style.display = "block";
+                    imgContent.src = arrayAllMedia[currentPic];
+                }
                titleImgLightbox.textContent = arrayTitleImg[currentPic]
             })
+            /*
 
-            /*let currentPic = 0;
+            let currentPic = 0;
 
             next.addEventListener('click', function() {
                 let lastPic = arrayImgURL.length-1;
