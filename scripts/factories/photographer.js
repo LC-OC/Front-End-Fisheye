@@ -87,23 +87,23 @@ function photographerFactory(data) {
 
 function mediaFactory(media) {
     const { id, photographerId, title, image, likes, date, price, video } = media;
-
+    
     const pictureMedia = `assets/images/${image}`;
     const videoMedia = `assets/images/${video}`
-    console.log(pictureMedia)
-    console.log(videoMedia)
+    //console.log(pictureMedia)
+    //console.log(videoMedia)
 
     let mediaPicture = pictureMedia;
     let str = mediaPicture;
     let doxIndex = str.lastIndexOf('.');
     let ext = str.substring(doxIndex);
-    console.log(ext)
+    //console.log(ext)
 
     let mediaVideo = videoMedia;
     let strVideo = mediaVideo;
     let dotVideo = strVideo.lastIndexOf('.');
     let extVideo = strVideo.substring(dotVideo);
-    console.log(extVideo)
+    //console.log(extVideo)
     
 
     function getMedia() {
@@ -124,11 +124,14 @@ function mediaFactory(media) {
         }
         const figcaption = document.createElement('figcaption');
         figcaption.classList.add('figcaption-media');
-        const titleFigcaption = document.createElement('p');
+        let titleFigcaption = document.createElement('p');
         titleFigcaption.textContent = title;
         titleFigcaption.setAttribute('id', 'titleFigcaption');
         const likesFigcaption = document.createElement('p');
         likesFigcaption.textContent = likes;
+        let selectTitle = document.getElementById('filter_title');
+        let titleTest = document.getElementById("imgNameLightbox");
+       
         const heartIcon = document.createElement('span');
         heartIcon.innerHTML = '<i class="fas fa-heart"></i>';
         heartIcon.style.cursor = 'pointer';
