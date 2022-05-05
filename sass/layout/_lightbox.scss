@@ -28,6 +28,7 @@ z-index: 1;
   }
   video {
     @include imgvideo;
+    display: none;
   }
 
 }

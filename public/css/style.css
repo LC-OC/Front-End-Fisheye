@@ -206,6 +206,13 @@ h1 {
   margin-left: 27%;
   margin-top: 1rem;
 }
+#lightboxDiv video {
+  height: 700px;
+  width: 800px;
+  object-fit: cover;
+  border-radius: 5px;
+  display: none;
+}
 
 #selectPart {
   display: flex;
@@ -435,6 +442,12 @@ article .photographe_price {
   width: 450px;
 }
 .mediaDiv .imgFigure {
+  height: 400px;
+  width: 450px;
+  object-fit: cover;
+  border-radius: 1%;
+}
+.mediaDiv .videoFigure {
   height: 400px;
   width: 450px;
   object-fit: cover;
