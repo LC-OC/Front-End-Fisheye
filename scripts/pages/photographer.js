@@ -30,12 +30,10 @@
     fetch(photographerRequest)
         .then(response => response.json())
         .then(media => {
-            /*console.log(media.media);
-            console.log(media.media.likes);*/
             let object = media.media;
 
             // ----------- CALCUL DE TOUS LES LIKES -------- */
-            function getbyTest(photographerId) {
+            function getBy(photographerId) {
                 return object.filter(
                     function(object) {
                         return object.photographerId == photographerId
@@ -43,7 +41,7 @@
                 );
             }
             
-            let found = getbyTest(idURL);
+            let found = getBy(idURL);
             console.log(found)
 
             // Récupération de l'url des images dans un tableau
@@ -73,11 +71,7 @@
             });
 
             console.log(arr)
-        
-
-            // isoler un élement en particulier - montre bien que found est un array
-            let test = found.find(e => e.likes === 88);
-            console.log(test)
+    
 
             let arrayImgURL = [];
             let arrayTitleImg = [];
@@ -89,19 +83,13 @@
             for (let i = 0; i < found.length; i++) {
                 sum += found[i].likes;
                 let likesMedias = found[i].likes;
-                arrayLike.push(likesMedias); 
-                //console.log(found[i].image)
-                //console.log(found[i].video)
+                arrayLike.push(likesMedias);
                 // Récupération et ajout image url dans array 
                 let urlPicture = found[i].image;
-                //const pictureMedia = `assets/images/${urlPicture}`;
-                //console.log(pictureMedia)
                 arrayImgURL.push(urlPicture)
                 const titleImg = found[i].title;
                 arrayTitleImg.push(titleImg);
                 let urlVideo = found[i].video;
-                //const videoMedia = `assets/images/${urlVideo}`;
-                //console.log(videoMedia)
                 arrayVideoURL.push(urlVideo)
                 let dateMedias = found[i].date;
                 arrayDate.push(dateMedias);
@@ -114,51 +102,32 @@
             console.log(arrayLike);
 
             let arrayAllMedia = [];
-            let arrayTestAgain = [];
+            let arrayResultImgURL = [];
 
            
-
             // Retirer élements indéfinis, ajouter url à élements MP4 (vidéos)
             const filterArrayVideoURL = arrayVideoURL.filter(e => {
                 return e !== undefined
             })
 
-
-
-            let result = arrayImgURL.map(e => e !== undefined ? e : filterArrayVideoURL);
-            console.log(result)
-
-            /*for (let i = 0; i < result.length; i++) {
-                let testURL = result[i];
-            }*/
-
-            //console.log(filterArrayVideoURL)
-            
-
-            
             for (let i = 0; i < filterArrayVideoURL.length; i++) {
                 let getVideoURL = filterArrayVideoURL[i];
                 console.log(getVideoURL)
-                /*const defineVideoURl = `assets/images/${getVideoURL}`;
-                console.log(defineVideoURl)
-                arrayTestAgain.push(defineVideoURl)*/
-                let resuult = arrayImgURL.map(e => e !== undefined ? e : getVideoURL);
-                arrayTestAgain.push(resuult)
+                let resultArrayImgUrl = arrayImgURL.map(e => e !== undefined ? e : getVideoURL);
+                arrayResultImgURL.push(resultArrayImgUrl)
                 
             }
-            console.log(arrayTestAgain)
 
-            for (let i = 0; i < arrayTestAgain.length; i++) {
-                let testuuurl = arrayTestAgain[i];
-                console.log(testuuurl)
-                for (let i = 0; i < testuuurl.length; i++) {
-                    let testURLAgain = testuuurl[i];
-                    console.log(testURLAgain)
-                    const defineURLMedia = `assets/images/${testURLAgain}`;
+            for (let i = 0; i < arrayResultImgURL.length; i++) {
+                let urlMedia = arrayResultImgURL[i];
+                console.log(urlMedia)
+                for (let i = 0; i < urlMedia.length; i++) {
+                    let urlMedias = urlMedia[i];
+                    console.log(urlMedias)
+                    const defineURLMedia = `assets/images/${urlMedias}`;
                     arrayAllMedia.push(defineURLMedia)
                 } 
             }
-            console.log(arrayAllMedia)
 
             
 
@@ -183,87 +152,182 @@
 
             let currentPic = 0;
 
-            previous.addEventListener('click', function() {
-                if (currentPic <= 0) {
-                    currentPic = arrayAllMedia.length -1;
-                } else {
-                    currentPic--;
-                }
+            
 
-                let medias = arrayAllMedia[currentPic];
-                let str = medias;
-                let doxIndex = str.lastIndexOf('.');
-                let ext = str.substring(doxIndex);
-                console.log(ext)
+            // Tri et récupération des éléments quand galerie filtrée par popularity
+            let tryArray = found.sort(function(a,b){return b.likes-a.likes})
+            console.log(tryArray)
+            let arrayImgFilterByPopularity = [];
+            let arrayTitleFilterByPopularity = [];
+            let arrayVideoFilterByPopularity = [];
+            for (let i = 0; i < tryArray.length; i++) {
+                let imgFilterByPopularity = tryArray[i].image;
+                let titleFilterByPopularity = tryArray[i].title;
+                let videoFilterByPopularity = tryArray[i].video;
+                arrayImgFilterByPopularity.push(imgFilterByPopularity);
+                arrayTitleFilterByPopularity.push(titleFilterByPopularity);
+                arrayVideoFilterByPopularity.push(videoFilterByPopularity); 
+            }
 
-                if (ext == ".mp4") {
-                    videoContent.style.display = "block";
-                    imgContent.style.display = "none";
-                    videoContent.src = medias;
-                }
+            console.log(arrayImgFilterByPopularity);
+            console.log(arrayTitleFilterByPopularity);
+            console.log(arrayVideoFilterByPopularity);
 
-                else if (ext == ".jpg") {
-                    videoContent.style.display = "none";
-                    imgContent.style.display = "block";
-                    imgContent.src = medias;
-                }
+            const filtredArrayVideoFilterByPopularity = arrayVideoFilterByPopularity.filter(e => {
+                return e !== undefined
+            })
+
+            let arrayAllMediaFilterPopularity = [];
+            let arrayTestAgainFilterPopularity = [];
+
+            for (let i = 0; i < filtredArrayVideoFilterByPopularity.length; i++) {
+                let getVideoURLFiltredPopularity = filterArrayVideoURL[i];
+                console.log(getVideoURLFiltredPopularity)
+                let resuult = arrayImgFilterByPopularity.map(e => e !== undefined ? e : getVideoURLFiltredPopularity);
+                arrayTestAgainFilterPopularity.push(resuult)
                 
-                titleImgLightbox.textContent = arrayTitleImg[currentPic];
+            }
+            console.log(arrayTestAgainFilterPopularity)
 
+            for (let i = 0; i < arrayTestAgainFilterPopularity.length; i++) {
+                let testuuurl = arrayTestAgainFilterPopularity[i];
+                console.log(testuuurl)
+                for (let i = 0; i < testuuurl.length; i++) {
+                    let testURLAgain = testuuurl[i];
+                    console.log(testURLAgain)
+                    const defineURLMedia = `assets/images/${testURLAgain}`;
+                    arrayAllMediaFilterPopularity.push(defineURLMedia)
+                } 
+            }
+            console.log(arrayAllMediaFilterPopularity)
 
+            // Affichage des élements par Title
+
+            let foundFilterTitle = getBy(idURL);
+            console.log(foundFilterTitle)
+
+            let getArrayTitleFilter = foundFilterTitle.sort(function(a,b) {
+                return a.title.localeCompare(b.title)
             })
-            
-            next.addEventListener('click', function() {
-               if (currentPic < arrayAllMedia.length-1) {
-                   currentPic = currentPic+1;
-               } else {
-                   currentPic = 0;
-               }
-               
-               let medias = arrayAllMedia[currentPic];
-                let str = medias;
-                let doxIndex = str.lastIndexOf('.');
-                let ext = str.substring(doxIndex);
-                console.log(ext)
+            console.log(getArrayTitleFilter)
 
-                if (ext == ".mp4") {
-                    videoContent.style.display = "block";
-                    imgContent.style.display = "none";
-                    videoContent.src = medias;
-                }
+            let arrayFilterTitle = [];
+            let arrayFilterImgByTitle = [];
+            let arrayFilterVideoByTitle = [];
+            let arrayFilterLikesByTitle = [];
 
-                else if (ext == ".jpg") {
-                    videoContent.style.display = "none";
-                    imgContent.style.display = "block";
-                    imgContent.src = medias;
-                }
-               titleImgLightbox.textContent = arrayTitleImg[currentPic]
+            for (let i = 0; i < getArrayTitleFilter.length; i++) {
+                let imgFilterByTitle = getArrayTitleFilter[i].image;
+                let titleFilterByTitle = getArrayTitleFilter[i].title;
+                let videoFilterByTitle = getArrayTitleFilter[i].video;
+                let likesFilterByTitle = getArrayTitleFilter[i].likes;
+                arrayFilterImgByTitle.push(imgFilterByTitle);
+                arrayFilterTitle.push(titleFilterByTitle);
+                arrayFilterVideoByTitle.push(videoFilterByTitle); 
+                arrayFilterLikesByTitle.push(likesFilterByTitle);
+            }
+
+            console.log(arrayFilterImgByTitle)
+            console.log(arrayFilterLikesByTitle)
+            console.log(arrayFilterVideoByTitle)
+            console.log(arrayFilterTitle)
+
+            const filtredArrayVideoFilterByTitle = arrayFilterVideoByTitle.filter(e => {
+                return e !== undefined
             })
-            
 
-            // "Select"
-            // By name
-            /*
-            const arrayTitleImgFilter = arrayTitleImg.sort();
-            console.log(arrayTitleImgFilter);
+            let arrayAllMediaFilterTitle = [];
+            let arrayTitle = [];
 
-            // By date 
-            const arrayDateFilter = arrayDate.sort();
-            console.log(arrayDateFilter)
-            
-            // By like
-            const arrayLikesFilter = arrayLike.sort(function(a,b){return b-a});
-            console.log(arrayLikesFilter)*/
+            for (let i = 0; i < filtredArrayVideoFilterByTitle.length; i++) {
+                let getVideoURLFiltredTitle = filtredArrayVideoFilterByTitle[i];
+                console.log(getVideoURLFiltredTitle)
+                let result = arrayFilterImgByTitle.map(e => e !== undefined ? e : getVideoURLFiltredTitle);
+                arrayTitle.push(result)
+                
+            }
+            console.log(arrayTitle)
 
-            
+            for (let i = 0; i < arrayTitle.length; i++) {
+                let url = arrayTitle[i];
+                console.log(url)
+                for (let i = 0; i < url.length; i++) {
+                    let getUrl = url[i];
+                    console.log(getUrl)
+                    const defineURLMedia = `assets/images/${getUrl}`;
+                    arrayAllMediaFilterTitle.push(defineURLMedia)
+                } 
+            }
+            console.log(arrayAllMediaFilterTitle)
 
-            // teeeeeeeeeeeest
+        
+            // Affichage des éléments par date
+
+            let foundDate = getBy(idURL);
+            console.log(foundDate)
+
+            let getArrayDateFilter = foundDate.sort(function(a,b) {
+                return b.date.localeCompare(a.date)
+            })
+            console.log(getArrayDateFilter)
+
+            let arrayFilterImgByDate = [];
+            let arrayFilterVideoByDate = [];
+            let arrayFilterLikesByDate = [];
+            let arrayFilterTitleByDate = [];
+
+            for (let i = 0; i < getArrayDateFilter.length; i++) {
+                let imgFilterByDate = getArrayDateFilter[i].image;
+                let videoFilterByDate = getArrayDateFilter[i].video;
+                let likesFilterByDate = getArrayDateFilter[i].likes;
+                let titleFilterByDate = getArrayDateFilter[i].title;
+                arrayFilterImgByDate.push(imgFilterByDate);
+                arrayFilterVideoByDate.push(videoFilterByDate); 
+                arrayFilterLikesByDate.push(likesFilterByDate);
+                arrayFilterTitleByDate.push(titleFilterByDate);
+            }
+
+            console.log(arrayFilterImgByDate)
+            console.log(arrayFilterLikesByDate)
+            console.log(arrayFilterVideoByDate)
+            console.log(arrayFilterTitleByDate)
+
+            const filtredArrayVideoFilterByDate = arrayFilterVideoByDate.filter(e => {
+                return e !== undefined
+            })
+
+            let arrayAllMediaFilterDate = [];
+            let arrayFilterDate = [];
+
+            for (let i = 0; i < filtredArrayVideoFilterByDate.length; i++) {
+                let getVideoURLFiltredDate = filtredArrayVideoFilterByDate[i];
+                console.log(getVideoURLFiltredDate)
+                let resultFilter = arrayFilterImgByDate.map(e => e !== undefined ? e : getVideoURLFiltredDate);
+                arrayFilterDate.push(resultFilter)
+                
+            }
+            console.log(arrayFilterDate)
+
+            for (let i = 0; i < arrayFilterDate.length; i++) {
+                let url = arrayFilterDate[i];
+                console.log(url)
+                for (let i = 0; i < url.length; i++) {
+                    let getUrl = url[i];
+                    console.log(getUrl)
+                    const defineURLMedia = `assets/images/${getUrl}`;
+                    arrayAllMediaFilterDate.push(defineURLMedia)
+                } 
+            }
+            console.log(arrayAllMediaFilterDate)
+
+            // DOM Select
 
             let selectTitle = document.getElementById('filter_title');
-            console.log(selectTitle);
             let selectPopular = document.getElementById('filter_popular');
             let selectDate = document.getElementById('filter_date');
 
+
+            // Affichage Galerie
 
         for (let i = 0; i < found.length; i++) {
             let figure = document.createElement('figure');
@@ -278,16 +342,16 @@
             img.classList.add('imgFigure');
             const videoMedias = document.createElement('video');
             if (ext == ".jpg") {
-            img.setAttribute("src", arrayAllMedia[i]);
-            img.classList.add('imgFigure');
-            videoMedias.style.display = "none";
+                img.setAttribute("src", arrayAllMedia[i]);
+                img.classList.add('imgFigure');
+                videoMedias.style.display = "none";
             }
             else if (ext == ".mp4") {
-            img.style.display = "none";
-            videoMedias.setAttribute("src", arrayAllMedia[i]);
-            videoMedias.classList.add('videoFigure');
+                img.style.display = "none";
+                videoMedias.setAttribute("src", arrayAllMedia[i]);
+                videoMedias.classList.add('videoFigure');
 
-        }
+            }
             const figcaption = document.createElement('figcaption');
             figcaption.classList.add('figcaption-media');
             const titleFigcaption= document.createElement('p');
@@ -318,7 +382,6 @@
                 lightbox.style.display = "block";
                 imgLightbox.src = this.src;
                 pImgName.textContent = arrayTitleImg[i];
-                console.log(pImgName);
                 }
             img.style.cursor = "pointer";
             videoMedias.onclick = function() {
@@ -331,18 +394,76 @@
                 lightbox.style.display = "block";
                 videoLightbox.src = this.src;
                 pImgName.textContent = arrayTitleImg[i];
-                console.log(pImgName);
                 }
-                selectTitle.addEventListener("click", function() {
-                    const arrayTitleImgFilter = arrayTitleImg.sort();
-                    console.log(arrayTitleImgFilter);
-                    titleFigcaption.innerText = arrayTitleImgFilter[i];
-                    console.log(titleFigcaption)
-                });
-                selectPopular;addEventListener("click", function() {
-                    const arrayLikesFilter = arrayLike.sort(function(a,b){return b-a});
-                    likesFigcaption.innerText = arrayLikesFilter[i];
-                })
+            selectPopular.addEventListener("click", function() {
+                const arrayLikesFilter = arrayLike.sort(function(a,b){return b-a});
+                likesFigcaption.innerHTML = arrayLikesFilter[i];
+                likesFigcaption.appendChild(heartIcon);
+                titleFigcaption.innerText = arrayTitleFilterByPopularity[i];
+                let mediaTypePopular = arrayAllMediaFilterPopularity[i];
+                let strPopular = mediaTypePopular;
+                let doxIndexPopular = strPopular.lastIndexOf('.');
+                let extPopular = strPopular.substring(doxIndexPopular);
+                if (extPopular == ".jpg") {
+                    img.style.display = "block";
+                    img.setAttribute("src", arrayAllMediaFilterPopularity[i]);
+                    img.classList.add('imgFigure');
+                    videoMedias.style.display = "none";
+                }
+                else if (extPopular == ".mp4") {
+                    videoMedias.style.display = "block";
+                    img.style.display = "none";
+                    videoMedias.setAttribute("src", arrayAllMediaFilterPopularity[i]);
+                    videoMedias.classList.add('videoFigure');
+                }
+                
+            })
+            selectDate.addEventListener("click", function() {
+                likesFigcaption.innerText = arrayFilterLikesByDate[i];
+                likesFigcaption.appendChild(heartIcon);
+                titleFigcaption.innerText = arrayFilterTitleByDate[i];
+                let mediaTypeDate = arrayAllMediaFilterDate[i];
+                let strDate = mediaTypeDate;
+                let dotDate = strDate.lastIndexOf('.');
+                let extDate = strDate.substring(dotDate);
+                if (extDate == ".jpg") {
+                    img.style.display = "block";
+                    img.setAttribute("src", arrayAllMediaFilterDate[i]);
+                    img.classList.add('imgFigure');
+                    videoMedias.style.display = "none";
+                }
+                else if (extDate == ".mp4") {
+                    videoMedias.style.display = "block";
+                    img.style.display = "none";
+                    videoMedias.setAttribute("src", arrayAllMediaFilterDate[i]);
+                    videoMedias.classList.add('videoFigure');
+                }
+                console.log(arrayFilterTitleByDate[i])
+                
+                
+            })
+            selectTitle.addEventListener("click", function() {
+                likesFigcaption.innerText = arrayFilterLikesByTitle[i];
+                likesFigcaption.appendChild(heartIcon);
+                titleFigcaption.innerText = arrayFilterTitle[i];
+                let mediaTypeTitle = arrayAllMediaFilterTitle[i];
+                let strTitle = mediaTypeTitle;
+                let doxIndexTitle = strTitle.lastIndexOf('.');
+                let extTitle = strTitle.substring(doxIndexTitle);
+                if (extTitle == ".jpg") {
+                    img.style.display = "block";
+                    img.setAttribute("src", arrayAllMediaFilterTitle[i]);
+                    img.classList.add('imgFigure');
+                    videoMedias.style.display = "none";
+                }
+                else if (extTitle == ".mp4") {
+                    videoMedias.style.display = "block";
+                    img.style.display = "none";
+                    videoMedias.setAttribute("src", arrayAllMediaFilterTitle[i]);
+                    videoMedias.classList.add('videoFigure');
+                }
+            })
+            
             videoMedias.style.cursor = "pointer";
             likesFigcaption.appendChild(heartIcon);
             likesFigcaption.setAttribute('id', 'likesFigcaption');
@@ -352,21 +473,239 @@
             figure.appendChild(img);
             figure.appendChild(videoMedias)
             figure.appendChild(figcaption)
-            }
 
-            
-            
-
-            
-
-            selectTitle.onclick = function() {
-                const arrayTitleImgFilter = arrayTitleImg.sort();
-                console.log(arrayTitleImgFilter);
-                titleFigcaption.textContent = arrayTitleImgFilter[currentPic]
-                console.log(titleFigcaption)
+            // Lightbox by filter
+            /*selectDate.onclick = function() {
+                previous.addEventListener('click', function() {
+                    if (currentPic <= 0) {
+                        currentPic = arrayAllMediaFilterDate.length -1;
+                    } else {
+                        currentPic--;
+                    }
+    
+                    let medias = arrayAllMediaFilterDate[currentPic];
+                    let str = medias;
+                    let dotIndex = str.lastIndexOf('.');
+                    let ext = str.substring(dotIndex);
+                    console.log(ext)
+    
+                    if (ext == ".mp4") {
+                        videoContent.style.display = "block";
+                        imgContent.style.display = "none";
+                        videoContent.src = medias;
+                    }
+    
+                    else if (ext == ".jpg") {
+                        videoContent.style.display = "none";
+                        imgContent.style.display = "block";
+                        imgContent.src = medias;
+                    }
+                    
+                    titleImgLightbox.textContent = arrayFilterTitleByDate[currentPic];
+                })
+                next.addEventListener('click', function() {
+                    if (currentPic < arrayAllMediaFilterDate.length-1) {
+                        currentPic = currentPic+1;
+                    } else {
+                        currentPic = 0;
+                    }
+                    let medias = arrayAllMediaFilterDate[currentPic];
+                     let str = medias;
+                     let doxIndex = str.lastIndexOf('.');
+                     let ext = str.substring(doxIndex);
+                     console.log(ext)
+     
+                     if (ext == ".mp4") {
+                         videoContent.style.display = "block";
+                         imgContent.style.display = "none";
+                         videoContent.src = medias;
+                     }
+     
+                     else if (ext == ".jpg") {
+                         videoContent.style.display = "none";
+                         imgContent.style.display = "block";
+                         imgContent.src = medias;
+                     }
+                    titleImgLightbox.textContent = arrayFilterTitleByDate[currentPic]
+                 })
+                    
                 
+            };
+            selectTitle.onclick = function() {
+                previous.addEventListener('click', function() {
+                    if (currentPic <= 0) {
+                        currentPic = arrayAllMediaFilterTitle.length -1;
+                    } else {
+                        currentPic--;
+                    }
+    
+                    let medias = arrayAllMediaFilterTitle[currentPic];
+                    let str = medias;
+                    let dotIndex = str.lastIndexOf('.');
+                    let ext = str.substring(dotIndex);
+                    console.log(ext)
+    
+                    if (ext == ".mp4") {
+                        videoContent.style.display = "block";
+                        imgContent.style.display = "none";
+                        videoContent.src = medias;
+                    }
+    
+                    else if (ext == ".jpg") {
+                        videoContent.style.display = "none";
+                        imgContent.style.display = "block";
+                        imgContent.src = medias;
+                    }
+                    
+                    titleImgLightbox.textContent = arrayFilterTitle[currentPic];
+                    console.log(arrayFilterTitle)
+    
+    
+                })
+                next.addEventListener('click', function() {
+                    if (currentPic < arrayAllMediaFilterTitle.length-1) {
+                        currentPic = currentPic+1;
+                    } else {
+                        currentPic = 0;
+                    }
+                    
+                    let medias = arrayAllMediaFilterTitle[currentPic];
+                     let str = medias;
+                     let doxIndex = str.lastIndexOf('.');
+                     let ext = str.substring(doxIndex);
+                     console.log(ext)
+     
+                     if (ext == ".mp4") {
+                         videoContent.style.display = "block";
+                         imgContent.style.display = "none";
+                         videoContent.src = medias;
+                     }
+     
+                     else if (ext == ".jpg") {
+                         videoContent.style.display = "none";
+                         imgContent.style.display = "block";
+                         imgContent.src = medias;
+                     }
+                    titleImgLightbox.textContent = arrayFilterTitle[currentPic]
+                 })
+            };
+            selectPopular.onclick = function() {
+                previous.addEventListener('click', function() {
+                    if (currentPic <= 0) {
+                        currentPic = arrayAllMediaFilterPopularity.length -1;
+                    } else {
+                        currentPic--;
+                    }
+    
+                    let medias = arrayAllMediaFilterPopularity[currentPic];
+                    let str = medias;
+                    let dotIndex = str.lastIndexOf('.');
+                    let ext = str.substring(dotIndex);
+                    console.log(ext)
+    
+                    if (ext == ".mp4") {
+                        videoContent.style.display = "block";
+                        imgContent.style.display = "none";
+                        videoContent.src = medias;
+                    }
+    
+                    else if (ext == ".jpg") {
+                        videoContent.style.display = "none";
+                        imgContent.style.display = "block";
+                        imgContent.src = medias;
+                    }
+                    
+                    titleImgLightbox.textContent = arrayTitleFilterByPopularity[currentPic];
+                    console.log(arrayTitleFilterByPopularity)
+    
+    
+                })
+                next.addEventListener('click', function() {
+                    if (currentPic < arrayAllMediaFilterPopularity.length-1) {
+                        currentPic = currentPic+1;
+                    } else {
+                        currentPic = 0;
+                    }
+                    
+                    let medias = arrayAllMediaFilterPopularity[currentPic];
+                     let str = medias;
+                     let doxIndex = str.lastIndexOf('.');
+                     let ext = str.substring(doxIndex);
+                     console.log(ext)
+     
+                     if (ext == ".mp4") {
+                         videoContent.style.display = "block";
+                         imgContent.style.display = "none";
+                         videoContent.src = medias;
+                     }
+     
+                     else if (ext == ".jpg") {
+                         videoContent.style.display = "none";
+                         imgContent.style.display = "block";
+                         imgContent.src = medias;
+                     }
+                    titleImgLightbox.textContent = arrayTitleFilterByPopularity[currentPic]
+                 })
+            }*/
+            img.addEventListener("click", function() {
+                previous.addEventListener('click', function() {
+                    if (currentPic <= 0) {
+                        currentPic = arrayAllMedia.length -1;
+                    } else {
+                        currentPic--;
+                    }
+    
+                    let medias = arrayAllMedia[currentPic];
+                    let str = medias;
+                    let dotIndex = str.lastIndexOf('.');
+                    let ext = str.substring(dotIndex);
+                    console.log(ext)
+    
+                    if (ext == ".mp4") {
+                        videoContent.style.display = "block";
+                        imgContent.style.display = "none";
+                        videoContent.src = medias;
+                    }
+    
+                    else if (ext == ".jpg") {
+                        videoContent.style.display = "none";
+                        imgContent.style.display = "block";
+                        imgContent.src = medias;
+                    }
+                    
+                    titleImgLightbox.textContent = arrayTitleImg[currentPic];
+    
+    
+                })
+                
+                next.addEventListener('click', function() {
+                   if (currentPic < arrayAllMedia.length-1) {
+                       currentPic = currentPic+1;
+                   } else {
+                       currentPic = 0;
+                   }
+                   
+                   let medias = arrayAllMedia[currentPic];
+                    let str = medias;
+                    let doxIndex = str.lastIndexOf('.');
+                    let ext = str.substring(doxIndex);
+                    console.log(ext)
+    
+                    if (ext == ".mp4") {
+                        videoContent.style.display = "block";
+                        imgContent.style.display = "none";
+                        videoContent.src = medias;
+                    }
+    
+                    else if (ext == ".jpg") {
+                        videoContent.style.display = "none";
+                        imgContent.style.display = "block";
+                        imgContent.src = medias;
+                    }
+                   titleImgLightbox.textContent = arrayTitleImg[currentPic]
+                })
+            })
             } 
-
             //-----------------------
             /*for (let i = 0; i < media.media.length; i++) {
                 if (media.media[i].photographerId == idURL) {
@@ -384,107 +723,4 @@
             }*/
         })
         .catch(console.error);
-
-
-
-        /*
-        //Récupération media pour lightbox
-        fetch(photographerRequest)
-        .then(response => response.json())
-        .then(media => {
-            console.log(media.media);
-            for (let i = 0; i < media.media.length; i++) {
-                if (media.media[i].photographerId == idURL) {
-                        const mediaLightboxModel = mediaFactory(media.media[i]);
-                        const mediaLightboxDOM = mediaLightboxModel.getMediaLightbox();
-                        lightboxContent.appendChild(mediaLightboxDOM);
-                }
-            }
-        })
-        .catch(console.error);*/
-
-        /*
-
-            let currentPic = 0;
-
-            next.addEventListener('click', function() {
-                let lastPic = arrayImgURL.length-1;
-                if (currentPic == lastPic) {
-                    currentPic = 0;
-                    imgContent.src = arrayImgURL[currentPic];
-                } else {
-                    currentPic++;
-                    imgContent.src = arrayImgURL[currentPic];
-                }
-            })
-
-            previous.addEventListener('click', function() {
-                let lastPic = arrayImgURL.length+1;
-                if (currentPic == lastPic) {
-                    currentPic = 0;
-                    imgContent.src = arrayImgURL[currentPic];
-                } else {
-                    currentPic--;
-                    imgContent.src = arrayImgURL[currentPic];
-                }
-            })*/
-
-
-           
-
-            /*let arrayLikes = object.map(i => [i.likes, i.photographerId]);
-            console.log(arrayLikes);*/
-            
-            
-            /*
-            let result = media.media.reduce((a, c) => ({
-                likes: a.likes + c.likes
-            }))
-            console.log(result)
-            let arrayPhotographerId = object.map(i => i.photographerId);
-            console.log(arrayPhotographerId);*/
-
-            /*for (let i = 0; i < arrayImgURL.length; i++) {
-                let getImgURl = arrayImgURL[i];
-                console.log(getImgURl)
-                const defineImgURL = `assets/images/${getImgURl}`;
-                console.log(defineImgURL)
-                arrayAllMedia.push(defineImgURL)
-            }
-
-            console.log(arrayAllMedia)
-
-            let result = arr*/
-
-            /*for (let i = 0; i < arrayAllMedia.length; i++) {
-                let medias = arrayAllMedia[i];
-                console.log(medias)
-                let str = medias;
-                let dotIndex = str.lastIndexOf('.');
-                let ext = str.substring(dotIndex)
-                console.log(ext)
-                if (ext === ".mp4") {
-                    console.log("yolo")
-                }
-                
-            }*/
-
-            
-
-
-            //console.log(arrayAllMedia)
-
-             /*// Retirer élements indéfins, ajouter url à élement JPG (images)
-            const filterArrayImgURL = arrayImgURL.filter(e => {
-                return e !== undefined
-            })
-
-            console.log(filterArrayImgURL)
-
-            for (let i = 0; i < filterArrayImgURL.length; i++) {
-                let getImgURl = filterArrayImgURL[i];
-                console.log(getImgURl)
-                const defineImgURL = `assets/images/${getImgURl}`;
-                console.log(defineImgURL)
-                arrayAllMedia.push(defineImgURL)
-            }*/
+  

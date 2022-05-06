@@ -14,7 +14,7 @@
 .dropdown {
     background-color: $primary-red;
     width: 10rem;
-    height: 4rem;
+    height: 8rem;
     color: white;
     font-weight: bold;
     display: flex;
@@ -49,12 +49,12 @@
          border-radius: 3px;
        }
        
-       ul li:active > ul,
+       /*ul li:active > ul,
        ul li ul:hover {
          visibility: visible;
          opacity: 1;
          display: block;
-       }
+       }*/
        
        ul li ul li {
          clear: both;

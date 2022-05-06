@@ -229,7 +229,7 @@ h1 {
 .dropdown {
   background-color: #901C1C;
   width: 10rem;
-  height: 4rem;
+  height: 8rem;
   color: white;
   font-weight: bold;
   display: flex;
@@ -237,6 +237,12 @@ h1 {
   margin-left: 1.5rem;
   border-radius: 3px;
   font-size: 1.1rem;
+  /*ul li:active > ul,
+  ul li ul:hover {
+    visibility: visible;
+    opacity: 1;
+    display: block;
+  }*/
 }
 .dropdown li {
   display: block;
@@ -259,12 +265,6 @@ h1 {
   height: 4rem;
   margin: 1rem 191px;
   border-radius: 3px;
-}
-.dropdown ul li:active > ul,
-.dropdown ul li ul:hover {
-  visibility: visible;
-  opacity: 1;
-  display: block;
 }
 .dropdown ul li ul li {
   clear: both;

@@ -106,7 +106,7 @@ function mediaFactory(media) {
     //console.log(extVideo)
     
 
-    function getMedia() {
+    /*function getMedia() {
         const figure = document.createElement('figure');
         figure.classList.add('figureMedia');
         const imgMedias = document.createElement('img');
@@ -184,5 +184,5 @@ function mediaFactory(media) {
         return(figure);
     }
 
-    return {id, photographerId, title, pictureMedia, videoMedia, likes, date, price, getMedia}
+    return {id, photographerId, title, pictureMedia, videoMedia, likes, date, price, getMedia}*/
 }
