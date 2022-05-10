@@ -25,11 +25,13 @@ function getValueOnSubmit() {
         pValidationFirstName.textContent = "Veuillez renseigner un prénom valide."
         pValidationFirstName.style.color = '#dd1812';
         inputFirstName.style.border = "thick solid #dd1812";
+        inputFirstName.setAttribute("arria-invalid", "true");
     }
     else {
         pValidationFirstName.textContent = "Format du prénom valide.";
         pValidationFirstName.style.color = '#057a3a';
         inputFirstName.style.border = "thick solid #057a3a";
+        inputFirstName.setAttribute("arria-invalid", "false");
     }
     // Validation message et Regex last name
     const inputLastNameValue = document.getElementById("lastName").value;
@@ -39,11 +41,13 @@ function getValueOnSubmit() {
         pValidationLastName.textContent = "Veuillez renseigner un nom valide."
         pValidationLastName.style.color = '#dd1812';
         inputLastName.style.border = "thick solid #dd1812";
+        inputLastName.setAttribute("arria-invalid", "true");
     }
     else {
         pValidationLastName.textContent = "Format du nom valide.";
         pValidationLastName.style.color = '#057a3a';
         inputLastName.style.border = "thick solid #057a3a";
+        inputLastName.setAttribute("arria-invalid", "false");
     }
 
     // Validation message et Regex Email
@@ -54,11 +58,13 @@ function getValueOnSubmit() {
         pValidationEmail.textContent = "Veuillez renseigner une adresse mail valide."
         pValidationEmail.style.color = '#dd1812';
         inputEmail.style.border = "thick solid #dd1812";
+        inputEmail.setAttribute("arria-invalid", "true");
     }
     else {
         pValidationEmail.textContent = "Format de l'adresse mail valide.";
         pValidationEmail.style.color = '#057a3a';
         inputEmail.style.border = "thick solid #057a3a";
+        inputEmail.setAttribute("aria-invalid", "false");
     }
 
     // Récupération contenu textArea et message erreur si vide
@@ -68,10 +74,12 @@ function getValueOnSubmit() {
         pValidationMessage.textContent = "Veuillez renseigner un message."
         pValidationMessage.style.color = '#dd1812';
         textArea.style.border = "thick solid #dd1812";
+        inputEmail.setAttribute("arria-invalid", "true");
     }
     else {
         pValidationMessage.style.display = "none";
         textArea.style.border = "thick solid #057a3a";
+        inputEmail.setAttribute("arria-invalide", "false");
     }
 
 }

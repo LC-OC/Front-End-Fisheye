@@ -23,27 +23,29 @@
     <div id="contact_modal">
 			<div class="modal" aria-hidden="true" role="dialog">
 				<header>
-          <h2 aria-describedby="TitreModal" id="modal_title">Contactez-moi <span id="name_photographer"></span></h2>          
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <h2 id="modal_title">Contactez-moi <span id="name_photographer"></span></h2>          
+          <img src="assets/icons/close.svg"  onclick="closeModal()" aria-label="fermer-formulaire"/>
         </header>
 				<form>
-					<div>
-						<label>Prénom</label>
-						<input type="text" id="firstName" name="firstname" minlength="2" maxlength="20" 
-            placeholder="Veuillez renseigner votre prénom ici - entre 2 et 20 lettres" />
-            <p id="validationFirstName" class="validation"></p>
-            <label>Nom</label>
-						<input type="text" id="lastName" name="lastname" minlength="2" maxlength="25"
-            placeholder="Veuillez renseigner votre nom ici - entre 2 et 25 lettres" />
-            <p id="validationLastName" class="validation"></p>
-            <label>Email</label>
-						<input type="email" id="email" name="email" placeholder="Veuillez renseigner votre adresse mail ici - ex: adresse@mail.com"/>
-            <p id="validationEmail" class="validation"></p>
-            <label>Votre message</label>
-            <textarea type="text" id="yourMessage" name="yourmessage" placeholder="Veuillez renseigner votre message ici"></textarea>
+					<div role="group" aria-labelledby="coordonées-et-contact">
+              <label>Prénom</label>
+              <input type="text" id="firstName" name="firstname" minlength="2" maxlength="20" aria-required="true"
+              placeholder="Veuillez renseigner votre prénom ici - entre 2 et 20 lettres" />
+              <p id="validationFirstName" class="validation"></p>
+              <label>Nom</label>
+              <input type="text" id="lastName" name="lastname" minlength="2" maxlength="25" aria-required="true"
+              placeholder="Veuillez renseigner votre nom ici - entre 2 et 25 lettres" />
+              <p id="validationLastName" class="validation"></p>
+              <label>Email</label>
+              <input type="email" id="email" name="email" placeholder="Veuillez renseigner votre adresse mail ici - ex: adresse@mail.com" 
+              aria-required="true"/>
+              <p id="validationEmail" class="validation"></p>
+              <label>Votre message</label>
+            <textarea type="text" id="yourMessage" name="yourmessage" placeholder="Veuillez renseigner votre message ici"
+            aria-required="true"></textarea>
             <p id="validationMessage"></p>
 					</div>
-          <button class="submit_form" type="button" onclick="getValueOnSubmit()" return false>Envoyer</button>
+          <button class="submit_form" type="button" onclick="getValueOnSubmit()" return false aria-label="envoyer-formulaire">Envoyer</button>
 				</form>
 			</div>
 		</div>
