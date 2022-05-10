@@ -42,7 +42,6 @@
             }
             
             let found = getBy(idURL);
-            console.log(found)
 
             // Récupération de l'url des images dans un tableau
             function selectImageOnly(images) {
@@ -61,7 +60,6 @@
             }
 
             let videoURL = found.map(selectVideo);
-            console.log(videoURL)
 
             const arr = [];
             videoURL.forEach(e => {
@@ -70,8 +68,6 @@
                 }
             });
 
-            console.log(arr)
-    
             let arrayImgURL = [];
             let arrayTitleImg = [];
             let arrayVideoURL = [];
@@ -105,7 +101,6 @@
 
             for (let i = 0; i < filterArrayVideoURL.length; i++) {
                 let getVideoURL = filterArrayVideoURL[i];
-                console.log(getVideoURL)
                 let resultArrayImgUrl = arrayImgURL.map(e => e !== undefined ? e : getVideoURL);
                 arrayResultImgURL.push(resultArrayImgUrl)
                 
@@ -113,16 +108,12 @@
 
             for (let i = 0; i < arrayResultImgURL.length; i++) {
                 let urlMedia = arrayResultImgURL[i];
-                console.log(urlMedia)
                 for (let i = 0; i < urlMedia.length; i++) {
                     let urlMedias = urlMedia[i];
-                    console.log(urlMedias)
                     const defineURLMedia = `assets/images/${urlMedias}`;
                     arrayAllMedia.push(defineURLMedia)
                 } 
             }
-
-            
 
             // Calcul numbre likes affiché
             let pAllLikes = document.querySelector('.number_likes');
@@ -133,7 +124,6 @@
             /*---- Lightbox ---- */
 
             const lightboxImg = document.getElementById('imgBigger');
-            console.log(lightboxImg)
 
             let next = document.querySelector('.fa-angle-right');
             next.style.cursor = "pointer";
@@ -144,8 +134,6 @@
             let videoContent = document.getElementById('videoBigger');
 
             let currentPic = 0;
-
-            
 
             // Tri et récupération des éléments quand galerie filtrée par popularity
             let tryArray = found.sort(function(a,b){return b.likes-a.likes})
@@ -162,10 +150,6 @@
                 arrayVideoFilterByPopularity.push(videoFilterByPopularity); 
             }
 
-            console.log(arrayImgFilterByPopularity);
-            console.log(arrayTitleFilterByPopularity);
-            console.log(arrayVideoFilterByPopularity);
-
             const filtredArrayVideoFilterByPopularity = arrayVideoFilterByPopularity.filter(e => {
                 return e !== undefined
             })
@@ -175,19 +159,16 @@
 
             for (let i = 0; i < filtredArrayVideoFilterByPopularity.length; i++) {
                 let getVideoURLFiltredPopularity = filterArrayVideoURL[i];
-                console.log(getVideoURLFiltredPopularity)
                 let resuult = arrayImgFilterByPopularity.map(e => e !== undefined ? e : getVideoURLFiltredPopularity);
                 arrayTestAgainFilterPopularity.push(resuult)
                 
             }
-            console.log(arrayTestAgainFilterPopularity)
 
             for (let i = 0; i < arrayTestAgainFilterPopularity.length; i++) {
                 let testuuurl = arrayTestAgainFilterPopularity[i];
                 console.log(testuuurl)
                 for (let i = 0; i < testuuurl.length; i++) {
                     let testURLAgain = testuuurl[i];
-                    console.log(testURLAgain)
                     const defineURLMedia = `assets/images/${testURLAgain}`;
                     arrayAllMediaFilterPopularity.push(defineURLMedia)
                 } 
@@ -197,12 +178,10 @@
             // Affichage des élements par Title
 
             let foundFilterTitle = getBy(idURL);
-            console.log(foundFilterTitle)
 
             let getArrayTitleFilter = foundFilterTitle.sort(function(a,b) {
                 return a.title.localeCompare(b.title)
             })
-            console.log(getArrayTitleFilter)
 
             let arrayFilterTitle = [];
             let arrayFilterImgByTitle = [];
@@ -220,11 +199,6 @@
                 arrayFilterLikesByTitle.push(likesFilterByTitle);
             }
 
-            console.log(arrayFilterImgByTitle)
-            console.log(arrayFilterLikesByTitle)
-            console.log(arrayFilterVideoByTitle)
-            console.log(arrayFilterTitle)
-
             const filtredArrayVideoFilterByTitle = arrayFilterVideoByTitle.filter(e => {
                 return e !== undefined
             })
@@ -239,30 +213,24 @@
                 arrayTitle.push(result)
                 
             }
-            console.log(arrayTitle)
 
             for (let i = 0; i < arrayTitle.length; i++) {
                 let url = arrayTitle[i];
-                console.log(url)
                 for (let i = 0; i < url.length; i++) {
                     let getUrl = url[i];
-                    console.log(getUrl)
                     const defineURLMedia = `assets/images/${getUrl}`;
                     arrayAllMediaFilterTitle.push(defineURLMedia)
                 } 
             }
-            console.log(arrayAllMediaFilterTitle)
 
         
             // Affichage des éléments par date
 
             let foundDate = getBy(idURL);
-            console.log(foundDate)
 
             let getArrayDateFilter = foundDate.sort(function(a,b) {
                 return b.date.localeCompare(a.date)
             })
-            console.log(getArrayDateFilter)
 
             let arrayFilterImgByDate = [];
             let arrayFilterVideoByDate = [];
@@ -280,11 +248,6 @@
                 arrayFilterTitleByDate.push(titleFilterByDate);
             }
 
-            console.log(arrayFilterImgByDate)
-            console.log(arrayFilterLikesByDate)
-            console.log(arrayFilterVideoByDate)
-            console.log(arrayFilterTitleByDate)
-
             const filtredArrayVideoFilterByDate = arrayFilterVideoByDate.filter(e => {
                 return e !== undefined
             })
@@ -294,24 +257,19 @@
 
             for (let i = 0; i < filtredArrayVideoFilterByDate.length; i++) {
                 let getVideoURLFiltredDate = filtredArrayVideoFilterByDate[i];
-                console.log(getVideoURLFiltredDate)
                 let resultFilter = arrayFilterImgByDate.map(e => e !== undefined ? e : getVideoURLFiltredDate);
                 arrayFilterDate.push(resultFilter)
                 
             }
-            console.log(arrayFilterDate)
 
             for (let i = 0; i < arrayFilterDate.length; i++) {
                 let url = arrayFilterDate[i];
-                console.log(url)
                 for (let i = 0; i < url.length; i++) {
                     let getUrl = url[i];
-                    console.log(getUrl)
                     const defineURLMedia = `assets/images/${getUrl}`;
                     arrayAllMediaFilterDate.push(defineURLMedia)
                 } 
             }
-            console.log(arrayAllMediaFilterDate)
 
             // DOM Select
 
@@ -319,17 +277,34 @@
             let selectPopular = document.getElementById('filter_popular');
             let selectDate = document.getElementById('filter_date');
 
+            // DOM Lightbox
+            const lightbox = document.getElementById("lightboxDiv");
+            const imgLightbox = document.getElementById("imgBigger");
+            const pImgName = document.getElementById("imgNameLightbox");
+
+            
+            
             // Affichage Galerie
 
         for (let i = 0; i < found.length; i++) {
             let figure = document.createElement('figure');
             figure.classList.add('figureMedia');
+            figure.tabIndex = 0;
+            figure.onfocus = function() {
+                document.addEventListener('keydown', function(e) {
+                    let keyCode = e.keyCode;
+                    if (keyCode === 13) {
+                        lightbox.style.display = "block";
+                        imgLightbox.src = img.src;
+                        pImgName.textContent = arrayTitleImg[i];
+                    }
+                })
+            }
             //
             let mediaType = arrayAllMedia[i];
             let str = mediaType;
             let doxIndex = str.lastIndexOf('.');
             let ext = str.substring(doxIndex);
-
             let img = document.createElement('img');
             img.classList.add('imgFigure');
             const videoMedias = document.createElement('video');
@@ -367,10 +342,7 @@
                 contentAllLikes++;
                 pAllLikes.innerHTML = contentAllLikes;
                 });
-            img.onclick = function() {
-                const lightbox = document.getElementById("lightboxDiv");
-                const imgLightbox = document.getElementById("imgBigger");
-                const pImgName = document.getElementById("imgNameLightbox");
+            img.onclick = function() { 
                 lightbox.style.display = "block";
                 imgLightbox.src = this.src;
                 pImgName.textContent = arrayTitleImg[i];

@@ -9,13 +9,13 @@
     <script src="https://kit.fontawesome.com/019b68e105.js" crossorigin="anonymous"></script>
     <title>Fisheye - photographe </title>
   </head>
-  <body>
+  <body id="body">
     <header>
-      <a href="index.html">
-        <img src="assets/images/logo.png" class="logo" alt="Fisheye Home Page" />
+      <a href="index.html" tabindex="0">
+        <img src="assets/images/logo.png" class="logo" alt="Fisheye Home Page"/>
       </a>
     </header>
-    <main id="main">
+    <main id="main" aria-hidden="false">
       <div class="photograph-header">
          <!--<button class="contact_button" onclick="displayModal()">Contactez-moi</button> -->
       </div>
@@ -24,7 +24,7 @@
 			<div class="modal" aria-hidden="true" role="dialog">
 				<header>
           <h2 id="modal_title">Contactez-moi <span id="name_photographer"></span></h2>          
-          <img src="assets/icons/close.svg"  onclick="closeModal()" aria-label="fermer-formulaire"/>
+          <img src="assets/icons/close.svg"  onclick="closeModal()" id="close-modal" aria-label="fermer-formulaire"/>
         </header>
 				<form>
 					<div role="group" aria-labelledby="coordonées-et-contact">
@@ -52,9 +52,9 @@
     <div id="selectPart">
     <p>Trier par</p>
     <div class="dropdown">
-      <ul id="test"><li class="drop" id="filter_title">Titre</li>
-        <li class="drop" id="filter_date">Date</li>
-        <li id="filter_popular">Popularité
+      <ul id="test"><li class="drop" id="filter_title" tabindex="0">Titre</li>
+        <li class="drop" id="filter_date" tabindex="0">Date</li>
+        <li id="filter_popular" tabindex="0">Popularité
           <ul>
             
             

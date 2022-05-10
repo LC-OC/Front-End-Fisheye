@@ -62,10 +62,17 @@ function photographerFactory(data) {
         const buttonContact = document.createElement('button');
         buttonContact.textContent = "Contactez-moi";
         buttonContact.classList.add("contact_button");
-        buttonContact.onclick = function() {
+        buttonContact.addEventListener("click", function() {
             const modal = document.getElementById("contact_modal");
 	        modal.style.display = "block";
-        };
+            let body = document.getElementById("body");
+            body.style.overflow = "hidden";
+            document.getElementById("close-modal").focus();
+        })
+        document.getElementById("close-modal").addEventListener("click", function() {
+            buttonContact.focus();
+            buttonContact.setAttribute("tabindex", 0);
+        })
         const priceByDay = document.createElement('p');
         priceByDay.textContent = price + '€/jour';
         divPriceLike.appendChild(priceByDay);

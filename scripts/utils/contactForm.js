@@ -9,12 +9,19 @@ const pValidationFirstName = document.getElementById('validationFirstName');
 const pValidationLastName = document.getElementById('validationLastName');
 const pValidationEmail = document.getElementById('validationEmail');
 const pValidationMessage = document.getElementById('validationMessage');
-
+const modal = document.getElementById("contact_modal");
 
 function closeModal() {
-    const modal = document.getElementById("contact_modal");
     modal.style.display = "none";
+    body.style.overflow = "auto"
 }
+    
+document.addEventListener('keydown', function(e) {
+    let keyCode = e.keyCode;
+    if (keyCode === 27) {
+        closeModal();
+    }
+})
 
 function getValueOnSubmit() {
     //Validation message et regex first name
