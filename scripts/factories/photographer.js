@@ -52,6 +52,9 @@ function photographerFactory(data) {
         imgProfil.classList.add("photograph_profile_picture");
         const h1Name = document.createElement('h1');
         h1Name.textContent = name;
+        const nameContactForm = document.getElementById("name_photographer");
+        console.log(nameContactForm)
+        nameContactForm.innerText = name;
         const pCityCountryPhotograph = document.createElement('p');
         pCityCountryPhotograph.textContent = city + ', ' + country; 
         const pTaglinePhotograph = document.createElement('p');

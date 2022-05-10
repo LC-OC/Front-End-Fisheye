@@ -32,7 +32,7 @@
         .then(media => {
             let object = media.media;
 
-            // ----------- CALCUL DE TOUS LES LIKES -------- */
+
             function getBy(photographerId) {
                 return object.filter(
                     function(object) {
@@ -421,6 +421,17 @@
             selectDate.addEventListener("click", function() {
                 likesFigcaption.innerText = arrayFilterLikesByDate[i];
                 likesFigcaption.appendChild(heartIcon);
+                heartIcon.addEventListener("click", function() {
+                    let numberLikesByDate = arrayFilterLikesByDate[i];
+                    numberLikesByDate += 1;
+                    likesFigcaption.innerHTML = numberLikesByDate + '<i class="fas fa-heart"></i>';
+                    let pAllLikesDate = document.querySelector('.number_likes');
+                    let contentAllLikesDate = pAllLikesDate.innerHTML
+                    console.log(pAllLikesDate)
+                    console.log(contentAllLikesDate)
+                    contentAllLikesDate++;
+                    pAllLikesDate.innerHTML = contentAllLikesDate;
+                    });
                 titleFigcaption.innerText = arrayFilterTitleByDate[i];
                 let mediaTypeDate = arrayAllMediaFilterDate[i];
                 let strDate = mediaTypeDate;
@@ -445,6 +456,17 @@
             selectTitle.addEventListener("click", function() {
                 likesFigcaption.innerText = arrayFilterLikesByTitle[i];
                 likesFigcaption.appendChild(heartIcon);
+                heartIcon.addEventListener("click", function() {
+                    let numberLikesByTitle = arrayFilterLikesByTitle[i];
+                    numberLikesByTitle += 1;
+                    likesFigcaption.innerHTML = numberLikesByTitle + '<i class="fas fa-heart"></i>';
+                    let pAllLikesTitle = document.querySelector('.number_likes');
+                    let contentAllLikesTitle = pAllLikesTitle.innerHTML
+                    console.log(pAllLikesTitle)
+                    console.log(contentAllLikesTitle)
+                    contentAllLikesTitle++;
+                    pAllLikesTitle.innerHTML = contentAllLikesTitle;
+                    });
                 titleFigcaption.innerText = arrayFilterTitle[i];
                 let mediaTypeTitle = arrayAllMediaFilterTitle[i];
                 let strTitle = mediaTypeTitle;
