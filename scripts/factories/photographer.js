@@ -10,11 +10,20 @@ function photographerFactory(data) {
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture)
         img.classList.add("photographe_picture");
-        img.onclick = function() {
+        function linkPhotographerPage() {
             urlPhotographer.searchParams.set('id', id);
             window.location = urlPhotographer;
         };
+        img.onclick = function(e) {
+            linkPhotographerPage(e);
+        };
+        img.addEventListener("keydown", function(e) {
+            if (e.keyCode === 13) {
+                linkPhotographerPage(e)
+            }
+        })
         img.style.cursor = "pointer";
+        img.tabIndex = 0;
         const h2 = document.createElement( 'h2' );
         h2.textContent = name;
         h2.classList.add("photographe_name");

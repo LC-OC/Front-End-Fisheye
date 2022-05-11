@@ -591,18 +591,6 @@
         for (let i = 0; i < found.length; i++) {
             let figure = document.createElement('figure');
             figure.classList.add('figureMedia');
-            figure.tabIndex = 0;
-            figure.onfocus = function() {
-                document.addEventListener('keydown', function(e) {
-                    let keyCode = e.keyCode;
-                    const modal = document.getElementById("contact_modal");
-                    if (keyCode === 13 && modal.style.display === "none") {
-                        lightbox.style.display = "block";
-                        imgLightbox.src = img.src;
-                        pImgName.textContent = arrayTitleImg[i];
-                    }
-                })
-            }
             //
             let mediaType = arrayAllMedia[i];
             let str = mediaType;
@@ -645,22 +633,43 @@
                 contentAllLikes++;
                 pAllLikes.innerHTML = contentAllLikes;
                 });
-            img.onclick = function() { 
+            function openLightbox() {
                 lightbox.style.display = "block";
                 videoLightbox.style.display = "none";
                 imgLightbox.style.display = "block";
+                 }
+            img.onclick = function(e) {
+                openLightbox(e);
                 imgLightbox.src = this.src;
                 pImgName.textContent = arrayTitleImg[i];
+            }
+            img.addEventListener("keydown", function(e) {
+                if (e.keyCode === 13) {
+                    openLightbox(e)
+                    imgLightbox.src = this.src;
+                    pImgName.textContent = arrayTitleImg[i];
                 }
+            })
             img.style.cursor = "pointer";
-            videoMedias.onclick = function() {
+            img.tabIndex = 0;
+            function openLightboxVideo() {
                 imgLightbox.style.display = "none";
                 videoLightbox.style.display = "block";
                 lightbox.style.display = "block";
+            }
+            videoMedias.onclick = function() {
+                openLightboxVideo();
                 videoLightbox.src = this.src;
                 pImgName.textContent = arrayTitleImg[i];
+            }
+            videoMedias.addEventListener("keydown", function(e) {
+                if (e.keyCode === 13) {
+                    openLightboxVideo(e)
+                    videoLightbox.src = this.src;
+                    pImgName.textContent = arrayTitleImg[i];
                 }
-            
+            })
+            videoMedias.tabIndex = 0;
             selectPopular.addEventListener("click", function() {
                 const arrayLikesFilter = arrayLike.sort(function(a,b){return b-a});
                 likesFigcaption.innerHTML = arrayLikesFilter[i];
@@ -796,4 +805,3 @@
             
         })
         .catch(console.error);
-  
