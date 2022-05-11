@@ -119,75 +119,6 @@
             let pAllLikes = document.querySelector('.number_likes');
             pAllLikes.innerHTML = sum;
             
-            /* ----------------------------*/
-
-            /*---- Lightbox ---- */
-
-            let next = document.querySelector('.fa-angle-right');
-            next.style.cursor = "pointer";
-            let previous = document.querySelector('.fa-angle-left');
-            previous.style.cursor = "pointer";
-            let imgContent = document.getElementById('imgBigger');
-            let titleImgLightbox = document.getElementById('imgNameLightbox');
-            let videoContent = document.getElementById('videoBigger');
-
-            let currentPic = 0;
-
-            previous.addEventListener('click', function() {
-                if (currentPic <= 0) {
-                    currentPic = arrayAllMedia.length -1;
-                } else {
-                    currentPic--;
-                }
-
-                let medias = arrayAllMedia[currentPic];
-                let str = medias;
-                let dotIndex = str.lastIndexOf('.');
-                let ext = str.substring(dotIndex);
-
-                if (ext == ".mp4") {
-                    videoContent.style.display = "block";
-                    imgContent.style.display = "none";
-                    videoContent.src = medias;
-                }
-
-                else if (ext == ".jpg") {
-                    videoContent.style.display = "none";
-                    imgContent.style.display = "block";
-                    imgContent.src = medias;
-                }
-                
-                titleImgLightbox.textContent = arrayTitleImg[currentPic];
-
-
-            })
-            
-            next.addEventListener('click', function() {
-               if (currentPic < arrayAllMedia.length-1) {
-                   currentPic = currentPic+1;
-               } else {
-                   currentPic = 0;
-               }
-               
-               let medias = arrayAllMedia[currentPic];
-                let str = medias;
-                let doxIndex = str.lastIndexOf('.');
-                let ext = str.substring(doxIndex);
-
-                if (ext == ".mp4") {
-                    videoContent.style.display = "block";
-                    imgContent.style.display = "none";
-                    videoContent.src = medias;
-                }
-
-                else if (ext == ".jpg") {
-                    videoContent.style.display = "none";
-                    imgContent.style.display = "block";
-                    imgContent.src = medias;
-                }
-               titleImgLightbox.textContent = arrayTitleImg[currentPic]
-            })
-
             // Tri et récupération des éléments quand galerie filtrée par popularity
             let tryArray = found.sort(function(a,b){return b.likes-a.likes})
             console.log(tryArray)
@@ -329,12 +260,108 @@
             let selectTitle = document.getElementById('filter_title');
             let selectPopular = document.getElementById('filter_popular');
             let selectDate = document.getElementById('filter_date');
-            
 
-            // Lightbox filtre Title
-            let currentPicTitle = 0;
+            // DOM Lightbox
+            const lightbox = document.getElementById("lightboxDiv");
+            const imgLightbox = document.getElementById("imgBigger");
+            const pImgName = document.getElementById("imgNameLightbox");
+            const videoLightbox = document.getElementById("videoBigger");
+
+             /*---- Lightbox ---- */
+
+             let next = document.querySelector('.fa-angle-right');
+             next.style.cursor = "pointer";
+             let previous = document.querySelector('.fa-angle-left');
+             previous.style.cursor = "pointer";
+             let imgContent = document.getElementById('imgBigger');
+             let titleImgLightbox = document.getElementById('imgNameLightbox');
+             let videoContent = document.getElementById('videoBigger');
+ 
+             let currentPic = 0;
+             let currentPicTitle = 0;
+             let currentPicDate = 0;
+             let currentPicPopular = 0;
+
+             // Lightbox sans filtre
+
+             function getLightboxPrevious() {
+                    if (currentPic <= 0) {
+                        currentPic = arrayAllMedia.length -1;
+                    } else {
+                        currentPic--;
+                    }
+    
+                    let medias = arrayAllMedia[currentPic];
+                    let str = medias;
+                    let dotIndex = str.lastIndexOf('.');
+                    let ext = str.substring(dotIndex);
+    
+                    if (ext == ".mp4") {
+                        videoContent.style.display = "block";
+                        imgContent.style.display = "none";
+                        videoContent.src = medias;
+                    }
+    
+                    else if (ext == ".jpg") {
+                        videoContent.style.display = "none";
+                        imgContent.style.display = "block";
+                        imgContent.src = medias;
+                    }
+                    
+                    titleImgLightbox.textContent = arrayTitleImg[currentPic];
+             }
+
+             previous.onclick = function(e) {
+                getLightboxPrevious(e);
+             }
+
+             document.addEventListener("keydown", function(e) {
+                 if (e.keyCode === 37) {
+                     getLightboxPrevious(e)
+                 }
+             })
+
+             function getLightboxNext() {
+                if (currentPic < arrayAllMedia.length-1) {
+                    currentPic = currentPic+1;
+                } else {
+                    currentPic = 0;
+                }
+                
+                let medias = arrayAllMedia[currentPic];
+                 let str = medias;
+                 let doxIndex = str.lastIndexOf('.');
+                 let ext = str.substring(doxIndex);
+ 
+                 if (ext == ".mp4") {
+                     videoContent.style.display = "block";
+                     imgContent.style.display = "none";
+                     videoContent.src = medias;
+                 }
+ 
+                 else if (ext == ".jpg") {
+                     videoContent.style.display = "none";
+                     imgContent.style.display = "block";
+                     imgContent.src = medias;
+                 }
+                titleImgLightbox.textContent = arrayTitleImg[currentPic]
+             }
+
+             next.onclick = function(e) {
+                 getLightboxNext(e);
+             }
+
+             document.addEventListener("keydown", function(e) {
+                if (e.keyCode === 39) {
+                    getLightboxNext(e)
+                }
+            })
+
+            //Lightbox filtre Title
+           
             selectTitle.addEventListener("click", function() {
-                previous.addEventListener('click', function() {
+
+                function getLightboxPreviousTitle() {
                     if (currentPicTitle <= 0) {
                         currentPicTitle = arrayAllMediaFilterTitle.length -1;
                     } else {
@@ -359,41 +386,58 @@
                     }
                     
                     titleImgLightbox.textContent = arrayFilterTitle[currentPicTitle];
+                }
+                previous.onclick = function(e) {
+                    getLightboxPreviousTitle(e);
+                 }
     
-    
-                })
-                
-                next.addEventListener('click', function() {
-                   if (currentPicTitle < arrayAllMediaFilterTitle.length-1) {
-                       currentPicTitle = currentPicTitle+1;
-                   } else {
-                       currentPicTitle = 0;
-                   }
-                   
-                   let medias = arrayAllMediaFilterTitle[currentPicTitle];
-                    let str = medias;
-                    let dotIndex = str.lastIndexOf('.');
-                    let ext = str.substring(dotIndex);
-    
-                    if (ext == ".mp4") {
-                        videoContent.style.display = "block";
-                        imgContent.style.display = "none";
-                        videoContent.src = medias;
+                document.addEventListener("keydown", function(e) {
+                     if (e.keyCode === 37) {
+                         getLightboxPreviousTitle(e)
+                     }
+                 })
+
+                 function getLightboxNextTitle() {
+                    if (currentPicTitle < arrayAllMediaFilterTitle.length-1) {
+                        currentPicTitle = currentPicTitle+1;
+                    } else {
+                        currentPicTitle = 0;
                     }
+                    
+                    let medias = arrayAllMediaFilterTitle[currentPicTitle];
+                     let str = medias;
+                     let dotIndex = str.lastIndexOf('.');
+                     let ext = str.substring(dotIndex);
+     
+                     if (ext == ".mp4") {
+                         videoContent.style.display = "block";
+                         imgContent.style.display = "none";
+                         videoContent.src = medias;
+                     }
+     
+                     else if (ext == ".jpg") {
+                         videoContent.style.display = "none";
+                         imgContent.style.display = "block";
+                         imgContent.src = medias;
+                     }
+                    titleImgLightbox.textContent = arrayFilterTitle[currentPicTitle]
+                }
+                next.onclick = function(e) {
+                    getLightboxNextTitle(e);
+                 }
     
-                    else if (ext == ".jpg") {
-                        videoContent.style.display = "none";
-                        imgContent.style.display = "block";
-                        imgContent.src = medias;
-                    }
-                   titleImgLightbox.textContent = arrayFilterTitle[currentPicTitle]
-                })
+                document.addEventListener("keydown", function(e) {
+                     if (e.keyCode === 39) {
+                         getLightboxNextTitle(e)
+                     }
+                 })
             })
 
             // Lightbox filtre Date
-            let currentPicDate = 0;
+
             selectDate.addEventListener("click", function() {
-                previous.addEventListener('click', function() {
+
+            function getLightboxPreviousDate() {
                     if (currentPicDate <= 0) {
                         currentPicDate = arrayAllMediaFilterDate.length -1;
                     } else {
@@ -418,103 +462,130 @@
                     }
                     
                     titleImgLightbox.textContent = arrayFilterTitleByDate[currentPicDate];
-    
-    
+                }
+            previous.onclick = function(e) {
+                    getLightboxPreviousDate(e);
+                }
+        
+            document.addEventListener("keydown", function(e) {
+                     if (e.keyCode === 37) {
+                         getLightboxPreviousDate(e)
+                     }
                 })
-                
-                next.addEventListener('click', function() {
-                   if (currentPicDate < arrayAllMediaFilterDate.length-1) {
-                       currentPicDate = currentPicDate+1;
-                   } else {
-                       currentPicDate = 0;
-                   }
-                   
-                   let medias = arrayAllMediaFilterDate[currentPicDate];
-                    let str = medias;
-                    let dotIndex = str.lastIndexOf('.');
-                    let ext = str.substring(dotIndex);
     
-                    if (ext == ".mp4") {
-                        videoContent.style.display = "block";
-                        imgContent.style.display = "none";
-                        videoContent.src = medias;
+            function getLightboxNextDate() {
+                    if (currentPicDate < arrayAllMediaFilterDate.length-1) {
+                        currentPicDate = currentPicDate+1;
+                    } else {
+                        currentPicDate = 0;
                     }
-    
-                    else if (ext == ".jpg") {
-                        videoContent.style.display = "none";
-                        imgContent.style.display = "block";
-                        imgContent.src = medias;
-                    }
-                   titleImgLightbox.textContent = arrayFilterTitleByDate[currentPicDate]
-                })
+                    
+                    let medias = arrayAllMediaFilterDate[currentPicDate];
+                     let str = medias;
+                     let dotIndex = str.lastIndexOf('.');
+                     let ext = str.substring(dotIndex);
+     
+                     if (ext == ".mp4") {
+                         videoContent.style.display = "block";
+                         imgContent.style.display = "none";
+                         videoContent.src = medias;
+                     }
+     
+                     else if (ext == ".jpg") {
+                         videoContent.style.display = "none";
+                         imgContent.style.display = "block";
+                         imgContent.src = medias;
+                     }
+                    titleImgLightbox.textContent = arrayFilterTitleByDate[currentPicDate]
+            }
+            next.onclick = function(e) {
+                getLightboxNextDate(e);
+             }
+        
+            document.addEventListener("keydown", function(e) {
+                 if (e.keyCode === 39) {
+                     getLightboxNextDate(e)
+                  }
+             })
             })
 
             // Lightbox filtre Popularity
-            let currentPicPopular = 0;
+            
             selectPopular.addEventListener("click", function() {
-                previous.addEventListener('click', function() {
-                    if (currentPicPopular <= 0) {
-                        currentPicPopular= arrayAllMediaFilterPopularity.length -1;
-                    } else {
-                        currentPicPopular--;
-                    }
-    
-                    let medias = arrayAllMediaFilterPopularity[currentPicPopular];
-                    let str = medias;
-                    let dotIndex = str.lastIndexOf('.');
-                    let ext = str.substring(dotIndex);
-    
-                    if (ext == ".mp4") {
-                        videoContent.style.display = "block";
-                        imgContent.style.display = "none";
-                        videoContent.src = medias;
-                    }
-    
-                    else if (ext == ".jpg") {
-                        videoContent.style.display = "none";
-                        imgContent.style.display = "block";
-                        imgContent.src = medias;
-                    }
-                    
-                    titleImgLightbox.textContent = arrayTitleFilterByPopularity[currentPicPopular];
-    
-    
-                })
+
+            function getLightboxPreviousPopular() {
+                if (currentPicPopular <= 0) {
+                    currentPicPopular= arrayAllMediaFilterPopularity.length -1;
+                } else {
+                    currentPicPopular--;
+                }
+
+                let medias = arrayAllMediaFilterPopularity[currentPicPopular];
+                let str = medias;
+                let dotIndex = str.lastIndexOf('.');
+                let ext = str.substring(dotIndex);
+
+                if (ext == ".mp4") {
+                    videoContent.style.display = "block";
+                    imgContent.style.display = "none";
+                    videoContent.src = medias;
+                }
+
+                else if (ext == ".jpg") {
+                    videoContent.style.display = "none";
+                    imgContent.style.display = "block";
+                    imgContent.src = medias;
+                }
                 
-                next.addEventListener('click', function() {
-                   if (currentPicPopular < arrayAllMediaFilterPopularity.length-1) {
-                       currentPicPopular = currentPicPopular+1;
-                   } else {
-                       currentPicPopular = 0;
-                   }
-                   
-                   let medias = arrayAllMediaFilterPopularity[currentPicPopular];
-                    let str = medias;
-                    let dotIndex = str.lastIndexOf('.');
-                    let ext = str.substring(dotIndex);
-    
-                    if (ext == ".mp4") {
-                        videoContent.style.display = "block";
-                        imgContent.style.display = "none";
-                        videoContent.src = medias;
-                    }
-    
-                    else if (ext == ".jpg") {
-                        videoContent.style.display = "none";
-                        imgContent.style.display = "block";
-                        imgContent.src = medias;
-                    }
-                   titleImgLightbox.textContent = arrayTitleFilterByPopularity[currentPicPopular]
+                titleImgLightbox.textContent = arrayTitleFilterByPopularity[currentPicPopular];
+                }
+            previous.onclick = function(e) {
+                    getLightboxPreviousPopular(e);
+                }
+        
+            document.addEventListener("keydown", function(e) {
+                     if (e.keyCode === 37) {
+                         getLightboxPreviousPopular(e)
+                     }
                 })
+    
+            function getLightboxNextPopular() {
+                if (currentPicPopular < arrayAllMediaFilterPopularity.length-1) {
+                    currentPicPopular = currentPicPopular+1;
+                } else {
+                    currentPicPopular = 0;
+                }
+                
+                let medias = arrayAllMediaFilterPopularity[currentPicPopular];
+                 let str = medias;
+                 let dotIndex = str.lastIndexOf('.');
+                 let ext = str.substring(dotIndex);
+ 
+                 if (ext == ".mp4") {
+                     videoContent.style.display = "block";
+                     imgContent.style.display = "none";
+                     videoContent.src = medias;
+                 }
+ 
+                 else if (ext == ".jpg") {
+                     videoContent.style.display = "none";
+                     imgContent.style.display = "block";
+                     imgContent.src = medias;
+                 }
+                titleImgLightbox.textContent = arrayTitleFilterByPopularity[currentPicPopular]
+            }
+            next.onclick = function(e) {
+                getLightboxNextPopular(e);
+             }
+        
+            document.addEventListener("keydown", function(e) {
+                if (e.keyCode === 39) {
+                 getLightboxNextPopular(e)
+              }
+             })
             })
 
-            // DOM Lightbox
-            const lightbox = document.getElementById("lightboxDiv");
-            const imgLightbox = document.getElementById("imgBigger");
-            const pImgName = document.getElementById("imgNameLightbox");
-
-            
-            
+       
             // Affichage Galerie
 
         for (let i = 0; i < found.length; i++) {
@@ -524,7 +595,8 @@
             figure.onfocus = function() {
                 document.addEventListener('keydown', function(e) {
                     let keyCode = e.keyCode;
-                    if (keyCode === 13) {
+                    const modal = document.getElementById("contact_modal");
+                    if (keyCode === 13 && modal.style.display === "none") {
                         lightbox.style.display = "block";
                         imgLightbox.src = img.src;
                         pImgName.textContent = arrayTitleImg[i];
@@ -575,21 +647,20 @@
                 });
             img.onclick = function() { 
                 lightbox.style.display = "block";
+                videoLightbox.style.display = "none";
+                imgLightbox.style.display = "block";
                 imgLightbox.src = this.src;
                 pImgName.textContent = arrayTitleImg[i];
                 }
             img.style.cursor = "pointer";
             videoMedias.onclick = function() {
-                const imgLightbox = document.getElementById("imgBigger");
                 imgLightbox.style.display = "none";
-                const lightbox = document.getElementById("lightboxDiv");
-                const videoLightbox = document.getElementById("videoBigger");
                 videoLightbox.style.display = "block";
-                const pImgName = document.getElementById("imgNameLightbox");
                 lightbox.style.display = "block";
                 videoLightbox.src = this.src;
                 pImgName.textContent = arrayTitleImg[i];
                 }
+            
             selectPopular.addEventListener("click", function() {
                 const arrayLikesFilter = arrayLike.sort(function(a,b){return b-a});
                 likesFigcaption.innerHTML = arrayLikesFilter[i];
@@ -611,8 +682,21 @@
                     videoMedias.setAttribute("src", arrayAllMediaFilterPopularity[i]);
                     videoMedias.classList.add('videoFigure');
                 }
-                
-                
+                img.onclick = function() { 
+                    lightbox.style.display = "block";
+                    videoLightbox.style.display = "none";
+                    imgLightbox.style.display = "block";
+                    imgLightbox.src = this.src;
+                    pImgName.textContent = arrayTitleFilterByPopularity[i];
+                    }
+                img.style.cursor = "pointer";
+                videoMedias.onclick = function() {
+                    imgLightbox.style.display = "none";
+                    videoLightbox.style.display = "block";
+                    lightbox.style.display = "block";
+                    videoLightbox.src = this.src;
+                    pImgName.textContent = arrayTitleFilterByPopularity[i];
+                    }
             })  
             selectDate.addEventListener("click", function() {
                 likesFigcaption.innerText = arrayFilterLikesByDate[i];
@@ -639,9 +723,21 @@
                     videoMedias.setAttribute("src", arrayAllMediaFilterDate[i]);
                     videoMedias.classList.add('videoFigure');
                 }
-                console.log(arrayFilterTitleByDate[i])
-                
-                
+                img.onclick = function() { 
+                    lightbox.style.display = "block";
+                    videoLightbox.style.display = "none";
+                    imgLightbox.style.display = "block";
+                    imgLightbox.src = this.src;
+                    pImgName.textContent = arrayFilterTitleByDate[i];
+                    }
+                img.style.cursor = "pointer";
+                videoMedias.onclick = function() {
+                    imgLightbox.style.display = "none";
+                    videoLightbox.style.display = "block";
+                    lightbox.style.display = "block";
+                    videoLightbox.src = this.src;
+                    pImgName.textContent = arrayFilterTitleByDate[i];
+                    }
             })
             selectTitle.addEventListener("click", function() {
                 likesFigcaption.innerText = arrayFilterLikesByTitle[i];
@@ -668,6 +764,22 @@
                     videoMedias.setAttribute("src", arrayAllMediaFilterTitle[i]);
                     videoMedias.classList.add('videoFigure');
                 }
+                img.onclick = function() { 
+                    lightbox.style.display = "block";
+                    videoLightbox.style.display = "none";
+                    imgLightbox.style.display = "block";
+                    imgLightbox.src = this.src;
+                    pImgName.textContent = arrayFilterTitle[i];
+                    }
+                img.style.cursor = "pointer";
+                videoMedias.onclick = function() {
+                    imgLightbox.style.display = "none";
+                    videoLightbox.style.display = "block";
+                    lightbox.style.display = "block";
+                    videoLightbox.src = this.src;
+                    pImgName.textContent = arrayFilterTitle[i];
+                    }
+                
             })
             
             videoMedias.style.cursor = "pointer";
@@ -680,197 +792,8 @@
             figure.appendChild(videoMedias)
             figure.appendChild(figcaption)
 
-            // Lightbox by filter
-            /*selectDate.onclick = function() {
-                previous.addEventListener('click', function() {
-                    if (currentPic <= 0) {
-                        currentPic = arrayAllMediaFilterDate.length -1;
-                    } else {
-                        currentPic--;
-                    }
-    
-                    let medias = arrayAllMediaFilterDate[currentPic];
-                    let str = medias;
-                    let dotIndex = str.lastIndexOf('.');
-                    let ext = str.substring(dotIndex);
-                    console.log(ext)
-    
-                    if (ext == ".mp4") {
-                        videoContent.style.display = "block";
-                        imgContent.style.display = "none";
-                        videoContent.src = medias;
-                    }
-    
-                    else if (ext == ".jpg") {
-                        videoContent.style.display = "none";
-                        imgContent.style.display = "block";
-                        imgContent.src = medias;
-                    }
-                    
-                    titleImgLightbox.textContent = arrayFilterTitleByDate[currentPic];
-                })
-                next.addEventListener('click', function() {
-                    if (currentPic < arrayAllMediaFilterDate.length-1) {
-                        currentPic = currentPic+1;
-                    } else {
-                        currentPic = 0;
-                    }
-                    let medias = arrayAllMediaFilterDate[currentPic];
-                     let str = medias;
-                     let doxIndex = str.lastIndexOf('.');
-                     let ext = str.substring(doxIndex);
-                     console.log(ext)
-     
-                     if (ext == ".mp4") {
-                         videoContent.style.display = "block";
-                         imgContent.style.display = "none";
-                         videoContent.src = medias;
-                     }
-     
-                     else if (ext == ".jpg") {
-                         videoContent.style.display = "none";
-                         imgContent.style.display = "block";
-                         imgContent.src = medias;
-                     }
-                    titleImgLightbox.textContent = arrayFilterTitleByDate[currentPic]
-                 })
-                    
-                
-            };
-            selectTitle.onclick = function() {
-                previous.addEventListener('click', function() {
-                    if (currentPic <= 0) {
-                        currentPic = arrayAllMediaFilterTitle.length -1;
-                    } else {
-                        currentPic--;
-                    }
-    
-                    let medias = arrayAllMediaFilterTitle[currentPic];
-                    let str = medias;
-                    let dotIndex = str.lastIndexOf('.');
-                    let ext = str.substring(dotIndex);
-                    console.log(ext)
-    
-                    if (ext == ".mp4") {
-                        videoContent.style.display = "block";
-                        imgContent.style.display = "none";
-                        videoContent.src = medias;
-                    }
-    
-                    else if (ext == ".jpg") {
-                        videoContent.style.display = "none";
-                        imgContent.style.display = "block";
-                        imgContent.src = medias;
-                    }
-                    
-                    titleImgLightbox.textContent = arrayFilterTitle[currentPic];
-                    console.log(arrayFilterTitle)
-    
-    
-                })
-                next.addEventListener('click', function() {
-                    if (currentPic < arrayAllMediaFilterTitle.length-1) {
-                        currentPic = currentPic+1;
-                    } else {
-                        currentPic = 0;
-                    }
-                    
-                    let medias = arrayAllMediaFilterTitle[currentPic];
-                     let str = medias;
-                     let doxIndex = str.lastIndexOf('.');
-                     let ext = str.substring(doxIndex);
-                     console.log(ext)
-     
-                     if (ext == ".mp4") {
-                         videoContent.style.display = "block";
-                         imgContent.style.display = "none";
-                         videoContent.src = medias;
-                     }
-     
-                     else if (ext == ".jpg") {
-                         videoContent.style.display = "none";
-                         imgContent.style.display = "block";
-                         imgContent.src = medias;
-                     }
-                    titleImgLightbox.textContent = arrayFilterTitle[currentPic]
-                 })
-            };
-            selectPopular.onclick = function() {
-                previous.addEventListener('click', function() {
-                    if (currentPic <= 0) {
-                        currentPic = arrayAllMediaFilterPopularity.length -1;
-                    } else {
-                        currentPic--;
-                    }
-    
-                    let medias = arrayAllMediaFilterPopularity[currentPic];
-                    let str = medias;
-                    let dotIndex = str.lastIndexOf('.');
-                    let ext = str.substring(dotIndex);
-                    console.log(ext)
-    
-                    if (ext == ".mp4") {
-                        videoContent.style.display = "block";
-                        imgContent.style.display = "none";
-                        videoContent.src = medias;
-                    }
-    
-                    else if (ext == ".jpg") {
-                        videoContent.style.display = "none";
-                        imgContent.style.display = "block";
-                        imgContent.src = medias;
-                    }
-                    
-                    titleImgLightbox.textContent = arrayTitleFilterByPopularity[currentPic];
-                    console.log(arrayTitleFilterByPopularity)
-    
-    
-                })
-                next.addEventListener('click', function() {
-                    if (currentPic < arrayAllMediaFilterPopularity.length-1) {
-                        currentPic = currentPic+1;
-                    } else {
-                        currentPic = 0;
-                    }
-                    
-                    let medias = arrayAllMediaFilterPopularity[currentPic];
-                     let str = medias;
-                     let doxIndex = str.lastIndexOf('.');
-                     let ext = str.substring(doxIndex);
-                     console.log(ext)
-     
-                     if (ext == ".mp4") {
-                         videoContent.style.display = "block";
-                         imgContent.style.display = "none";
-                         videoContent.src = medias;
-                     }
-     
-                     else if (ext == ".jpg") {
-                         videoContent.style.display = "none";
-                         imgContent.style.display = "block";
-                         imgContent.src = medias;
-                     }
-                    titleImgLightbox.textContent = arrayTitleFilterByPopularity[currentPic]
-                 })
-            }*/
-
-                
             } 
-            //-----------------------
-            /*for (let i = 0; i < media.media.length; i++) {
-                if (media.media[i].photographerId == idURL) {
-                    const mediaModel = mediaFactory(media.media[i]);
-                    const mediaDOM = mediaModel.getMedia();
-                    divMedia.appendChild(mediaDOM);
-                    /*let result = media.media.reduce((a, c) => ({
-                        likes: a.likes + c.likes
-                    }))
-                    console.log(result)
-                    
-
-                    
-                }
-            }*/
+            
         })
         .catch(console.error);
   
