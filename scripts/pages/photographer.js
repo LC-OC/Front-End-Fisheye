@@ -123,8 +123,6 @@
 
             /*---- Lightbox ---- */
 
-            const lightboxImg = document.getElementById('imgBigger');
-
             let next = document.querySelector('.fa-angle-right');
             next.style.cursor = "pointer";
             let previous = document.querySelector('.fa-angle-left');
@@ -134,6 +132,61 @@
             let videoContent = document.getElementById('videoBigger');
 
             let currentPic = 0;
+
+            previous.addEventListener('click', function() {
+                if (currentPic <= 0) {
+                    currentPic = arrayAllMedia.length -1;
+                } else {
+                    currentPic--;
+                }
+
+                let medias = arrayAllMedia[currentPic];
+                let str = medias;
+                let dotIndex = str.lastIndexOf('.');
+                let ext = str.substring(dotIndex);
+
+                if (ext == ".mp4") {
+                    videoContent.style.display = "block";
+                    imgContent.style.display = "none";
+                    videoContent.src = medias;
+                }
+
+                else if (ext == ".jpg") {
+                    videoContent.style.display = "none";
+                    imgContent.style.display = "block";
+                    imgContent.src = medias;
+                }
+                
+                titleImgLightbox.textContent = arrayTitleImg[currentPic];
+
+
+            })
+            
+            next.addEventListener('click', function() {
+               if (currentPic < arrayAllMedia.length-1) {
+                   currentPic = currentPic+1;
+               } else {
+                   currentPic = 0;
+               }
+               
+               let medias = arrayAllMedia[currentPic];
+                let str = medias;
+                let doxIndex = str.lastIndexOf('.');
+                let ext = str.substring(doxIndex);
+
+                if (ext == ".mp4") {
+                    videoContent.style.display = "block";
+                    imgContent.style.display = "none";
+                    videoContent.src = medias;
+                }
+
+                else if (ext == ".jpg") {
+                    videoContent.style.display = "none";
+                    imgContent.style.display = "block";
+                    imgContent.src = medias;
+                }
+               titleImgLightbox.textContent = arrayTitleImg[currentPic]
+            })
 
             // Tri et récupération des éléments quand galerie filtrée par popularity
             let tryArray = found.sort(function(a,b){return b.likes-a.likes})
@@ -276,6 +329,184 @@
             let selectTitle = document.getElementById('filter_title');
             let selectPopular = document.getElementById('filter_popular');
             let selectDate = document.getElementById('filter_date');
+            
+
+            // Lightbox filtre Title
+            let currentPicTitle = 0;
+            selectTitle.addEventListener("click", function() {
+                previous.addEventListener('click', function() {
+                    if (currentPicTitle <= 0) {
+                        currentPicTitle = arrayAllMediaFilterTitle.length -1;
+                    } else {
+                        currentPicTitle--;
+                    }
+    
+                    let medias = arrayAllMediaFilterTitle[currentPicTitle];
+                    let str = medias;
+                    let dotIndex = str.lastIndexOf('.');
+                    let ext = str.substring(dotIndex);
+    
+                    if (ext == ".mp4") {
+                        videoContent.style.display = "block";
+                        imgContent.style.display = "none";
+                        videoContent.src = medias;
+                    }
+    
+                    else if (ext == ".jpg") {
+                        videoContent.style.display = "none";
+                        imgContent.style.display = "block";
+                        imgContent.src = medias;
+                    }
+                    
+                    titleImgLightbox.textContent = arrayFilterTitle[currentPicTitle];
+    
+    
+                })
+                
+                next.addEventListener('click', function() {
+                   if (currentPicTitle < arrayAllMediaFilterTitle.length-1) {
+                       currentPicTitle = currentPicTitle+1;
+                   } else {
+                       currentPicTitle = 0;
+                   }
+                   
+                   let medias = arrayAllMediaFilterTitle[currentPicTitle];
+                    let str = medias;
+                    let dotIndex = str.lastIndexOf('.');
+                    let ext = str.substring(dotIndex);
+    
+                    if (ext == ".mp4") {
+                        videoContent.style.display = "block";
+                        imgContent.style.display = "none";
+                        videoContent.src = medias;
+                    }
+    
+                    else if (ext == ".jpg") {
+                        videoContent.style.display = "none";
+                        imgContent.style.display = "block";
+                        imgContent.src = medias;
+                    }
+                   titleImgLightbox.textContent = arrayFilterTitle[currentPicTitle]
+                })
+            })
+
+            // Lightbox filtre Date
+            let currentPicDate = 0;
+            selectDate.addEventListener("click", function() {
+                previous.addEventListener('click', function() {
+                    if (currentPicDate <= 0) {
+                        currentPicDate = arrayAllMediaFilterDate.length -1;
+                    } else {
+                        currentPicDate--;
+                    }
+    
+                    let medias = arrayAllMediaFilterDate[currentPicDate];
+                    let str = medias;
+                    let dotIndex = str.lastIndexOf('.');
+                    let ext = str.substring(dotIndex);
+
+                    if (ext == ".mp4") {
+                        videoContent.style.display = "block";
+                        imgContent.style.display = "none";
+                        videoContent.src = medias;
+                    }
+    
+                    else if (ext == ".jpg") {
+                        videoContent.style.display = "none";
+                        imgContent.style.display = "block";
+                        imgContent.src = medias;
+                    }
+                    
+                    titleImgLightbox.textContent = arrayFilterTitleByDate[currentPicDate];
+    
+    
+                })
+                
+                next.addEventListener('click', function() {
+                   if (currentPicDate < arrayAllMediaFilterDate.length-1) {
+                       currentPicDate = currentPicDate+1;
+                   } else {
+                       currentPicDate = 0;
+                   }
+                   
+                   let medias = arrayAllMediaFilterDate[currentPicDate];
+                    let str = medias;
+                    let dotIndex = str.lastIndexOf('.');
+                    let ext = str.substring(dotIndex);
+    
+                    if (ext == ".mp4") {
+                        videoContent.style.display = "block";
+                        imgContent.style.display = "none";
+                        videoContent.src = medias;
+                    }
+    
+                    else if (ext == ".jpg") {
+                        videoContent.style.display = "none";
+                        imgContent.style.display = "block";
+                        imgContent.src = medias;
+                    }
+                   titleImgLightbox.textContent = arrayFilterTitleByDate[currentPicDate]
+                })
+            })
+
+            // Lightbox filtre Popularity
+            let currentPicPopular = 0;
+            selectPopular.addEventListener("click", function() {
+                previous.addEventListener('click', function() {
+                    if (currentPicPopular <= 0) {
+                        currentPicPopular= arrayAllMediaFilterPopularity.length -1;
+                    } else {
+                        currentPicPopular--;
+                    }
+    
+                    let medias = arrayAllMediaFilterPopularity[currentPicPopular];
+                    let str = medias;
+                    let dotIndex = str.lastIndexOf('.');
+                    let ext = str.substring(dotIndex);
+    
+                    if (ext == ".mp4") {
+                        videoContent.style.display = "block";
+                        imgContent.style.display = "none";
+                        videoContent.src = medias;
+                    }
+    
+                    else if (ext == ".jpg") {
+                        videoContent.style.display = "none";
+                        imgContent.style.display = "block";
+                        imgContent.src = medias;
+                    }
+                    
+                    titleImgLightbox.textContent = arrayTitleFilterByPopularity[currentPicPopular];
+    
+    
+                })
+                
+                next.addEventListener('click', function() {
+                   if (currentPicPopular < arrayAllMediaFilterPopularity.length-1) {
+                       currentPicPopular = currentPicPopular+1;
+                   } else {
+                       currentPicPopular = 0;
+                   }
+                   
+                   let medias = arrayAllMediaFilterPopularity[currentPicPopular];
+                    let str = medias;
+                    let dotIndex = str.lastIndexOf('.');
+                    let ext = str.substring(dotIndex);
+    
+                    if (ext == ".mp4") {
+                        videoContent.style.display = "block";
+                        imgContent.style.display = "none";
+                        videoContent.src = medias;
+                    }
+    
+                    else if (ext == ".jpg") {
+                        videoContent.style.display = "none";
+                        imgContent.style.display = "block";
+                        imgContent.src = medias;
+                    }
+                   titleImgLightbox.textContent = arrayTitleFilterByPopularity[currentPicPopular]
+                })
+            })
 
             // DOM Lightbox
             const lightbox = document.getElementById("lightboxDiv");
@@ -381,7 +612,8 @@
                     videoMedias.classList.add('videoFigure');
                 }
                 
-            })
+                
+            })  
             selectDate.addEventListener("click", function() {
                 likesFigcaption.innerText = arrayFilterLikesByDate[i];
                 likesFigcaption.appendChild(heartIcon);
@@ -621,64 +853,8 @@
                     titleImgLightbox.textContent = arrayTitleFilterByPopularity[currentPic]
                  })
             }*/
-            img.addEventListener("click", function() {
-                previous.addEventListener('click', function() {
-                    if (currentPic <= 0) {
-                        currentPic = arrayAllMedia.length -1;
-                    } else {
-                        currentPic--;
-                    }
-    
-                    let medias = arrayAllMedia[currentPic];
-                    let str = medias;
-                    let dotIndex = str.lastIndexOf('.');
-                    let ext = str.substring(dotIndex);
-                    console.log(ext)
-    
-                    if (ext == ".mp4") {
-                        videoContent.style.display = "block";
-                        imgContent.style.display = "none";
-                        videoContent.src = medias;
-                    }
-    
-                    else if (ext == ".jpg") {
-                        videoContent.style.display = "none";
-                        imgContent.style.display = "block";
-                        imgContent.src = medias;
-                    }
-                    
-                    titleImgLightbox.textContent = arrayTitleImg[currentPic];
-    
-    
-                })
+
                 
-                next.addEventListener('click', function() {
-                   if (currentPic < arrayAllMedia.length-1) {
-                       currentPic = currentPic+1;
-                   } else {
-                       currentPic = 0;
-                   }
-                   
-                   let medias = arrayAllMedia[currentPic];
-                    let str = medias;
-                    let doxIndex = str.lastIndexOf('.');
-                    let ext = str.substring(doxIndex);
-                    console.log(ext)
-    
-                    if (ext == ".mp4") {
-                        videoContent.style.display = "block";
-                        imgContent.style.display = "none";
-                        videoContent.src = medias;
-                    }
-    
-                    else if (ext == ".jpg") {
-                        videoContent.style.display = "none";
-                        imgContent.style.display = "block";
-                        imgContent.src = medias;
-                    }
-                   titleImgLightbox.textContent = arrayTitleImg[currentPic]
-                })
-            })
             } 
             //-----------------------
             /*for (let i = 0; i < media.media.length; i++) {
