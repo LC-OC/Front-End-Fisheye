@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html>
-  <head lang="fr">
+<html lang="fr">
+  <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <meta name="description" content=""> 
     <link href="public/css/reset.css" rel="stylesheet" type="text/css" />
     <link href="public/css/style.css" rel="stylesheet" type="text/css" />
     <link rel="icon" type="image/png" href="assets/favicon.png">
@@ -24,7 +26,7 @@
 			<div class="modal" aria-hidden="true" role="dialog">
 				<header>
           <h2 id="modal_title">Contactez-moi <span id="name_photographer"></span></h2>          
-          <img src="assets/icons/close.svg"  onclick="closeModal()" id="close-modal" aria-label="fermer-formulaire"/>
+          <img src="assets/icons/close.svg"  onclick="closeModal()" id="close-modal" aria-label="fermer-formulaire" alt="close form" />
         </header>
 				<form>
 					<div role="group" aria-labelledby="coordonées-et-contact">
@@ -41,7 +43,7 @@
               aria-required="true"/>
               <p id="validationEmail" class="validation"></p>
               <label>Votre message</label>
-            <textarea type="text" id="yourMessage" name="yourmessage" placeholder="Veuillez renseigner votre message ici"
+            <textarea id="yourMessage" name="yourmessage" placeholder="Veuillez renseigner votre message ici"
             aria-required="true"></textarea>
             <p id="validationMessage"></p>
 					</div>

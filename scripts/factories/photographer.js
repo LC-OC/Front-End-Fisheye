@@ -10,6 +10,7 @@ function photographerFactory(data) {
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture)
         img.classList.add("photographe_picture");
+        img.ariaLabel = "Rendez-vous sur la page du photographe en cliquant sur son image de profil";
         function linkPhotographerPage() {
             urlPhotographer.searchParams.set('id', id);
             window.location = urlPhotographer;
@@ -59,6 +60,7 @@ function photographerFactory(data) {
         const imgProfil = document.createElement( 'img' );
         imgProfil.setAttribute("src", picture);
         imgProfil.classList.add("photograph_profile_picture");
+        imgProfil.setAttribute("alt", name);
         const h1Name = document.createElement('h1');
         h1Name.textContent = name;
         const nameContactForm = document.getElementById("name_photographer");

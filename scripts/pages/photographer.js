@@ -308,6 +308,8 @@
                     }
                     
                     titleImgLightbox.textContent = arrayTitleImg[currentPic];
+                    imgLightbox.setAttribute("alt", arrayTitleImg[currentPic]);
+                    videoLightbox.setAttribute("title", arrayTitleImg[currentPic])
              }
 
              previous.onclick = function(e) {
@@ -343,7 +345,9 @@
                      imgContent.style.display = "block";
                      imgContent.src = medias;
                  }
-                titleImgLightbox.textContent = arrayTitleImg[currentPic]
+                titleImgLightbox.textContent = arrayTitleImg[currentPic];
+                imgLightbox.setAttribute("alt", arrayTitleImg[currentPic]);
+                videoLightbox.setAttribute("title", arrayTitleImg[currentPic])
              }
 
              next.onclick = function(e) {
@@ -384,6 +388,8 @@
                     }
                     
                     titleImgLightbox.textContent = arrayFilterTitle[currentPicTitle];
+                    imgLightbox.setAttribute("alt", arrayFilterTitle[currentPicTitle]);
+                    videoLightbox.setAttribute("title", arrayFilterTitle[currentPicTitle])
                 }
                 previous.onclick = function(e) {
                     getLightboxPreviousTitle(e);
@@ -419,6 +425,8 @@
                          imgContent.src = medias;
                      }
                     titleImgLightbox.textContent = arrayFilterTitle[currentPicTitle]
+                    imgLightbox.setAttribute("alt", arrayFilterTitle[currentPicTitle]);
+                    videoLightbox.setAttribute("title", arrayFilterTitle[currentPicTitle])
                 }
                 next.onclick = function(e) {
                     getLightboxNextTitle(e);
@@ -468,6 +476,8 @@
                     }
                     
                     titleImgLightbox.textContent = arrayFilterTitleByDate[currentPicDate];
+                    imgLightbox.setAttribute("alt", arrayFilterTitleByDate[currentPicDate]);
+                    videoLightbox.setAttribute("title", arrayFilterTitleByDate[currentPicDate])
                 }
             previous.onclick = function(e) {
                     getLightboxPreviousDate(e);
@@ -503,6 +513,9 @@
                          imgContent.src = medias;
                      }
                     titleImgLightbox.textContent = arrayFilterTitleByDate[currentPicDate]
+                    imgLightbox.setAttribute("alt", arrayFilterTitleByDate[currentPicDate]);
+                    videoLightbox.setAttribute("title", arrayFilterTitleByDate[currentPicDate])
+
             }
             next.onclick = function(e) {
                 getLightboxNextDate(e);
@@ -541,15 +554,19 @@
                         videoContent.style.display = "block";
                         imgContent.style.display = "none";
                         videoContent.src = medias;
+                        videoContent.setAttribute("alt", arrayTitleFilterByPopularity[currentPicPopular])
                     }
     
                     else if (ext == ".jpg") {
                         videoContent.style.display = "none";
                         imgContent.style.display = "block";
                         imgContent.src = medias;
+                        imgContent.setAttribute("alt", arrayTitleFilterByPopularity[currentPicPopular])
                     }
                     
                     titleImgLightbox.textContent = arrayTitleFilterByPopularity[currentPicPopular];
+                    imgLightbox.setAttribute("alt", arrayTitleFilterByPopularity[currentPicPopular]);
+                    videoLightbox.setAttribute("title", arrayTitleFilterByPopularity[currentPicPopular])
                     }
                 previous.onclick = function(e) {
                         getLightboxPreviousPopular(e);
@@ -568,7 +585,7 @@
                         currentPicPopular = 0;
                     }
                     
-                    let medias = arrayAllMediaFilterPopularity[currentPicPopular];
+                     let medias = arrayAllMediaFilterPopularity[currentPicPopular];
                      let str = medias;
                      let dotIndex = str.lastIndexOf('.');
                      let ext = str.substring(dotIndex);
@@ -584,7 +601,11 @@
                          imgContent.style.display = "block";
                          imgContent.src = medias;
                      }
+                    
                     titleImgLightbox.textContent = arrayTitleFilterByPopularity[currentPicPopular]
+                    imgLightbox.setAttribute("alt", arrayTitleFilterByPopularity[currentPicPopular]);
+                    videoLightbox.setAttribute("title", arrayTitleFilterByPopularity[currentPicPopular])
+                    
                 }
                 next.onclick = function(e) {
                     getLightboxNextPopular(e);
@@ -597,7 +618,7 @@
                  })
             }
             selectPopular.addEventListener("click", function(e) {
-                lightboxDateFilter(e);
+                lightboxPopularFilter(e);
             })
             selectPopular.addEventListener("keydown", function(e) {
                 if (e.keyCode === 13) {
@@ -618,16 +639,19 @@
             let ext = str.substring(doxIndex);
             let img = document.createElement('img');
             img.classList.add('imgFigure');
+            img.ariaLabel = "Ouvrez la lightbox en cliquant sur une image";
             const videoMedias = document.createElement('video');
             if (ext == ".jpg") {
                 img.setAttribute("src", arrayAllMedia[i]);
                 img.classList.add('imgFigure');
                 videoMedias.style.display = "none";
+                img.setAttribute("alt", arrayTitleImg[i])
             }
             else if (ext == ".mp4") {
                 img.style.display = "none";
                 videoMedias.setAttribute("src", arrayAllMedia[i]);
                 videoMedias.classList.add('videoFigure');
+                videoMedias.setAttribute("alt", arrayTitleImg[i])
 
             }
             const figcaption = document.createElement('figcaption');
@@ -641,6 +665,7 @@
             heartIcon.innerHTML = '<i class="fas fa-heart"></i>';
             heartIcon.style.cursor = 'pointer';
             heartIcon.style.color = '#525252';
+            heartIcon.ariaLabel = "Liker";
             heartIcon.addEventListener("click", function() {
                 this.style.color = "#901C1C";
                 let numberLikes = arrayLike[i];
@@ -657,6 +682,7 @@
                 lightbox.style.display = "block";
                 videoLightbox.style.display = "none";
                 imgLightbox.style.display = "block";
+                imgLightbox.setAttribute("alt", arrayTitleImg[i]);
                  }
             img.onclick = function(e) {
                 openLightbox(e);
@@ -690,6 +716,7 @@
                 }
             })
             videoMedias.tabIndex = 0;
+            videoMedias.setAttribute("alt", arrayTitleImg[i])
             function filterPopular() {
                 const arrayLikesFilter = arrayLike.sort(function(a,b){return b-a});
                 likesFigcaption.innerHTML = arrayLikesFilter[i];
@@ -704,35 +731,41 @@
                     img.setAttribute("src", arrayAllMediaFilterPopularity[i]);
                     img.classList.add('imgFigure');
                     videoMedias.style.display = "none";
+                    img.setAttribute("alt", arrayTitleFilterByPopularity[i])
                 }
                 else if (extPopular == ".mp4") {
                     videoMedias.style.display = "block";
                     img.style.display = "none";
                     videoMedias.setAttribute("src", arrayAllMediaFilterPopularity[i]);
                     videoMedias.classList.add('videoFigure');
+                    videoMedias.setAttribute("alt", arrayTitleFilterByPopularity[i])
                 }
                 img.onclick = function(e) { 
                     openLightbox(e);
                     imgLightbox.src = this.src;
                     pImgName.textContent = arrayTitleFilterByPopularity[i];
+                    imgLightbox.setAttribute("alt", arrayTitleFilterByPopularity[i])
                     }
                 img.addEventListener("keydown", function(e) {
                 if (e.keyCode === 13) {
                     openLightbox(e)
                     imgLightbox.src = this.src;
                     pImgName.textContent = arrayTitleFilterByPopularity[i];
+                    imgLightbox.setAttribute("alt", arrayTitleFilterByPopularity[i])
                 }
                 })
                 videoMedias.onclick = function(e) {
                 openLightboxVideo(e);
                 videoLightbox.src = this.src;
                 pImgName.textContent = arrayTitleFilterByPopularity[i];
+                imgLightbox.setAttribute("alt", arrayTitleFilterByPopularity[i])
                 }
                 videoMedias.addEventListener("keydown", function(e) {
                 if (e.keyCode === 13) {
                     openLightboxVideo(e)
                     videoLightbox.src = this.src;
                     pImgName.textContent = arrayTitleFilterByPopularity[i];
+                    imgLightbox.setAttribute("alt", arrayTitleFilterByPopularity[i])
                 }
                 })
             }
@@ -876,7 +909,6 @@
             figure.appendChild(img);
             figure.appendChild(videoMedias)
             figure.appendChild(figcaption)
-
             } 
             
         })
