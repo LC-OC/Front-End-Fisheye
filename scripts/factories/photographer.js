@@ -79,6 +79,8 @@ function photographerFactory(data) {
             let body = document.getElementById("body");
             body.style.overflow = "hidden";
             document.getElementById("close-modal").focus();
+            modal.style.backgroundColor = "red";
+            
         })
         document.getElementById("close-modal").addEventListener("click", function() {
             buttonContact.focus();

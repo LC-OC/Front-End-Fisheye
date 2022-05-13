@@ -252,9 +252,11 @@
 
             // DOM Select
 
-            let selectTitle = document.getElementById('filter_title');
-            let selectPopular = document.getElementById('filter_popular');
-            let selectDate = document.getElementById('filter_date');
+            let selectTitle = document.getElementById('title_filter');
+            selectTitle.style.cursor = "pointer";
+            let selectPopular = document.getElementById('popularity_filter');
+            let selectDate = document.getElementById('date_filter');
+            selectDate.style.cursor = "pointer";
 
             // DOM Lightbox
             const lightbox = document.getElementById("lightboxDiv");
@@ -658,7 +660,6 @@
             heartIcon.innerHTML = '<i class="fas fa-heart"></i>';
             heartIcon.style.cursor = 'pointer';
             heartIcon.style.color = '#525252';
-            heartIcon.ariaLabel = "Liker";
             heartIcon.tabIndex = 0; 
             function heartLike() {
                 heartIcon.style.color = "#901C1C";
@@ -929,6 +930,5 @@
             figure.appendChild(videoMedias)
             figure.appendChild(figcaption)
             } 
-            
         })
         .catch(console.error);

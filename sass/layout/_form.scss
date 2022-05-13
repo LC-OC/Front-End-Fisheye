@@ -1,14 +1,15 @@
 #contact_modal {
     display: none;
+    background-color: #312E2E;
 }
 
 .modal {
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-    position: fixed;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
     padding-top: 1rem;
     top: 0;
     bottom: 0;
+    position: fixed;
     overflow: auto;
     border-radius: 5px;
     background-color: #DB8876;
@@ -18,14 +19,15 @@
     align-items: center;
     justify-content: space-between;
     padding: 35px;
-    //margin-top: -30rem;
     margin-left: 25%;
-    //position: fixed;
 }
 
 .modal header {
+    display: flex;
+    align-items:flex-start;
     justify-content: space-between;
     width: 100%;
+    margin-bottom: 1rem;
 }
 
 .modal header img {
