@@ -9,7 +9,6 @@
     const divMedia = document.querySelector('.mediaDiv');
     const lightboxContent = document.getElementById('lightboxContent');
     
-
     // Récupération data 
     let photographerRequest = new Request("./data/photographers.json");
     fetch(photographerRequest)
@@ -24,7 +23,6 @@
             }
         })
         .catch(console.error);
-
 
     // Récupération data media
     fetch(photographerRequest)
@@ -92,7 +90,6 @@
             let arrayAllMedia = [];
             let arrayResultImgURL = [];
 
-           
             // Retirer élements indéfinis, ajouter url à élements MP4 (vidéos)
             const filterArrayVideoURL = arrayVideoURL.filter(e => {
                 return e !== undefined
@@ -206,7 +203,6 @@
                 } 
             }
 
-        
             // Affichage des éléments par date
 
             let foundDate = getBy(idURL);
@@ -438,11 +434,9 @@
                      }
                  })
             }
-           
             selectTitle.addEventListener("click", function(e) {
                 lightboxTitleFilter(e);
             })
-
             selectTitle.addEventListener("keydown", function(e) {
                 if (e.keyCode === 13) {
                     lightboxTitleFilter(e)
@@ -626,7 +620,6 @@
                 }
            })
 
-       
             // Affichage Galerie
 
         for (let i = 0; i < found.length; i++) {
@@ -666,18 +659,25 @@
             heartIcon.style.cursor = 'pointer';
             heartIcon.style.color = '#525252';
             heartIcon.ariaLabel = "Liker";
-            heartIcon.addEventListener("click", function() {
-                this.style.color = "#901C1C";
+            heartIcon.tabIndex = 0; 
+            function heartLike() {
+                heartIcon.style.color = "#901C1C";
                 let numberLikes = arrayLike[i];
                 numberLikes += 1;
                  likesFigcaption.innerHTML = numberLikes + '<i class="fas fa-heart"></i>';
                 let pAllLikes = document.querySelector('.number_likes');
-                let contentAllLikes = pAllLikes.innerHTML
-                console.log(pAllLikes)
-                console.log(contentAllLikes)
+                let contentAllLikes = pAllLikes.innerHTML;
                 contentAllLikes++;
                 pAllLikes.innerHTML = contentAllLikes;
+            }
+            heartIcon.addEventListener("click", function(e) {
+               heartLike(e)
                 });
+            heartIcon.addEventListener("keydown", function(e) {
+                if (e.keyCode === 13) {
+                    heartLike(e)
+                    }
+                })
             function openLightbox() {
                 lightbox.style.display = "block";
                 videoLightbox.style.display = "none";
@@ -721,6 +721,13 @@
                 const arrayLikesFilter = arrayLike.sort(function(a,b){return b-a});
                 likesFigcaption.innerHTML = arrayLikesFilter[i];
                 likesFigcaption.appendChild(heartIcon);
+                heartIcon.addEventListener("keydown", function(e) {
+                    if (e.keyCode === 13) {
+                        let numberLikesByPopular = arrayLikesFilter[i];
+                        numberLikesByPopular += 1;
+                        likesFigcaption.innerHTML = numberLikesByPopular + '<i class="fas fa-heart"></i>';
+                    }
+                })
                 titleFigcaption.innerText = arrayTitleFilterByPopularity[i];
                 let mediaTypePopular = arrayAllMediaFilterPopularity[i];
                 let strPopular = mediaTypePopular;
@@ -785,6 +792,11 @@
                     numberLikesByDate += 1;
                     likesFigcaption.innerHTML = numberLikesByDate + '<i class="fas fa-heart"></i>';
                     });
+                heartIcon.addEventListener("keydown", function(e) {
+                    let numberLikesByDate = arrayFilterLikesByDate[i];
+                    numberLikesByDate += 1;
+                    likesFigcaption.innerHTML = numberLikesByDate + '<i class="fas fa-heart"></i>';
+                    })
                 titleFigcaption.innerText = arrayFilterTitleByDate[i];
                 let mediaTypeDate = arrayAllMediaFilterDate[i];
                 let strDate = mediaTypeDate;
@@ -843,6 +855,13 @@
                     numberLikesByTitle += 1;
                     likesFigcaption.innerHTML = numberLikesByTitle + '<i class="fas fa-heart"></i>';
                     });
+                heartIcon.addEventListener("keydown", function(e) {
+                    if (e.keyCode === 13) {
+                        let numberLikesByTitle = arrayFilterLikesByTitle[i];
+                        numberLikesByTitle += 1;
+                        likesFigcaption.innerHTML = numberLikesByTitle + '<i class="fas fa-heart"></i>';
+                        }
+                    })
                 titleFigcaption.innerText = arrayFilterTitle[i];
                 let mediaTypeTitle = arrayAllMediaFilterTitle[i];
                 let strTitle = mediaTypeTitle;
