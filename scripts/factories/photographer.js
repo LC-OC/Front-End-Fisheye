@@ -14,7 +14,7 @@ function photographerFactory(data) {
         function linkPhotographerPage() {
             urlPhotographer.searchParams.set('id', id);
             window.location = urlPhotographer;
-        };
+        }
         img.onclick = function(e) {
             linkPhotographerPage(e);
         };
@@ -34,7 +34,7 @@ function photographerFactory(data) {
         };
         h2.style.cursor = "pointer";
         img.setAttribute("alt", name);
-        pCityCountry = document.createElement('p');
+        let pCityCountry = document.createElement('p');
         pCityCountry.textContent = city + ', ' + country; 
         pCityCountry.classList.add("photographe_city");
         const pTagline = document.createElement('p');
@@ -70,16 +70,16 @@ function photographerFactory(data) {
         pCityCountryPhotograph.textContent = city + ', ' + country; 
         const pTaglinePhotograph = document.createElement('p');
         pTaglinePhotograph.textContent = tagline;
+        pTaglinePhotograph.classList.add("tagline");
         const buttonContact = document.createElement('button');
         buttonContact.textContent = "Contactez-moi";
         buttonContact.classList.add("contact_button");
         buttonContact.addEventListener("click", function() {
             const modal = document.getElementById("contact_modal");
-	        modal.style.display = "block";
+            modal.style.display = "block";
             let body = document.getElementById("body");
             body.style.overflow = "hidden";
             document.getElementById("close-modal").focus();
-            modal.style.backgroundColor = "red";
             
         })
         document.getElementById("close-modal").addEventListener("click", function() {

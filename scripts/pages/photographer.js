@@ -7,7 +7,6 @@
     // Elements DOM
     const headerPhotographer = document.querySelector('.photograph-header');
     const divMedia = document.querySelector('.mediaDiv');
-    const lightboxContent = document.getElementById('lightboxContent');
     
     // Récupération data 
     let photographerRequest = new Request("./data/photographers.json");
@@ -661,7 +660,8 @@
             heartIcon.style.cursor = 'pointer';
             heartIcon.style.color = '#525252';
             heartIcon.tabIndex = 0; 
-            function heartLike() {
+            let heartLikes;
+            heartLikes = function heartLike() {
                 heartIcon.style.color = "#901C1C";
                 let numberLikes = arrayLike[i];
                 numberLikes += 1;
@@ -672,53 +672,53 @@
                 pAllLikes.innerHTML = contentAllLikes;
             }
             heartIcon.addEventListener("click", function(e) {
-               heartLike(e)
+               heartLikes(e)
                 });
             heartIcon.addEventListener("keydown", function(e) {
                 if (e.keyCode === 13) {
-                    heartLike(e)
+                    heartLikes(e)
                     }
                 })
-            function openLightbox() {
+            let openLightboxFunction = function openLightbox() {
                 lightbox.style.display = "block";
                 videoLightbox.style.display = "none";
                 imgLightbox.style.display = "block";
                 imgLightbox.setAttribute("alt", arrayTitleImg[i]);
                  }
             img.onclick = function(e) {
-                openLightbox(e);
+                openLightboxFunction(e);
                 imgLightbox.src = this.src;
                 pImgName.textContent = arrayTitleImg[i];
             }
             img.addEventListener("keydown", function(e) {
                 if (e.keyCode === 13) {
-                    openLightbox(e)
+                    openLightboxFunction(e)
                     imgLightbox.src = this.src;
                     pImgName.textContent = arrayTitleImg[i];
                 }
             })
             img.style.cursor = "pointer";
             img.tabIndex = 0;
-            function openLightboxVideo() {
+            let openLightboxVideoFunction = function openLightboxVideo() {
                 imgLightbox.style.display = "none";
                 videoLightbox.style.display = "block";
                 lightbox.style.display = "block";
             }
             videoMedias.onclick = function() {
-                openLightboxVideo();
+                openLightboxVideoFunction();
                 videoLightbox.src = this.src;
                 pImgName.textContent = arrayTitleImg[i];
             }
             videoMedias.addEventListener("keydown", function(e) {
                 if (e.keyCode === 13) {
-                    openLightboxVideo(e)
+                    openLightboxVideoFunction(e)
                     videoLightbox.src = this.src;
                     pImgName.textContent = arrayTitleImg[i];
                 }
             })
             videoMedias.tabIndex = 0;
             videoMedias.setAttribute("alt", arrayTitleImg[i])
-            function filterPopular() {
+            let filterPopularFunction = function filterPopular() {
                 const arrayLikesFilter = arrayLike.sort(function(a,b){return b-a});
                 likesFigcaption.innerHTML = arrayLikesFilter[i];
                 likesFigcaption.appendChild(heartIcon);
@@ -749,28 +749,28 @@
                     videoMedias.setAttribute("alt", arrayTitleFilterByPopularity[i])
                 }
                 img.onclick = function(e) { 
-                    openLightbox(e);
+                    openLightboxFunction(e);
                     imgLightbox.src = this.src;
                     pImgName.textContent = arrayTitleFilterByPopularity[i];
                     imgLightbox.setAttribute("alt", arrayTitleFilterByPopularity[i])
                     }
                 img.addEventListener("keydown", function(e) {
                 if (e.keyCode === 13) {
-                    openLightbox(e)
+                    openLightboxFunction(e)
                     imgLightbox.src = this.src;
                     pImgName.textContent = arrayTitleFilterByPopularity[i];
                     imgLightbox.setAttribute("alt", arrayTitleFilterByPopularity[i])
                 }
                 })
                 videoMedias.onclick = function(e) {
-                openLightboxVideo(e);
+                openLightboxVideoFunction(e);
                 videoLightbox.src = this.src;
                 pImgName.textContent = arrayTitleFilterByPopularity[i];
                 imgLightbox.setAttribute("alt", arrayTitleFilterByPopularity[i])
                 }
                 videoMedias.addEventListener("keydown", function(e) {
                 if (e.keyCode === 13) {
-                    openLightboxVideo(e)
+                    openLightboxVideoFunction(e)
                     videoLightbox.src = this.src;
                     pImgName.textContent = arrayTitleFilterByPopularity[i];
                     imgLightbox.setAttribute("alt", arrayTitleFilterByPopularity[i])
@@ -778,14 +778,14 @@
                 })
             }
             selectPopular.addEventListener("click", function(e) {
-                filterPopular(e)
+                filterPopularFunction(e)
             })  
             selectPopular.addEventListener("keydown", function(e) {
                 if (e.keyCode === 13) {
-                    filterPopular(e);
+                    filterPopularFunction(e);
                 }
             })
-            function filterDate() {
+            let filterDateFunction = function filterDate() {
                 likesFigcaption.innerText = arrayFilterLikesByDate[i];
                 likesFigcaption.appendChild(heartIcon);
                 heartIcon.addEventListener("click", function() {
@@ -793,7 +793,7 @@
                     numberLikesByDate += 1;
                     likesFigcaption.innerHTML = numberLikesByDate + '<i class="fas fa-heart"></i>';
                     });
-                heartIcon.addEventListener("keydown", function(e) {
+                heartIcon.addEventListener("keydown", function() {
                     let numberLikesByDate = arrayFilterLikesByDate[i];
                     numberLikesByDate += 1;
                     likesFigcaption.innerHTML = numberLikesByDate + '<i class="fas fa-heart"></i>';
@@ -816,39 +816,39 @@
                     videoMedias.classList.add('videoFigure');
                 }
                 img.onclick = function(e) { 
-                   openLightbox(e);
+                   openLightboxFunction(e);
                    imgLightbox.src = this.src;
                    pImgName.textContent = arrayFilterTitleByDate[i];
                 }
                 img.addEventListener("keydown", function(e) {
                 if (e.keyCode === 13) {
-                    openLightbox(e)
+                    openLightboxFunction(e)
                     imgLightbox.src = this.src;
                     pImgName.textContent = arrayFilterTitleByDate[i];
                 }
                 })
                 videoMedias.onclick = function(e) {
-                openLightboxVideo(e);
+                openLightboxVideoFunction(e);
                 videoLightbox.src = this.src;
                 pImgName.textContent = arrayFilterTitleByDate[i];
                 }
                 videoMedias.addEventListener("keydown", function(e) {
                 if (e.keyCode === 13) {
-                    openLightboxVideo(e)
+                    openLightboxVideoFunction(e)
                     videoLightbox.src = this.src;
                     pImgName.textContent = arrayFilterTitleByDate[i];
                 }
                 })
             }
             selectDate.addEventListener("click", function(e) {
-                filterDate(e);
+                filterDateFunction(e);
             })
             selectDate.addEventListener("keydown", function(e) {
                 if (e.keyCode === 13) {
-                    filterDate(e);
+                    filterDateFunction(e);
                 }
             })
-            function filterTitle() {
+            let filterTitleFunction = function filterTitle() {
                 likesFigcaption.innerText = arrayFilterLikesByTitle[i];
                 likesFigcaption.appendChild(heartIcon);
                 heartIcon.addEventListener("click", function() {
@@ -888,36 +888,36 @@
                     pImgName.textContent = arrayFilterTitle[i];
                     }
                 img.onclick = function(e) { 
-                   openLightbox(e);
+                   openLightboxFunction(e);
                    imgLightbox.src = this.src;
                    pImgName.textContent = arrayFilterTitle[i];
                 }
                 img.addEventListener("keydown", function(e) {
                 if (e.keyCode === 13) {
-                    openLightbox(e)
+                    openLightboxFunction(e)
                     imgLightbox.src = this.src;
                     pImgName.textContent = arrayFilterTitle[i];
                 }
                 })
                 videoMedias.onclick = function(e) {
-                openLightboxVideo(e);
+                openLightboxVideoFunction(e);
                 videoLightbox.src = this.src;
                 pImgName.textContent = arrayFilterTitle[i];
                 }
                 videoMedias.addEventListener("keydown", function(e) {
                 if (e.keyCode === 13) {
-                    openLightboxVideo(e)
+                    openLightboxVideoFunction(e)
                     videoLightbox.src = this.src;
                     pImgName.textContent = arrayFilterTitle[i];
                 }
                 })
             }
             selectTitle.addEventListener("click", function(e) {
-                filterTitle(e); 
+                filterTitleFunction(e); 
             })
             selectTitle.addEventListener("keydown", function(e) {
                 if (e.keyCode === 13) {
-                    filterTitle(e);
+                    filterTitleFunction(e);
                 }
             })
             videoMedias.style.cursor = "pointer";

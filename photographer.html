@@ -12,7 +12,7 @@
     <title>Fisheye - photographe </title>
   </head>
   <body id="body">
-    <header>
+    <header id="photograph-header">
       <a href="index.html" tabindex="0">
         <img src="assets/images/logo.png" class="logo" alt="Fisheye Home Page"/>
       </a>
@@ -30,7 +30,7 @@
     </div>
     <div id="contact_modal">
 			<div class="modal" aria-hidden="true" role="dialog">
-				<header>
+				<header id="header_modal">
           <h2 id="modal_title">Contactez-moi <span id="name_photographer"></span></h2>          
           <img src="assets/icons/close.svg"  onclick="closeModal()" id="close-modal" aria-label="fermer-formulaire" alt="close form" />
         </header>
@@ -73,6 +73,7 @@
     </div>
   </div>
      <div id="lightboxDiv" class="lightboxDiv">
+       <div id="flexLightbox">
       <i class="fas fa-times" onclick="closeLightbox()"></i>
       <div id="lightboxContent">
         <i class="fa fa-angle-left"></i> 
@@ -81,6 +82,7 @@
         <i class="fa fa-angle-right"></i>
       </div>
       <p id="imgNameLightbox"></p>
+      </div>
     </div>
     <div class="mediaDiv"></div>
     <script src="scripts/factories/Photographer.js"></script>

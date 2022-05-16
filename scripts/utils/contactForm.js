@@ -1,6 +1,5 @@
 // DOM Form
 
-const pValidation = document.querySelectorAll('.validation');
 const inputFirstName = document.getElementById("firstName");
 const inputLastName = document.getElementById("lastName");
 const inputEmail = document.getElementById("email");
@@ -10,6 +9,7 @@ const pValidationLastName = document.getElementById('validationLastName');
 const pValidationEmail = document.getElementById('validationEmail');
 const pValidationMessage = document.getElementById('validationMessage');
 const modal = document.getElementById("contact_modal");
+const body = document.getElementById("body");
 
 function closeModal() {
     modal.style.display = "none";

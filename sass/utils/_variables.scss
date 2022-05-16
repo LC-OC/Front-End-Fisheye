@@ -7,8 +7,10 @@ $secondary-grey: #525252;
 
 // Media Size
 
-$desktop: "screen and (min-width: 1025px)";
-$tablet: "screen and (min-width: 768px)";
-$tablet_rotate: "screen and (min-width: 992px) and (max-width: 1024px)";
+$desktop: "screen and (min-width: 992px)";
+//$smaller-desktop: "screen and (min-width: 992px) and (max-width: 1023px)";
+$tablet: "screen and (min-width: 768px) and (max-width: 991px)";
+$tablet_rotate: "screen and (min-width: 992px)";
 //$mobile_rotate: "screen and (min-width: 640px) and (max-width: 767px)";
 $mobile: "screen and (min-width: 414px) and (max-width: 736px)";
+$smaller-mobile: "screen and (max-width: 413px)";

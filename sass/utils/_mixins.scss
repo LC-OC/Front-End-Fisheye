@@ -1,11 +1,21 @@
 @mixin photographerProfilPicture {
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 3rem;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
-}
+    @media #{$desktop} {
+        height: 700px;
+        width: 800px;
+        margin-bottom: 3rem;
+}}
 
 @mixin buttonbContact {
+    @media #{$mobile} {
+        height: 45px;
+        font-size: 15px;
+        position: fixed;
+        bottom: 0;
+        margin-bottom: 1.4rem;
+    }
     font-size: 20px;
     font-weight: bold;
     color: white;
@@ -19,15 +29,24 @@
 }
 
 @mixin imgvideo {
-    height: 700px;
-    width: 800px;
+    height: 600px;
+    width: 300px;
     object-fit: cover;
     border-radius: 5px;
+    margin: 1rem;
+    @media #{$desktop} {
+    height: 300px;
+    width: 800px;
+    }
 }
 
 @mixin figuresAllMedias {
-    height: 400px;
-    width: 450px;
+    height: 300px;
+    width: 350px;
     object-fit: cover;
     border-radius: 1%;
+    @media #{$desktop} {
+        height: 400px;
+        width: 400px;
+    }
 }

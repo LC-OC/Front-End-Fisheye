@@ -2,12 +2,20 @@
     color: $primary-red;
     font-size: 2rem;
     cursor: pointer;
+    margin-right: -22rem;
+    @media #{$desktop} {
+        margin-left: 85rem;
+        margin-bottom: -15rem;
+    }
 }
 
 .fa-angle-left, .fa-angle-right {
     color: $primary-red;
-    font-size: 3rem;
-    margin: 2rem;
+    font-size: 2rem;
+    @media #{$desktop} {
+        font-size: 3rem;
+        margin: 2rem;
+    }
 }
 
 

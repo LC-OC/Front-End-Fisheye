@@ -20,25 +20,43 @@
     justify-content: space-between;
     padding: 35px;
     margin-left: 25%;
+    @media #{$mobile} {
+         z-index: 1;
+         width: 85%;
+         margin: auto;
+         justify-content: space-evenly;
+     }
 }
 
-.modal header {
+#header_modal {
     display: flex;
-    align-items:flex-start;
+    align-items: flex-start;
     justify-content: space-between;
-    width: 100%;
-    margin-bottom: 1rem;
+    @media #{$desktop} {
+        justify-content: space-around;
+     }
 }
 
-.modal header img {
+#header_modal img {
     cursor: pointer;
+    margin-left: 3rem;
+    font-size: 0.5rem;
+    
 }
 
 .modal header h2 {
-    font-size: 64px;
-    font-weight: normal;
-    display: flex;
-    flex-direction: column;
+    //font-size: 64px;
+    @media #{$mobile} {
+       font-size: 2rem;
+    }
+    @media #{$desktop} {
+        font-size: 4rem;
+        font-weight: normal;
+        display: flex;
+        flex-direction: column;
+        margin-right: 12rem;
+        margin-bottom: 3rem;
+    }
 }
 
 form {
@@ -49,6 +67,9 @@ form {
     label {
         color: #312E2E;
         font-size: 36px;
+        @media #{$mobile} {
+            font-size: 1.5rem;
+         }
     }
     div {
         display: flex;
@@ -67,6 +88,9 @@ form {
         border-radius: 5px;
         font-size: 1.2rem;
         padding-left: 0.5rem;
+        @media #{$mobile} {
+            font-size: 1rem;
+         }
     }
     p {
         margin-top: 1rem;

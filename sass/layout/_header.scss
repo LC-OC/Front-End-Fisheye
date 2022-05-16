@@ -1,53 +1,72 @@
 //* Header Photograph
 
-.photograph-header {
-    background-color: #FAFAFA;
-    height: 300px;
-    margin: 0 100px;
+#photograph-header {
+    .logo {
+        height: 3rem; 
+        margin-top: 1rem;
+        margin-left: 1rem;
+    }
+    @media #{$desktop} {
+      margin: 2rem 100px;  
+    }
+    
 }
 
 //* Header index
 
-header {
-    @media #{$mobile} {
-     display: flex;
+#header_index {
+    display: flex;
      flex-direction: column;
      justify-content: center;
      align-items: center;
-     //height: 50px;
      margin: 3rem 0;   
+    @media #{$smaller-mobile} {
+     margin: 2rem 0;
     }
     
     @media #{$desktop} {
         margin-top: 1rem;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-right: 110px;
     }
+    @media #{$tablet} {
+        flex-direction: row;
+        justify-content: space-evenly;
+    }
+    h1 {
+        color: #901C1C;
+        font-size: 2.5rem; 
+        @media #{$smaller-mobile} {
+            font-size: 1.5rem;
+        }
+      @media #{$desktop} {
+          //margin-right: 100px;
+          font-size: 36px;
+      }
+      @media #{$tablet} {
+          font-size: 2rem;
+      }
+  }
+  
+  .logo {
+      @media #{$mobile} {
+        height: 5rem;  
+      }
+      @media #{$smaller-mobile} {
+          height: 4rem;
+      }
+      @media #{$desktop} {
+          height: 60px;
+          margin-left: 110px;
+      }
+      @media #{$tablet} {
+          height: 4.5rem;
+      }
+      @media #{$tablet_rotate} {
+          height: 4rem;
+      }
+  }
+
 }
 
-h1 {
-    @media #{$mobile} {
-      color: #901C1C;
-      font-size: 2.5rem;  
-    }
-    
-    @media #{$desktop} {
-        //margin-right: 100px;
-        font-size: 36px;
-    }
-}
-
-.logo {
-    @media #{$mobile} {
-      height: 5rem;  
-    }
-    
-    @media #{$desktop} {
-        height: 60px;
-        margin-left: 110px;
-    }
-    /*@media #{$tablet} {
-        height: 5rem;
-    }
-    @media #{$tablet_rotate} {
-        height: 4rem;
-    }*/
-}

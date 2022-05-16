@@ -2,22 +2,24 @@
 /* Dropdown Button */
 
 .dropdown_part {
+  
   display: flex;
     flex-direction: row;
     align-items: center;
+    @media #{$mobile} {
+    margin-bottom: 1rem;
+  }
     color: white;
     #filter_by {
         color: black;
         font-weight: bold;
         font-size: 1.1rem;
         margin-right: 2rem;
+        @media #{$mobile} {
+          
+        }
     }
 }
-
-#filter_by {
-  display: flex;
-  
-  }
 .fa-angle-down {
     margin-left: 2rem;
 }
@@ -39,9 +41,13 @@
 
 .dropdown {
   position: relative;
-  display: inline-block;
-  margin: 1rem 100px;
-  border-radius: 3px;
+  margin-left: 16%;
+  @media #{$desktop} {
+    margin: 1rem 100px;
+    border-radius: 3px;
+    display: inline-block;
+  }
+  
 }
 
 .dropdown-content {

@@ -1,6 +1,6 @@
 .photograph_profile_picture {
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: 150px;
     @include photographerProfilPicture;
     @media #{$desktop} {
         height: 250px;
@@ -9,37 +9,69 @@
 }
 
 .photograph-header {
-    padding: 2rem;
+    padding: 1rem;
     .infos_header {
         display: flex;
         flex-direction: row;
         align-items: center;
-        justify-content: space-between;
+        justify-content: center;
+        justify-content: space-around;
+        background-color: #fafafa;
+        @media #{$desktop} {
+           flex-direction: row;
+           justify-content: space-around; 
+        }
         h1 {
-            font-size: 4rem;
+            font-size: 1.5rem;
             color: $primary-orange;
+            @media #{$desktop} {
+                font-size: 4rem;
+             }
         }
         p {
-            font-size: 2rem;
+            font-size: 1.5rem;
             color: $primary-red;
+            @media #{$desktop} {
+                font-size: 2rem;
+             }
         }
+        .tagline {
+            font-size: 1rem;
+            width: 90%;
+            color: $secondary-grey;
+            @media #{$desktop} {
+            font-size: 1.5rem;
+            width: 100%;
+         }
+        }
+
         @media #{$desktop} {
             padding: 2rem;
         }
     }
 }
 
-.mediaDiv {
-    margin:  0 100px;
+.mediaDiv { 
     display: flex;
-    flex-wrap: wrap;
-    gap: 30px 157px;
+    flex-direction: column;
+    align-items: center;
     @media #{$desktop} {
-        
+    flex-direction: row;
+    margin-left: 100px;
+    flex-wrap: wrap;
+    gap: 30px 50px;
+    
+    
     }
     .figureMedia {
+        height: 300px;
+        width: 350px;
+        margin-bottom: 3rem;
+        @media #{$desktop} {
         height: 450px;
-        width: 450px;
+        width: 400px;  
+        }
+        
     }
     .imgFigure {
     @include figuresAllMedias;
@@ -49,11 +81,16 @@
     }
     .figcaption-media {
         display: flex;
-        flex-direction: row;justify-content: space-between;
+        flex-direction: row;
+        justify-content: space-between;
         padding-top: 0.5rem;
+        @media #{$mobile} {
+            justify-content: space-around;
+        }
+
     }
     #titleFigcaption, #likesFigcaption {
-        font-size: 1.4rem;
+        font-size: 1.2rem;
         color: $primary-red;
     }
 }
@@ -61,12 +98,19 @@
 body {
     position: relative;
     .likes_price_div {
+        @media #{$mobile} {
+            position: unset;
+            font-size: 1.2rem;
+            height: 4rem;
+            width: 20rem;
+            margin: 1rem auto;
+        }
     position: fixed;
     bottom:0;
     right:0;
     background-color: $secondary-orange;
-    height: 6rem;
-    width: 30rem;
+    height: 5rem;
+    width: 24rem;
     //margin-left: 72%;
     display: flex;
     flex-direction: row;
