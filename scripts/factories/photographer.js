@@ -55,8 +55,8 @@ function photographerFactory(data) {
         const divPriceLike = document.querySelector('.likes_price_div');
         const div = document.createElement('div');
         div.classList.add("infos_header");
-        const divTest = document.createElement('div');
-        divTest.classList.add("text_infos_header");
+        const divHeader = document.createElement('div');
+        divHeader.classList.add("text_infos_header");
         const imgProfil = document.createElement( 'img' );
         imgProfil.setAttribute("src", picture);
         imgProfil.classList.add("photograph_profile_picture");
@@ -90,10 +90,10 @@ function photographerFactory(data) {
         priceByDay.textContent = price + '€/jour';
         divPriceLike.appendChild(priceByDay);
         priceByDay.classList.add('price-by-day');
-        divTest.appendChild(h1Name);
-        divTest.appendChild(pCityCountryPhotograph);
-        divTest.appendChild(pTaglinePhotograph);
-        div.appendChild(divTest);
+        divHeader.appendChild(h1Name);
+        divHeader.appendChild(pCityCountryPhotograph);
+        divHeader.appendChild(pTaglinePhotograph);
+        div.appendChild(divHeader);
         div.appendChild(buttonContact)
         div.appendChild(imgProfil);
         

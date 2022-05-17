@@ -12,23 +12,41 @@
     <title>Fisheye - photographe </title>
   </head>
   <body id="body">
-    <header id="photograph-header">
-      <a href="index.html" tabindex="0">
-        <img src="assets/images/logo.png" class="logo" alt="Fisheye Home Page"/>
-      </a>
+    <header id="photograph-header" >
+      <div id="logo_header" >
+        <a href="index.html" tabindex="0">
+          <img src="assets/images/logo.png" class="logo" alt="Fisheye Home Page"/>
+        </a>
+      </div>
     </header>
     <main id="main" aria-hidden="false">
       <div class="photograph-header">
-         <!--<button class="contact_button" onclick="displayModal()">Contactez-moi</button> -->
       </div>
     </main>
-    <div class="likes_price_div">
-      <div class="all_likes">
-        <p class="number_likes"></p>
-        <i  class="fas fa-heart"></i>
+    <div id="design_tablet">
+      <div class="likes_price_div">
+        <div class="all_likes">
+          <p class="number_likes"></p>
+          <i  class="fas fa-heart"></i>
+        </div>
+      </div>
+      <div class="dropdown">
+        <div class="dropdown_part">
+          <p id="filter_by">Trier par</p>
+          <div id="flex_content">
+          <button onclick="dropdownSelect()" class="dropbtn" tabindex="0">
+          <span id="popularity_filter" tabindex="0">Popularité <span id="arrow_icon"><i class="fas fa-angle-down"></i></span></span>
+          </button>
+        
+        <div id="dropdown-content" class="dropdown-content">
+        <p id="date_filter" tabindex="0">Date</p>
+        <p id="title_filter" tabindex="0">Titre</p>
+        </div>
+      </div>
+      </div>
       </div>
     </div>
-    <div id="contact_modal">
+  <div id="contact_modal">
 			<div class="modal" aria-hidden="true" role="dialog">
 				<header id="header_modal">
           <h2 id="modal_title">Contactez-moi <span id="name_photographer"></span></h2>          
@@ -57,29 +75,14 @@
 				</form>
 			</div>
 		</div>
-    <div class="dropdown">
-      <div class="dropdown_part">
-        <p id="filter_by">Trier par</p>
-        <div id="flex_content">
-        <button onclick="dropdownSelect()" class="dropbtn" tabindex="0">
-        <span id="popularity_filter" tabindex="0">Popularité <span id="arrow_icon"><i class="fas fa-angle-down"></i></span></span>
-        </button>
-      
-      <div id="dropdown-content" class="dropdown-content">
-      <p id="date_filter" tabindex="0">Date</p>
-      <p id="title_filter" tabindex="0">Titre</p>
-      </div>
-    </div>
-    </div>
-  </div>
      <div id="lightboxDiv" class="lightboxDiv">
        <div id="flexLightbox">
       <i class="fas fa-times" onclick="closeLightbox()"></i>
       <div id="lightboxContent">
-        <i class="fa fa-angle-left"></i> 
+        <i class="fa fa-angle-left" aria-label="Passez à l'image précédente"></i> 
         <img id="imgBigger">
         <video id="videoBigger" src="" controls></video>
-        <i class="fa fa-angle-right"></i>
+        <i class="fa fa-angle-right" aria-label="Passez à l'image suivante"></i>
       </div>
       <p id="imgNameLightbox"></p>
       </div>

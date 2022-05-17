@@ -134,21 +134,21 @@
             })
 
             let arrayAllMediaFilterPopularity = [];
-            let arrayTestAgainFilterPopularity = [];
+            let arrayFilterPopularity = [];
 
             for (let i = 0; i < filtredArrayVideoFilterByPopularity.length; i++) {
                 let getVideoURLFiltredPopularity = filterArrayVideoURL[i];
                 let resuult = arrayImgFilterByPopularity.map(e => e !== undefined ? e : getVideoURLFiltredPopularity);
-                arrayTestAgainFilterPopularity.push(resuult)
+                arrayFilterPopularity.push(resuult)
                 
             }
 
-            for (let i = 0; i < arrayTestAgainFilterPopularity.length; i++) {
-                let testuuurl = arrayTestAgainFilterPopularity[i];
-                console.log(testuuurl)
-                for (let i = 0; i < testuuurl.length; i++) {
-                    let testURLAgain = testuuurl[i];
-                    const defineURLMedia = `assets/images/${testURLAgain}`;
+            for (let i = 0; i < arrayFilterPopularity.length; i++) {
+                let urlPopularity = arrayFilterPopularity[i];
+                console.log(urlPopularity)
+                for (let i = 0; i < urlPopularity.length; i++) {
+                    let arrayURL = urlPopularity[i];
+                    const defineURLMedia = `assets/images/${arrayURL}`;
                     arrayAllMediaFilterPopularity.push(defineURLMedia)
                 } 
             }
@@ -272,13 +272,14 @@
              let imgContent = document.getElementById('imgBigger');
              let titleImgLightbox = document.getElementById('imgNameLightbox');
              let videoContent = document.getElementById('videoBigger');
- 
+
              let currentPic = 0;
              let currentPicTitle = 0;
              let currentPicDate = 0;
              let currentPicPopular = 0;
 
-             // Lightbox sans filtre
+
+             //Lightbox sans filtre
 
              function getLightboxPrevious() {
                     if (currentPic <= 0) {
@@ -679,6 +680,7 @@
                     heartLikes(e)
                     }
                 })
+                
             let openLightboxFunction = function openLightbox() {
                 lightbox.style.display = "block";
                 videoLightbox.style.display = "none";
@@ -686,10 +688,12 @@
                 imgLightbox.setAttribute("alt", arrayTitleImg[i]);
                  }
             img.onclick = function(e) {
-                openLightboxFunction(e);
                 imgLightbox.src = this.src;
+                console.log(imgLightbox.src)
+                openLightboxFunction(e);
                 pImgName.textContent = arrayTitleImg[i];
             }
+
             img.addEventListener("keydown", function(e) {
                 if (e.keyCode === 13) {
                     openLightboxFunction(e)
@@ -793,10 +797,12 @@
                     numberLikesByDate += 1;
                     likesFigcaption.innerHTML = numberLikesByDate + '<i class="fas fa-heart"></i>';
                     });
-                heartIcon.addEventListener("keydown", function() {
-                    let numberLikesByDate = arrayFilterLikesByDate[i];
-                    numberLikesByDate += 1;
-                    likesFigcaption.innerHTML = numberLikesByDate + '<i class="fas fa-heart"></i>';
+                heartIcon.addEventListener("keydown", function(e) {
+                    if (e.keyCode === 13) {
+                        let numberLikesByPopular = arrayFilterLikesByDate[i];
+                        numberLikesByPopular += 1;
+                        likesFigcaption.innerHTML = numberLikesByPopular + '<i class="fas fa-heart"></i>';
+                    }
                     })
                 titleFigcaption.innerText = arrayFilterTitleByDate[i];
                 let mediaTypeDate = arrayAllMediaFilterDate[i];
@@ -929,6 +935,6 @@
             figure.appendChild(img);
             figure.appendChild(videoMedias)
             figure.appendChild(figcaption)
-            } 
+            }
         })
         .catch(console.error);
