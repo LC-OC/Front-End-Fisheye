@@ -57,6 +57,9 @@
         margin-right: 12rem;
         margin-bottom: 3rem;
     }
+    @media #{$tablet} {
+        font-size: 3rem;
+    }
 }
 
 form {
@@ -70,6 +73,9 @@ form {
         @media #{$mobile} {
             font-size: 1.5rem;
          }
+         @media #{$tablet} {
+            font-size: 2rem;
+         } 
     }
     div {
         display: flex;

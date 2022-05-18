@@ -7,6 +7,11 @@
         margin-left: 85rem;
         margin-bottom: -15rem;
     }
+    @media #{$tablet} {
+        margin-left: 45rem;
+        font-size: 3rem;
+    }
+    
 }
 
 .fa-angle-left, .fa-angle-right {

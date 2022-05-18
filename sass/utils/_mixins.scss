@@ -38,6 +38,7 @@
     height: 300px;
     width: 800px;
     }
+    
 }
 
 @mixin figuresAllMedias {
@@ -48,5 +49,9 @@
     @media #{$desktop} {
         height: 400px;
         width: 400px;
+    }
+    @media #{$tablet} {
+        height: 300px;
+        width: 320px;
     }
 }

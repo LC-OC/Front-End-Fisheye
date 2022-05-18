@@ -1,10 +1,13 @@
 //* Header Photograph
 
 #photograph-header {
+    #logo_header {
+      margin-left: 2rem;  
+    }
     .logo {
         height: 3rem; 
         margin-top: 1rem;
-        margin-left: 1rem;
+        
     }
     @media #{$desktop} {
       margin: 2rem 100px;  
@@ -29,6 +32,7 @@
         flex-direction: row;
         justify-content: space-between;
         margin-right: 110px;
+        margin-left: 110px;
     }
     @media #{$tablet} {
         flex-direction: row;
@@ -58,7 +62,6 @@
       }
       @media #{$desktop} {
           height: 60px;
-          margin-left: 110px;
       }
       @media #{$tablet} {
           height: 4.5rem;

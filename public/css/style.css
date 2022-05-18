@@ -58,6 +58,12 @@
     margin-bottom: -15rem;
   }
 }
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .fa-times {
+    margin-left: 45rem;
+    font-size: 3rem;
+  }
+}
 
 .fa-angle-left, .fa-angle-right {
   color: #901C1C;
@@ -138,6 +144,11 @@
     margin-bottom: 3rem;
   }
 }
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .modal header h2 {
+    font-size: 3rem;
+  }
+}
 
 form {
   display: flex;
@@ -152,6 +163,11 @@ form label {
 @media screen and (min-width: 414px) and (max-width: 736px) {
   form label {
     font-size: 1.5rem;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  form label {
+    font-size: 2rem;
   }
 }
 form div {
@@ -194,10 +210,12 @@ form textarea {
   padding-top: 0.7rem;
 }
 
+#photograph-header #logo_header {
+  margin-left: 2rem;
+}
 #photograph-header .logo {
   height: 3rem;
   margin-top: 1rem;
-  margin-left: 1rem;
 }
 @media screen and (min-width: 992px) {
   #photograph-header {
@@ -223,6 +241,7 @@ form textarea {
     flex-direction: row;
     justify-content: space-between;
     margin-right: 110px;
+    margin-left: 110px;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 991px) {
@@ -263,7 +282,6 @@ form textarea {
 @media screen and (min-width: 992px) {
   #header_index .logo {
     height: 60px;
-    margin-left: 110px;
   }
 }
 @media screen and (min-width: 768px) and (max-width: 991px) {
@@ -326,6 +344,12 @@ form textarea {
     margin: 0;
   }
 }
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  #lightboxDiv #imgBigger {
+    height: 800px;
+    width: 650px;
+  }
+}
 #lightboxDiv .fa-xmark {
   background-color: black;
 }
@@ -337,6 +361,11 @@ form textarea {
 @media screen and (min-width: 992px) {
   #lightboxDiv #imgNameLightbox {
     margin-left: 27%;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  #lightboxDiv #imgNameLightbox {
+    margin-left: 5rem;
   }
 }
 #lightboxDiv video {
@@ -678,6 +707,15 @@ article .photographe_price {
     gap: 30px 50px;
   }
 }
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .mediaDiv {
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px 30px;
+    margin-top: 2rem;
+  }
+}
 .mediaDiv .figureMedia {
   height: 300px;
   width: 350px;
@@ -687,6 +725,11 @@ article .photographe_price {
   .mediaDiv .figureMedia {
     height: 450px;
     width: 400px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .mediaDiv .figureMedia {
+    width: 320px;
   }
 }
 .mediaDiv .imgFigure {
@@ -701,6 +744,12 @@ article .photographe_price {
     width: 400px;
   }
 }
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .mediaDiv .imgFigure {
+    height: 300px;
+    width: 320px;
+  }
+}
 .mediaDiv .videoFigure {
   height: 300px;
   width: 350px;
@@ -711,6 +760,12 @@ article .photographe_price {
   .mediaDiv .videoFigure {
     height: 400px;
     width: 400px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  .mediaDiv .videoFigure {
+    height: 300px;
+    width: 320px;
   }
 }
 .mediaDiv .figcaption-media {
@@ -727,6 +782,16 @@ article .photographe_price {
 .mediaDiv #titleFigcaption, .mediaDiv #likesFigcaption {
   font-size: 1.2rem;
   color: #901C1C;
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  #design_tablet {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 0 2rem;
+  }
 }
 
 body {
@@ -755,6 +820,15 @@ body .likes_price_div {
     height: 4rem;
     width: 20rem;
     margin: 1rem auto;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 991px) {
+  body .likes_price_div {
+    position: unset;
+    font-size: 1.2rem;
+    height: 4rem;
+    width: 20rem;
+    margin: 1rem;
   }
 }
 body .likes_price_div .all_likes {

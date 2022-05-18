@@ -40,6 +40,10 @@
     width: 800px;
     margin: 0;
     }
+    @media #{$tablet} {
+      height: 800px;
+      width: 650px;
+   } 
   }
   .fa-xmark {
     background-color: black;
@@ -47,6 +51,7 @@
   #titleFigcaption {
     @media #{$desktop} {
     }
+    
   }
   #imgNameLightbox {
     font-size: 1.3rem;
@@ -55,6 +60,10 @@
     @media #{$desktop} {
       margin-left: 27%;
     }
+    @media #{$tablet} {
+      margin-left: 5rem;
+   } 
+   
   }
   video {
     @include imgvideo;
