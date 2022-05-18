@@ -110,20 +110,20 @@
                 } 
             }
 
-            // Calcul numbre likes affiché
+            // Calcul nombre likes affiché
             let pAllLikes = document.querySelector('.number_likes');
             pAllLikes.innerHTML = sum;
             
             // Tri et récupération des éléments quand galerie filtrée par popularity
-            let tryArray = found.sort(function(a,b){return b.likes-a.likes})
-            console.log(tryArray)
+            let filterArray = found.sort(function(a,b){return b.likes-a.likes})
+            console.log(filterArray)
             let arrayImgFilterByPopularity = [];
             let arrayTitleFilterByPopularity = [];
             let arrayVideoFilterByPopularity = [];
-            for (let i = 0; i < tryArray.length; i++) {
-                let imgFilterByPopularity = tryArray[i].image;
-                let titleFilterByPopularity = tryArray[i].title;
-                let videoFilterByPopularity = tryArray[i].video;
+            for (let i = 0; i < filterArray.length; i++) {
+                let imgFilterByPopularity = filterArray[i].image;
+                let titleFilterByPopularity = filterArray[i].title;
+                let videoFilterByPopularity = filterArray[i].video;
                 arrayImgFilterByPopularity.push(imgFilterByPopularity);
                 arrayTitleFilterByPopularity.push(titleFilterByPopularity);
                 arrayVideoFilterByPopularity.push(videoFilterByPopularity); 
@@ -662,11 +662,12 @@
             heartIcon.style.color = '#525252';
             heartIcon.tabIndex = 0; 
             let heartLikes;
+            
             heartLikes = function heartLike() {
                 heartIcon.style.color = "#901C1C";
                 let numberLikes = arrayLike[i];
                 numberLikes += 1;
-                 likesFigcaption.innerHTML = numberLikes + '<i class="fas fa-heart"></i>';
+                likesFigcaption.innerHTML = numberLikes + '<i class="fas fa-heart"></i>';
                 let pAllLikes = document.querySelector('.number_likes');
                 let contentAllLikes = pAllLikes.innerHTML;
                 contentAllLikes++;
@@ -726,6 +727,8 @@
                 const arrayLikesFilter = arrayLike.sort(function(a,b){return b-a});
                 likesFigcaption.innerHTML = arrayLikesFilter[i];
                 likesFigcaption.appendChild(heartIcon);
+                pAllLikes.innerHTML = sum;
+                heartIcon.style.color = '#525252';
                 heartIcon.addEventListener("keydown", function(e) {
                     if (e.keyCode === 13) {
                         let numberLikesByPopular = arrayLikesFilter[i];
@@ -792,6 +795,8 @@
             let filterDateFunction = function filterDate() {
                 likesFigcaption.innerText = arrayFilterLikesByDate[i];
                 likesFigcaption.appendChild(heartIcon);
+                heartIcon.style.color = '#525252';
+                pAllLikes.innerHTML = sum;
                 heartIcon.addEventListener("click", function() {
                     let numberLikesByDate = arrayFilterLikesByDate[i];
                     numberLikesByDate += 1;
@@ -856,7 +861,9 @@
             })
             let filterTitleFunction = function filterTitle() {
                 likesFigcaption.innerText = arrayFilterLikesByTitle[i];
+                pAllLikes.innerHTML = sum;
                 likesFigcaption.appendChild(heartIcon);
+                heartIcon.style.color = '#525252';
                 heartIcon.addEventListener("click", function() {
                     let numberLikesByTitle = arrayFilterLikesByTitle[i];
                     numberLikesByTitle += 1;
