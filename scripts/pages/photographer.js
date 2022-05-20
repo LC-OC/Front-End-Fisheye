@@ -251,6 +251,7 @@
 
             // DOM Select
 
+            let selectFilter = document.getElementById('select_filter');
             let selectTitle = document.getElementById('title_filter');
             selectTitle.style.cursor = "pointer";
             let selectPopular = document.getElementById('popularity_filter');
@@ -725,6 +726,10 @@
             videoMedias.setAttribute("alt", arrayTitleImg[i])
             let filterPopularFunction = function filterPopular() {
                 const arrayLikesFilter = arrayLike.sort(function(a,b){return b-a});
+                selectFilter.innerHTML = "Popularité";
+                selectPopular.style.display = "none";
+                selectDate.style.display = "block";
+                selectTitle.style.display = "block";
                 likesFigcaption.innerHTML = arrayLikesFilter[i];
                 likesFigcaption.appendChild(heartIcon);
                 pAllLikes.innerHTML = sum;
@@ -793,6 +798,10 @@
                 }
             })
             let filterDateFunction = function filterDate() {
+                selectFilter.innerHTML = "Date";
+                selectDate.style.display = "none";
+                selectPopular.style.display = "block";
+                selectTitle.style.display = "block";
                 likesFigcaption.innerText = arrayFilterLikesByDate[i];
                 likesFigcaption.appendChild(heartIcon);
                 heartIcon.style.color = '#525252';
@@ -860,6 +869,10 @@
                 }
             })
             let filterTitleFunction = function filterTitle() {
+                selectFilter.innerHTML = "Titre";
+                selectTitle.style.display = "none";
+                selectDate.style.display = "block";
+                selectPopular.style.display = "block";
                 likesFigcaption.innerText = arrayFilterLikesByTitle[i];
                 pAllLikes.innerHTML = sum;
                 likesFigcaption.appendChild(heartIcon);
@@ -933,6 +946,9 @@
                     filterTitleFunction(e);
                 }
             })
+
+
+
             videoMedias.style.cursor = "pointer";
             likesFigcaption.appendChild(heartIcon);
             likesFigcaption.setAttribute('id', 'likesFigcaption');
