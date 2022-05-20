@@ -34,11 +34,12 @@
         <div class="dropdown_part">
           <p id="filter_by">Trier par</p>
           <div id="flex_content">
-          <button onclick="dropdownSelect()" class="dropbtn" tabindex="0">
-          <span id="popularity_filter" tabindex="0">Popularité <span id="arrow_icon"><i class="fas fa-angle-down"></i></span></span>
-          </button>
-        
+          <div onclick="dropdownSelect()" class="dropbtn" tabindex="0">
+          <span id="select_filter" tabindex="0">----</span>
+          <span id="arrow_icon"><i class="fas fa-angle-down" ></i></span>
+          </div>
         <div id="dropdown-content" class="dropdown-content">
+        <p id="popularity_filter" tabindex="0">Popularité</p> 
         <p id="date_filter" tabindex="0">Date</p>
         <p id="title_filter" tabindex="0">Titre</p>
         </div>
@@ -55,7 +56,7 @@
 				<form>
 					<div role="group" aria-labelledby="coordonées-et-contact">
               <label>Prénom</label>
-              <input type="text" id="firstName" name="firstname" minlength="2" maxlength="20" aria-required="true"
+              <input type="text" id="firstName" name="firstname" minlength="2" maxlength="20" aria-required="true" autofocus
               placeholder="Veuillez renseigner votre prénom ici - entre 2 et 20 lettres" />
               <p id="validationFirstName" class="validation"></p>
               <label>Nom</label>
@@ -77,7 +78,7 @@
 		</div>
      <div id="lightboxDiv" class="lightboxDiv">
        <div id="flexLightbox">
-      <i class="fas fa-times" onclick="closeLightbox()"></i>
+      <i class="fas fa-times" onclick="closeLightbox()" aria-label="Fermez la lightbox"></i>
       <div id="lightboxContent">
         <i class="fa fa-angle-left" aria-label="Passez à l'image précédente"></i> 
         <img id="imgBigger">
